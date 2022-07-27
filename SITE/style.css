@@ -9,7 +9,7 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 .top{background-color:#0d8ccf}
 #myNav ul{margin:0px;padding:0px;}
 #myNav ul li{display:inline;}
-#myNav ul li a{text-align:center; text-decoration:none; list-style:none; color:#FFF; font-family: 'Open Sans', sans-serif; font-weight:400; line-height:3;}
+#myNav ul li a{text-align:center; text-decoration:none; list-style:none; color:#FFF; font-family: 'Trocchi', serif; font-weight:400; line-height:3;}
 #myNav ul li a:hover{ background-color:#000;}
 
 /*nav*/
@@ -23,10 +23,10 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 .banner{background-image:url(paulinholoko.png); background-repeat:no-repeat; background-position:center; background-size:100% 100%; background-size:cover; border-bottom:3px solid #FFF; border-top:2px solid #FFF;}
 
-.slide h2{font-family: 'Open Sans', sans-serif; font-size:14px;color:#000; text-align:left; padding:15px; font-weight:400; background-color:#FFF; margin-bottom:20px;}
-.slide p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#000; text-align:left; padding:15px; font-weight:400;  margin-bottom:20px;}
-.slide h1{font-family: 'Oswald', sans-serif; color:#FFF;  margin:0px;text-align:left; padding:30px; margin:70px 0 20px 0; background-color:#0f8bd1;}
-.slide button{border:none;border-radius:0px;padding:15px 25px; font-family: 'Oswald', sans-serif; font-size:14px; margin-bottom:50px;}
+.slide h2{font-family: 'Trocchi', serif; font-size:14px;color:#000; text-align:left; padding:15px; font-weight:400; background-color:#FFF; margin-bottom:20px;}
+.slide p{font-family: 'Trocchi', serif; font-size:14px;color:#000; text-align:left; padding:15px; font-weight:400;  margin-bottom:20px;}
+.slide h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px;text-align:left; padding:30px; margin:70px 0 20px 0; background-color:#0f8bd1;}
+.slide button{border:none;border-radius:0px;padding:15px 25px; font-family: 'Trocchi', serif; font-size:14px; margin-bottom:50px;}
 
 
 /*banner*/
@@ -34,9 +34,9 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 /*slider*/
 .slider{background-color:#0f8bd1}
-.slider h1{font-family: 'Oswald', sans-serif; color:#FFF;  margin:0px;text-align:left; padding:30px 0px 0px 30px; font-size:20px;}
-.slider p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#FFF; text-align:left; padding:30px 0px 30px 30px; font-weight:400;}
-.slider button{border:none;border-radius:0px;padding:20px 30px; font-family: 'Oswald', sans-serif; font-size:14px; margin:40px 0 30px 30px;}
+.slider h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px;text-align:left; padding:30px 0px 0px 30px; font-size:20px;}
+.slider p{font-family: 'Trocchi', serif; font-size:14px;color:#FFF; text-align:left; padding:30px 0px 30px 30px; font-weight:400;}
+.slider button{border:none;border-radius:0px;padding:20px 30px; font-family: 'Trocchi', serif; font-size:14px; margin:40px 0 30px 30px;}
 /*slider*/
 
 
@@ -46,12 +46,12 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 .about{background-color:#0f8bd1;}
 .about img{width:100%;}
-.about-left h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
-.about-left p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#333; text-align:justify; padding:10px 0px 10px 0px; font-weight:400;}
-.about-left button{border:none;border-radius:0px;padding:15px 35px; font-family: 'Oswald', sans-serif; font-size:14px; margin:5px 0 10px 0px;}
-.about-right h2{font-family: 'Open Sans', sans-serif; color:#000;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:14px;}
-.about-right h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
-.about-right p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#333; text-align:justify; font-weight:400;}
+.about-left h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.about-left p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:justify; padding:10px 0px 10px 0px; font-weight:400;}
+.about-left button{border:none;border-radius:0px;padding:15px 35px; font-family: 'Trocchi', serif; font-size:14px; margin:5px 0 10px 0px;}
+.about-right h2{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:14px;}
+.about-right h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.about-right p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:justify; font-weight:400;}
 
 .control-box1{text-align:center;width:100%; }
 .carousel-control1{background-color:#000;color:#F00;border:0px;border-radius: 0px;display:inline-block;font-size:30px;opacity: 0.5;position: static; width:50px; position:absolute;height:50px; top:40%; bottom:50%;}
@@ -63,9 +63,9 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 /*Testimonials*/
 .testimonials{}
 .circle{width:200px; height:200px;}
-.testimonials h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:10px 0px 0px 0px; font-size:25px;}
-.testimonials h2{font-family: 'Open Sans', sans-serif; color:#000;  margin:0px; text-align:left; padding:40px 0px 5px 10px; font-size:16px;}
-.testimonials p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#666; text-align:left; padding:10px 0px 5px 10px; font-weight:400; margin-bottom:50px;}
+.testimonials h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:10px 0px 0px 0px; font-size:25px;}
+.testimonials h2{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:40px 0px 5px 10px; font-size:16px;}
+.testimonials p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; padding:10px 0px 5px 10px; font-weight:400; margin-bottom:50px;}
 
 /*Testimonials*/
 
@@ -74,7 +74,7 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 /*client*/
 
 .last{background-color:#0d8ccf; text-align:center;}
-.last h1{font-family: 'Oswald', sans-serif; color:#FFF;  margin:0px; text-align:center; padding:30px 0px 0px 0px; font-size:30px;}
+.last h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px; text-align:center; padding:30px 0px 0px 0px; font-size:30px;}
 .last span{color:#FFF; padding:20px 25px; font-size:36px; margin-bottom:30px; margin-top:20px;}
 .last a span:hover{background-color:#ffde00; color:#666;}
 .foll{background-color:#07a6dc;}
@@ -88,10 +88,10 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 .foll8{background-color:#c3d200}
 
 .last-inner{background-color:#4d4d4d;}
-.last-inner h1{font-family: 'Open Sans', sans-serif; color:#FFF;  margin:0px; text-align:left; padding:20px 0px 0px 0px; font-size:25px;}
-.last-inner p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#b9b8b4; text-align:left; padding:5px 0px 0px 0px; font-weight:400; margin:0px;}
+.last-inner h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px; text-align:left; padding:20px 0px 0px 0px; font-size:25px;}
+.last-inner p{font-family: 'Trocchi', serif; font-size:14px;color:#b9b8b4; text-align:left; padding:5px 0px 0px 0px; font-weight:400; margin:0px;}
 .last-inner p span{font-size:14px;color:#FFF; text-align:left; padding:0px 5px 0 0px;margin:0px;}
-.last-inner button{border:none;border-radius:0px;padding:10px 10px; font-family: 'Open Sans', sans-serif; font-size:14px;  margin:2px;}
+.last-inner button{border:none;border-radius:0px;padding:10px 10px; font-family: 'Trocchi', serif; font-size:14px;  margin:2px;}
 .last-inner blockquote{border:none; margin-top:0px; padding:0px;}
 .last-inner  small{ color:#FFF; margin-top:0px; font-size:13px;}
 
@@ -102,7 +102,7 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 
 .footer{background-color:#000;}
-.footer p{font-family: 'Open Sans', sans-serif; font-size:15px; color:#FFF; text-align:center; padding:30px 0px 10px 0px; }
+.footer p{font-family: 'Trocchi', serif; font-size:15px; color:#FFF; text-align:center; padding:30px 0px 10px 0px; }
 
 
 
@@ -110,9 +110,9 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 .about-main{}
 .about-main img{width:100%; margin-top:10px;}
-.about-main h2{font-family: 'Open Sans', sans-serif; color:#0d8ccf;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
-.about-main h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
-.about-main p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#333; text-align:justify; font-weight:400;padding:0px 0px 0px 0px;}
+.about-main h2{font-family: 'Trocchi', serif; color:#0d8ccf;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
+.about-main h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.about-main p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:justify; font-weight:400;padding:0px 0px 0px 0px;}
 
 .about-main span{font-size:40px; text-align:center; color:#000; padding:10px; background-color:#CCC;}
 
@@ -120,11 +120,11 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 /*team*/
 .team{text-align:center;}
-.team h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.team h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
 .team-inner{margin-bottom:30px; margin-top:20px;}
 .team-inner img{width:100%; }
-.team-inner h2{font-family: 'Open Sans', sans-serif; color:#0d8ccf;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
-.team-inner p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#333; text-align:left; font-weight:400;padding:0px 0px 0px 0px;}
+.team-inner h2{font-family: 'Trocchi', serif; color:#0d8ccf;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
+.team-inner p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:left; font-weight:400;padding:0px 0px 0px 0px;}
 .team-inner span{font-size:20px; color:#999; text-align:center;  padding:10px 15px; border:1px solid #CCC; margin:1px;}
 .team-inner span:hover{background-color:#0d8ccf; color:#FFF;}
 
@@ -143,12 +143,12 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 /****************************services********************************************/
 
 .services{text-align:center;}
-.services h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.services h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
 .services-inner{background-color:#0d8ccf; margin:10px 0px; border:10px solid #FFF;}
 .services-inner h2{font-family:'Open Sans', sans-serif; color:#E2E2E2;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
 .services-inner span{font-size:100px; padding:20px; text-align:center; color:#CCC;}
-.services-inner p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#FFF; text-align:left; font-weight:400;}
-.services-inner button{border:none;border-radius:0px;padding:10px; font-family: 'Open Sans', sans-serif; font-size:14px;  margin-bottom:30px;}
+.services-inner p{font-family: 'Trocchi', serif; font-size:13px;color:#FFF; text-align:left; font-weight:400;}
+.services-inner button{border:none;border-radius:0px;padding:10px; font-family: 'Trocchi', serif; font-size:14px;  margin-bottom:30px;}
 
 
 /****************************services********************************************/
@@ -156,16 +156,16 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 /****************************blog********************************************/
 .blog{}
-.blog h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.blog h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
 .blog-left h2{font-family:'Open Sans', sans-serif; color:#333;  margin:0px; text-align:left;  font-size:14px; font-weight:600;padding:5px 0px;margin-bottom:10px}
 .blog-left span{padding:10px 10px; font-family:'Open Sans', sans-serif; color:#333; font-size:12px; text-align:center; background-color:#CCC;}
 .blog-left img{width:100%; padding:10px 0px;}
-.blog-left p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#666; text-align:left; font-weight:400;}
-.blog-left button{border:none;border-radius:0px;padding:10px; font-family: 'Open Sans', sans-serif; font-size:14px; float:left; margin-bottom:30px;}
+.blog-left p{font-family: 'Trocchi', serif; font-size:13px;color:#666; text-align:left; font-weight:400;}
+.blog-left button{border:none;border-radius:0px;padding:10px; font-family: 'Trocchi', serif; font-size:14px; float:left; margin-bottom:30px;}
 
-.btn-group button{border:none;border-radius:0px;padding:10px 20px; font-family: 'Open Sans', sans-serif; font-size:14px; float:left; margin:0 10px 50px 10px;}
+.btn-group button{border:none;border-radius:0px;padding:10px 20px; font-family: 'Trocchi', serif; font-size:14px; float:left; margin:0 10px 50px 10px;}
 
-.blog-right h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.blog-right h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
 .blog-right h2{font-family:'Open Sans', sans-serif; color:#333;  margin:0px; text-align:left;  font-size:14px; font-weight:600;padding:5px 0px;margin:10px 0px;}
 .blog-right a{text-decoration:none;list-style:none;}
 .blog-right h2 span{margin-right:5px; color:#F00;}
@@ -178,8 +178,8 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 /****************************work********************************************/
 
 .work{}
-.work h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
-.work p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:20px;}
+.work h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.work p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:20px;}
 
 #filters{margin:1%;padding:0;list-style:none;font-family:'Open Sans', sans-serif; font-size:16px; font-weight:600; text-align:center;}
 #filters li {float:left;}
@@ -192,8 +192,8 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 #portfoliolist .portfolio {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;display:none;float:left;overflow:hidden;}
 .portfolio-wrapper {overflow:hidden;position: relative !important;cursor:pointer;}
 .portfolio-wrapper h2{font-family:'Open Sans', sans-serif; color:#FFF;  margin:0px; text-align:left;  font-size:14px; font-weight:600;padding:5px 0px;}
-.portfolio-wrapper p{font-family: 'Open Sans', sans-serif; font-size:13px;color:#FFF; text-align:left; font-weight:400;}
-.portfolio-wrapper button{border:none;border-radius:0px;padding:10px; font-family: 'Open Sans', sans-serif; font-size:14px; margin-bottom:30px;}
+.portfolio-wrapper p{font-family: 'Trocchi', serif; font-size:13px;color:#FFF; text-align:left; font-weight:400;}
+.portfolio-wrapper button{border:none;border-radius:0px;padding:10px; font-family: 'Trocchi', serif; font-size:14px; margin-bottom:30px;}
 
 
 
@@ -205,18 +205,18 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 /****************************contact********************************************/
 
 .contact{}
-.contact h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
-.contact p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:20px;}
+.contact h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.contact p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:20px;}
 
 .contact-left{ margin-top:10px;}
-.contact-left h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 20px 0px; font-size:25px;}
-.form-control{font-family: 'Open Sans', sans-serif; font-size:14px;}
-.contact-left button{border:none;border-radius:0px;padding:20px 30px; font-family: 'Open Sans', sans-serif; font-size:14px; margin-bottom:30px;}
+.contact-left h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 20px 0px; font-size:25px;}
+.form-control{font-family: 'Trocchi', serif; font-size:14px;}
+.contact-left button{border:none;border-radius:0px;padding:20px 30px; font-family: 'Trocchi', serif; font-size:14px; margin-bottom:30px;}
 
 
 .contact-right{}
-.contact-right h1{font-family: 'Oswald', sans-serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 20px 0px; font-size:25px;}
-.contact-right p{font-family: 'Open Sans', sans-serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:5px;}
+.contact-right h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 20px 0px; font-size:25px;}
+.contact-right p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:5px;}
 
 .container-fluid{padding:0px !important;}
 
@@ -235,3 +235,33 @@ hr{width:100%;background-color:#999;margin:5px 0px;}
 
 
 /****************************contact********************************************/
+
+
+
+header {
+    position: relative;
+    height: 300px;
+    background-image: linear-gradient(#2facff, #2672ff);
+  }
+  
+  h1 {
+    padding: 100px 0;
+    font-family: 'Trocchi', serif; 
+    font-size: 44px;
+    text-align: center;
+
+  }
+  
+  header h1 {
+    color: white;
+  }
+  
+  svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10vw;
+    /* set height to pixels if you want angle to change with screen width */
+  }
+  
+  
