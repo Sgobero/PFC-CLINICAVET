@@ -1,0 +1,265 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+
+
+
+hr{width:100%;background-color:rgb(0, 56, 161);margin:10px 0px;}
+
+/*nav*/
+.top{background-image: linear-gradient(#2c2a2ae0, #494545d7)}
+#myNav ul{margin:0px;padding:0px;}
+#myNav ul li{display:inline;}
+#myNav ul li a{text-align:center; text-decoration:none; list-style:none; color:#FFF; font-family: 'Trocchi', serif; font-weight:400; line-height:3;}
+#myNav ul li a:hover{ background-image: linear-gradient(#000000bb, #2c2c2cbb)};
+
+/*nav*/
+
+/*banner*/
+.control-box {text-align:center;width: 30%; }
+.carousel-control{background-color:rgba(0, 60, 255, 0.767);color:rgb(0, 60, 255);border:0px;border-radius: 8px;display: inline-block;font-size:30px;opacity: 0.5;position: static; width:50px; position:absolute;height:40px; top:40%; bottom:50%;}
+.carousel-inner img{width:100%;}		
+.control-box span{padding:10px 10px 10px 10px;}
+
+
+.banner{background-color: #FFFFFF; background-repeat:no-repeat; background-position:center; background-size:100% 100%; background-size:cover; border-bottom:3px solid #FFF; border-top:2px solid #FFF;}
+
+.slide h2{font-family: 'Trocchi', serif; font-size:14px;color:#000; text-align:left; padding:15px; font-weight:400; background-color:#FFF; margin-bottom:20px;}
+.slide p{font-family: 'Trocchi', serif; font-size:14px;color:#000; text-align:left; padding:15px; font-weight:400;  margin-bottom:20px;}
+.slide h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px;text-align:left; padding:30px; margin:70px 0 20px 0;  background-image: linear-gradient( #1eb49bbb,#43b19ebb)}
+.slide button{border:none;border-radius:10px;padding:15px 25px; font-family: 'Trocchi', serif; font-size:14px; margin-bottom:50px;}
+.slide h1{border-radius: 10px 20px};
+
+
+/*banner*/
+
+
+/*slider*/
+.slider{background-color:#171bff}
+.slider h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px;text-align:left; padding:30px 0px 0px 30px; font-size:20px;}
+.slider p{font-family: 'Trocchi', serif; font-size:14px;color:#FFF; text-align:left; padding:30px 0px 30px 30px; font-weight:400;}
+.slider button{border:none;border-radius:10p  x;padding:20px 30px; font-family: 'Trocchi', serif; font-size:14px; margin:40px 0 30px 30px;}
+/*slider*/
+
+
+
+
+/*about*/
+
+.about{background-color:#002efd;}
+.about img{width:100%;}
+.about-left h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.about-left p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:justify; padding:10px 0px 10px 0px; font-weight:400;}
+.about-left button{border:none;border-radius:0px;padding:15px 35px; font-family: 'Trocchi', serif; font-size:14px; margin:5px 0 10px 0px;}
+.about-right h2{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:14px;}
+.about-right h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.about-right p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:justify; font-weight:400;}
+
+.control-box1{text-align:center;width:100%; }
+.carousel-control1{background-color:rgb(36, 80, 34);color:#F00;border:0px;border-radius: 0px;display:inline-block;font-size:30px;opacity: 0.5;position: static; width:50px; position:absolute;height:50px; top:40%; bottom:50%;}
+.carousel-inner1 img{width:100%;}		
+.control-box1 span{padding:10px 10px 10px 10px;}
+/*about*/
+
+
+/*Testimonials*/
+.testimonials{}
+.circle{width:200px; height:200px;}
+.testimonials h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:10px 0px 0px 0px; font-size:25px;}
+.testimonials h2{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:40px 0px 5px 10px; font-size:16px;}
+.testimonials p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; padding:10px 0px 5px 10px; font-weight:400; margin-bottom:50px;}
+
+/*Testimonials*/
+
+
+
+/*client*/
+
+.last{background-color:#0d8ccf; text-align:center;}
+.last h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px; text-align:center; padding:30px 0px 0px 0px; font-size:30px;}
+.last span{color:#FFF; padding:20px 25px; font-size:36px; margin-bottom:30px; margin-top:20px;}
+.last a span:hover{background-color:#ffde00; color:#666;}
+.foll{background-color:#07a6dc;}
+.foll1{background-color:#2d5094}
+.foll2{background-color:#ed2215}
+.foll3{background-color:#00a8dc}
+.foll4{background-color:#ff732e}
+.foll5{background-color:#ba68b5}
+.foll6{background-color:#ff1d1c}
+.foll7{background-color:#ff3f35}
+.foll8{background-color:#c3d200}
+
+.last-inner{background-color:#4d4d4d;}
+.last-inner h1{font-family: 'Trocchi', serif; color:#FFF;  margin:0px; text-align:left; padding:20px 0px 0px 0px; font-size:25px;}
+.last-inner p{font-family: 'Trocchi', serif; font-size:14px;color:#b9b8b4; text-align:left; padding:5px 0px 0px 0px; font-weight:400; margin:0px;}
+.last-inner p span{font-size:14px;color:#FFF; text-align:left; padding:0px 5px 0 0px;margin:0px;}
+.last-inner button{border:none;border-radius:0px;padding:10px 10px; font-family: 'Trocchi', serif; font-size:14px;  margin:2px;}
+.last-inner blockquote{border:none; margin-top:0px; padding:0px;}
+.last-inner  small{ color:#FFF; margin-top:0px; font-size:13px;}
+
+.last-1{margin-bottom:30px; margin-top:30px;}
+/*client*/
+
+
+
+
+.footer{background-color:#000;}
+.footer p{font-family: 'Trocchi', serif; font-size:15px; color:#FFF; text-align:center; padding:30px 0px 10px 0px; }
+
+
+
+/************************************************************************************about-page******************************************************************************/
+
+.about-main{}
+.about-main img{width:100%; margin-top:10px;}
+.about-main h2{font-family: 'Trocchi', serif; color:#0d8ccf;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
+.about-main h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.about-main p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:justify; font-weight:400;padding:0px 0px 0px 0px;}
+
+.about-main span{font-size:40px; text-align:center; color:#000; padding:10px; background-color:#CCC;}
+
+
+
+/*team*/
+.team{text-align:center;}
+.team h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.team-inner{margin-bottom:30px; margin-top:20px;}
+.team-inner img{width:100%; }
+.team-inner h2{font-family: 'Trocchi', serif; color:#0d8ccf;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
+.team-inner p{font-family: 'Trocchi', serif; font-size:13px;color:#333; text-align:left; font-weight:400;padding:0px 0px 0px 0px;}
+.team-inner span{font-size:20px; color:#999; text-align:center;  padding:10px 15px; border:1px solid #CCC; margin:1px;}
+.team-inner span:hover{background-color:#0d8ccf; color:#FFF;}
+
+.control-box4{text-align:right; width:100%; }
+.carousel-control4{background-color:#000; color:#F00; border:0px;border-radius: 0px;display: inline-block;font-size:30px;opacity: 0.5;position: static; width:50px;height:50px; }
+.carousel-inner4 img{width:100%;}		
+.control-box4 span{padding:10px 10px 10px 10px; text-align:center; margin-right:5px;}
+
+/*team*/
+
+/***************************************************about*******************************************/
+
+
+
+
+/****************************services********************************************/
+
+.services{text-align:center;}
+.services h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.services-inner{background-color:#0d8ccf; margin:10px 0px; border:10px solid #FFF;}
+.services-inner h2{font-family:'Open Sans', sans-serif; color:#E2E2E2;  margin:0px; text-align:left; padding:10px 0px 5px 0px; font-size:16px; line-height:20px;}
+.services-inner span{font-size:100px; padding:20px; text-align:center; color:#CCC;}
+.services-inner p{font-family: 'Trocchi', serif; font-size:13px;color:#FFF; text-align:left; font-weight:400;}
+.services-inner button{border:none;border-radius:0px;padding:10px; font-family: 'Trocchi', serif; font-size:14px;  margin-bottom:30px;}
+
+
+/****************************services********************************************/
+
+
+/****************************blog********************************************/
+.blog{}
+.blog h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.blog-left h2{font-family:'Open Sans', sans-serif; color:#333;  margin:0px; text-align:left;  font-size:14px; font-weight:600;padding:5px 0px;margin-bottom:10px}
+.blog-left span{padding:10px 10px; font-family:'Open Sans', sans-serif; color:#333; font-size:12px; text-align:center; background-color:#CCC;}
+.blog-left img{width:100%; padding:10px 0px;}
+.blog-left p{font-family: 'Trocchi', serif; font-size:13px;color:#666; text-align:left; font-weight:400;}
+.blog-left button{border:none;border-radius:10px;padding:10px; font-family: 'Trocchi', serif; font-size:14px; float:left; margin-bottom:30px;}
+
+.btn-group button{border:none;border-radius:10px;padding:10px 20px; font-family: 'Trocchi', serif; font-size:14px; float:left; margin:0 10px 50px 10px;}
+
+.blog-right h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.blog-right h2{font-family:'Open Sans', sans-serif; color:#333;  margin:0px; text-align:left;  font-size:14px; font-weight:600;padding:5px 0px;margin:10px 0px;}
+.blog-right a{text-decoration:none;list-style:none;}
+.blog-right h2 span{margin-right:5px; color:#F00;}
+
+
+/****************************blog********************************************/
+
+
+
+/****************************work********************************************/
+
+.work{}
+.work h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.work p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:20px;}
+
+#filters{margin:1%;padding:0;list-style:none;font-family:'Open Sans', sans-serif; font-size:16px; font-weight:600; text-align:center;}
+#filters li {float:left;}
+#filters li span {display: block;padding: 10px 30px;text-decoration: none;color: #666;cursor: pointer;text-transform: uppercase;}
+#filters li span.active {background:#0d8ccf;color:#fff;}
+	
+	
+.portfolio{background-color:#333; border:10px solid #FFF;}
+.portfolio{padding:0px;}
+#portfoliolist .portfolio {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;display:none;float:left;overflow:hidden;}
+.portfolio-wrapper {overflow:hidden;position: relative !important;cursor:pointer;}
+.portfolio-wrapper h2{font-family:'Open Sans', sans-serif; color:#FFF;  margin:0px; text-align:left;  font-size:14px; font-weight:600;padding:5px 0px;}
+.portfolio-wrapper p{font-family: 'Trocchi', serif; font-size:13px;color:#FFF; text-align:left; font-weight:400;}
+.portfolio-wrapper button{border:none;border-radius:0px;padding:10px; font-family: 'Trocchi', serif; font-size:14px; margin-bottom:30px;}
+
+
+
+
+/****************************work********************************************/
+
+
+
+/****************************contact********************************************/
+
+.contact{}
+.contact h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 0px 0px; font-size:25px;}
+.contact p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:20px;}
+
+.contact-left{ margin-top:10px;}
+.contact-left h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 20px 0px; font-size:25px;}
+.form-control{font-family: 'Trocchi', serif; font-size:14px;}
+.contact-left button{border:none;border-radius:0px;padding:20px 30px; font-family: 'Trocchi', serif; font-size:14px; margin-bottom:30px;}
+
+
+.contact-right{}
+.contact-right h1{font-family: 'Trocchi', serif; color:#000;  margin:0px; text-align:left; padding:30px 0px 20px 0px; font-size:25px;}
+.contact-right p{font-family: 'Trocchi', serif; font-size:14px;color:#666; text-align:left; font-weight:400; margin-bottom:5px;}
+
+.container-fluid{padding:10px;}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px!important;
+    height: 10px!important;
+    margin: 1px!important;
+    text-indent: -999px;
+    cursor: poin  ter;
+    background-color: rgba(145, 76, 76, 0.596);
+    background-color: rgba(207, 148, 148, 0.342)!important;
+    border: 2px solid #44a5da!important;
+    border-radius: 10px;
+} 
+
+
+/****************************contact********************************************/
+
+
+
+header {
+    position: relative;
+    height: 300px;
+    background-image: linear-gradient(#1d8bf3bb, #4384fdce);
+  }
+  
+  
+  header h1 {
+    padding: 90px 0;
+    font-family: 'Trocchi', serif; 
+    font-size: 44px;
+    text-align: center;
+
+    color: rgb(43, 43, 43);
+  }
+  
+  svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6vw;
+    /* set height to pixels if you want angle to change with screen width */
+  }
+  
