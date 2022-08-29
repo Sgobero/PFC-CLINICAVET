@@ -12,4 +12,7 @@ document.getElementById("radio1").checked = true;
         }
 
         document.getElementById("radio"+count).checked = true;
-    }
+    };
+
+
+
