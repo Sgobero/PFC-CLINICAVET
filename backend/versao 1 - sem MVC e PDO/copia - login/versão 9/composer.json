@@ -1,0 +1,15 @@
+{
+    "description": "Clinica Veterinaria PHP OO",
+    "authors": [
+        {
+            "name": "Matheus Laurentino",
+            "email": "matheus.laurentino.ifrp@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Sts\\": "app/sts"
+        }
+    },
+    "require": {}
+}
