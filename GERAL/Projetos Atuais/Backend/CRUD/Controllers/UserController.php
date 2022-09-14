@@ -12,7 +12,7 @@ $userStart = new UserController();
 class UserController
 {
 
-    //--------Construtor + Manipula URL--------
+    //----------Construtor + Manipula URL----------
 
     function __construct()
     {
@@ -63,15 +63,9 @@ class UserController
 
 
 
-    //--------------------Metodos Do CRUD--------------------
+    //----------Metodos Do CRUD----------
 
-
-
-
-
-
-
-
+    //realiza o cadastro sem verificar o email no BD
     public function create(){ //pronto
        
         $usuario = new Usuario();
@@ -88,7 +82,7 @@ class UserController
     
         if($resultado){
             //$this->loadView("index.php");
-            $this->loadIndex();
+            $this->loadIndex(); //----------------------------------------------------------
         }else{
             echo "erro";
         }
@@ -110,7 +104,7 @@ class UserController
         $resultado = $clienteRepository->update($usuario);
     
         if($resultado == 1){
-            $this->loadIndex();
+            $this->loadIndex(); //----------------------------------------------------------
         }else{
             echo "erro";
         } 
@@ -126,7 +120,7 @@ class UserController
         $resultado = $clienteRepository->delete($usuario);
         
         if($resultado){
-            $this->loadIndex();
+            $this->loadIndex(); //----------------------------------------------------------
         }else{
             echo "erro";
         }
@@ -157,21 +151,55 @@ class UserController
 
 
 
+    //----------Métodos de Cadastro----------
+    
 
 
 
+    public function createNew()
+    {
+        $usuario = new Usuario;
+        $usuario->setEmail($_POST['email']);
+
+        $clienteRepository = new ClienteRepository();
+        $resultado = $clienteRepository->checkEmail($usuario); //retorna a quantidade de registros com o mesmo email
+
+        if(empty($resultado)){
+            $usuario->setNome($_POST["nome"]);
+            $usuario->setCpf($_POST["cpf"]);
+            $usuario->setRg($_POST["rg"]);
+            $usuario->setTelefone($_POST["telefone"]);
+            $usuario->setSenha($_POST["senha"]);
+            $resultado = $clienteRepository->create($usuario);//retorna se foi cadastrado com sucesso
+            if($resultado){
+                $this->loadFormLogin();
+            }else{
+                echo "Falha ao cadastrar";
+            }
+        }else{
+            echo "Cliente já cadastrado";
+        } 
+    }
+
+    public function login()
+    {
+        $usuario = new Usuario;
+        $usuario->setEmail($_POST['email']);
+        $usuario->setSenha($_POST['senha']);
+
+        $clienteRepository = new ClienteRepository();
+        $resultado = $clienteRepository->login($usuario);
+
+        if(!empty($resultado)){
+            $this->loadPainel();
+        }else{
+            echo "Email ou Senha Incorretas";
+        }
+    }
 
 
 
-    //-----------------Chamada para as telas-----------------
-
-
-
-
-
-
-
-
+    //----------Chamada para as telas----------
 
 
 
@@ -179,13 +207,16 @@ class UserController
     {
         $this->loadView("formNew.php");
     }
-
+    public function loadFormLogin()
+    {
+        header("Location: ../Views/formLogin.php");
+    }
     private function loadPainel()
     { 
-        $this->loadView("painel.php");
+        header("Location: ../Views/painel.php");
     }
     public function loadIndex(){
-        header("Location: ../index.php");
+        header("Location: ../index.php?");
     }  
 }
 
