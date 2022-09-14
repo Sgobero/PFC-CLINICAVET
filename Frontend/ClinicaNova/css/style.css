@@ -9,7 +9,7 @@
 
 body{
 	font-size: 100%;
-	background-color: beige;
+	background-color: white;
 }
 
 .cabecalho{
@@ -18,11 +18,11 @@ body{
 	align-items: center;
 	align-items: baseline;
 	justify-content: space-around;
-	padding: 24px;
+	padding-top: 24px;
 }
 
 .cabecalho-img{
-	height: 65px;
+	height: 60px;
 }
 
 .cabecalho-menu{
@@ -47,4 +47,53 @@ button{
 	padding-left: 20px;
 	padding-right: 20px;
 	border-radius: 8px;
+}
+
+.conteudo{
+	border-top: 4px solid black;
+	margin-bottom: 20px;
+}
+
+.conteudo-principal{
+	display: flex;	
+	align-items: center;
+	justify-content: space-around;
+}
+
+.conteudo-principal-img{
+	background-color: #FFB300;
+}
+
+.conteudo-principal-escrito{
+	padding: 20px;
+
+}
+
+.conteudo-principal-título{
+	font-family: 'Righteous', cursive;
+}
+
+.conteudo-principal-conheca{
+	font-family: 'Righteous', cursive;
+	text-align: center;
+	padding-left: 30px;
+}
+
+.conteudo-principal-descricao{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+}
+
+#serviços{
+	display: flex;
+	align-items: center;
+}
+
+#corpoclinico{
+	display: flex;
+	justify-content: left;
+}
+
+.rodape{
+	
 }
