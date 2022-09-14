@@ -4,6 +4,8 @@ class ClienteRepository
 {   
     private $connect;
 
+    //----------Métodos do CRUD----------
+
     public function create(Usuario $usuario) //pronto
     {   
         $conn = new Conn();
@@ -78,6 +80,33 @@ class ClienteRepository
         $tableTratada = $table->fetchAll(PDO::FETCH_ASSOC); 
 
         return $tableTratada;
+    }
+
+    //----------Métodos de Cadastro e Login----------
+
+    public function checkEmail(Usuario $usuario)
+    {
+        $conn = new Conn();
+        $this->connect = $conn->conectar();
+
+        $email = $usuario->getEmail();
+        $table = $this->connect->query("SELECT id FROM usuarios WHERE email = '$email'");
+        $resultado = $table->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $resultado;
+    }
+
+    public function login(Usuario $usuario)
+    {
+        $conn = new Conn();
+        $this->connect = $conn->conectar();
+
+        $email = $usuario->getEmail();
+        $senha = $usuario->getSenha();
+        $table = $this->connect->query("SELECT id FROM usuarios WHERE email = '$email' AND senha = '$senha'");
+        $resultado = $table->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultado;
     }
 
 
