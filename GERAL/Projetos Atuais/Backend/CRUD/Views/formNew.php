@@ -9,7 +9,7 @@
 <body>
     
 <!-- <form action="?action=create" method="POST"> / ./UserController.php?action=create -->
-    <form action="../Controllers/UserController.php?action=create" method="POST">
+    <form action="../Controllers/UserController.php?action=createNew" method="POST">
 
         <h2>Crie Sua Conta</h2>
 
