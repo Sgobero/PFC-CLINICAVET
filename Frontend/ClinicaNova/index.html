@@ -1,109 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cliníca Veterinária</title>
-
-<!--  
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-		integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-		crossorigin="anonymous" />
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
--->
-	
-	<link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto de Conclusão de Curso - Site designado para uma clínica veterinária.">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Clínica Veterinária</title>
 </head>
 
-<!-- CONTEÚDO PRINCIPAL -->
-
 <body>
+    
+    <!--CABEÇALHO-->
+    <header class="cabecalho"> 
+        <img class="cabecalho-img" src="img/PHOTO-2022-08-17-16-30-01.png" alt="logo da clínica">
 
-	<!-- CABEÇALHO  -->
-	<header class="cabeçalho">
+        <nav class="cabecalho-menu">
+            <a class="cabecalho-menu-item">HOME</a>
+            <a class="cabecalho-menu-item">SERVIÇOS</a>
+            <a class="cabecalho-menu-item">CORPO CLÍNICO</a>
+            <button class="cabecalho-menu-botao">AGENDE AQUI!</button>
 
-		<div class="menu-bg">
-			
-			<div class="menu">
-				<div class="menu__logo">
-					<img src="img/PHOTO-2022-08-17-16-30-01.png" width="70px" alt="logo"></a>
-				</div>
+            <!--PARTE DE ICONE E LOGIN-->
+        </nav>
+    </header>
 
-				<nav class="cabecalho-menu">
+    <!--CONTEÚDO PRINCIPAL-->
+    <main class="conteudo">
+        <section id="apresentação" class="conteudo-principal">
+            <img src="" alt="img cães e gatos" class="conteudo-principal-img"> 
+             
+            <div class="conteudo-principal-escrito">
+                <h1 class="conteudo-principal-titulo">TÍTULO</h1>
+                <h3 class="conteudo-principal-texto">TEXTO DE APRESENTAÇÃO</h3>
+            </div>
+             
+        </section>
 
-					<a class="cabecalho-menu-item" href=""> HOME </a>
-					<a class="cabecalho-menu-item" href=""> SERVIÇOS </a>
-					<a class="cabecalho-menu-item" href=""> CORPO CLÍNICO </a>
-					
-					<!-- 
-					<a class="cabecalho-menu-item" href=""> AGENDE AQUI! </a>
-					<a class="cabecalho-menu-item" href=""> PERFIL </a>
-					--> 
+        <section id="serviços" class="conteudo-principal">
+            <h2 class="conteudo-principal-conheca">CONHEÇA NOSSAS SERVIÇOS</h1>
 
-				</nav>
-		
+                <!--carrosel - slider-->
+        </section>
 
-	</header>
+        <section id="corpo clínico" class="conteudo-principal">
+            <h2 class="conteudo-principal-conheca">CONHEÇA NOSSO CORPO CLÍNICO</h2>
+            <h3 class="conteudo-principal-texto">texto de descrição</h4>
+           
+                <!--slider - imagem com capa médico com opção de selecionar para o prox, sem andar sozinho-->
+           
+            <p class="conteudo-principal-descricao"> descrição do profissional, especificações</p>
+        </section>
+    </main>
 
-	<hr>
-<!--  
-	<section class="somos" id="somos"> 
-		<h2 class="section__titulo"> TÍTULO </h2>
-		<div class="somos-c">
-			<div class="somos-c__texto">
-				<p>
-					TEXTO 
-				</p>
-				<br>
-				<p>
-					TEXTO 
-				</p>
-			</div>
+    <!--RODAPÉ-->
+    <footer class="rodape">
+        <img src="" class="rodape-img">
 
-			<div class="somos-c__img"> 
-				<img src="img/" alt="Quem Somos">
-			</div>
+        <p class="rodape-endereco">ENDEREÇO</p>
 
-		</div>
+        <na id="contatos" class="rodape-contatos">
+            <li class="rodape-informacao"><a> CONTATO DE WHATSAPP</a></li>
+            <li class="rodape-informacao"><a> @INSTAGRAM </a></li>
+            <li class="rodape-informacao"><a> E-MAIL</a></li>
+        </na>
 
-	</section>
-	<hr>
-	-->
-
-	<!--  
-
-	<section class="cursos" id="cursos">
-		<h2 class="section__titulo"> TÍTULO </h2>
-		<div class="curso">
-			<img src="img/" alt="Inteligência Artificial" class="curso__img">
-			<h3 class="curso__titulo">TÍTULO</h3>
-			<p class="curso__descricao">
-				TEXTO 
-			</p>
-		</div>
-		<div class="curso">
-			<img src="img/" alt="Frontend" class="curso__img">
-			<h3 class="curso__titulo">TÍTULO</h3>
-			<p class="curso__descricao">
-				TEXTO 
-			</p>
-		</div>
-		<div class="curso">
-			<img src="img/" alt="Segurança da Informação" class="curso__img">
-			<h3 class="curso__titulo">TÍTULO</h3>
-			<p class="curso__descricao">
-				TEXTO 
-			</p>
-		</div>
-
-	</section>
-	--> 
-
-	
+        <p class="rodape-direitos">direitos autorais</p>
+        
+    </footer>
 </body>
-
-
-
 </html>

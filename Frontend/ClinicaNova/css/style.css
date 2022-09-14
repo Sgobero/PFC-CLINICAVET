@@ -1,135 +1,50 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Righteous&display=swap');
+
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	text-decoration: none;
 }
-.container{
 
+body{
+	font-size: 100%;
+	background-color: white;
+}
+
+.cabecalho{
 	display: flex;
-	justify-content: center;
+	flex-direction: row;
 	align-items: center;
-	height: 100vh;
-	background-color: #ecf0f1;
+	align-items: baseline;
+	justify-content: space-around;
+	padding: 24px;
 }
 
-.content{
-	background-color: #fff;
-	border-radius: 15px;
-	width: 90%;
-	height: 60%;
+.cabecalho-img{
+	height: 72px;
+}
+
+.cabecalho-menu{
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
+	align-items: baseline;
+	gap: 60px;
 }
 
-.content::before{
-	content: "";
-	position: absolute;
-	background-color: #58af9b;
-	width: 40%;
-	height: 100%;
-
+.cabecalho-menu-item{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
 }
 
-.title{
-	font-size: 28px;
-	font-weight: bold;
-	text-transform: capitalize;
-}
-
-.title-primary{
-	color: #fff;
-}
-.title-second{
-	color: #58af9b;
-}
-
-.description{
-	font-size: 14px;
-	font-weight: 300;
-	color: #fff;
-	line-height: 30px;
-}
-
-.description-primary{
-	color: #fff;
-}
-
-.description-second{
-	color: #7f8c8d;
-}
-
-.btn{
-	border-radius: 15px;
-	text-transform: uppercase;
-	color: #fff;
-	font-size: 10px;
-	padding: 10px 50px;
-	cursor: pointer;
-	font-weight: bold;
-}
-.btn-primary {
-	background-color: transparent;
-	border: 1px solid #fff;
-}
-
-.btn-primary:hover{
-	background-color: #fff;
-	color:#58af9b ;
-}
-
-.first-content{
-	display: flex;
-}
-
-.first-column{
-	text-align: center;
-	flex: 1 0 auto;
-	z-index: 10;
-}
-
-.second-column{
-	flex: 2 0 auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.list-social-media{
-	display: flex;
-	list-style-type: none;
-
-}
-
-.item-social-media{
-	border: 1px solid #bdc3c7;
-	border-radius: 50%;
-	width: 35px;
-	height: 35px;
-	line-height: 35px;
-	text-align: center;
-
-}
-.item-social-media a{
-	color: #95a5a6;
-
-}
-
-.form-login{
-	display: flex;
-	flex-direction: column;
-	width: 55%;
-}
-
-.form-login input{
-	height: 45px;
+button{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	color: white;
 	border: none;
-	background-color: #ecf0f1;
-	margin: 8px;
+	background-color: #FFB300;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 8px;
 }
-.second-content{
-	position: absolute;
-	display: none;
-}
-
