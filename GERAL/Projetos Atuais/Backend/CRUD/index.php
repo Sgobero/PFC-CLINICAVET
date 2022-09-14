@@ -10,7 +10,7 @@
     <?php
         //require_once "Models/classes/Usuario.php";
         //require_once "Models/classes/Cliente.php";
-        header("Location: Controllers/UserController.php?action=loadPainel")
+        header("Location: Controllers/UserController.php?action=loadFormNew")//loadPainel
     ?>
 </body>
 </html>
