@@ -66,7 +66,8 @@ button:hover{
 }
 
 .conteudo-principal-img{
-	background-color: #FFB300;
+	padding: 30px;
+	width: 450px;
 }
 
 .conteudo-principal-escrito{
@@ -76,6 +77,14 @@ button:hover{
 
 .conteudo-principal-título{
 	font-family: 'Righteous', cursive;
+	font-size: 50px;
+	text-align: center;
+}
+
+.conteudo-principal-subtítulo{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align: center;
 }
 
 .conteudo-principal-conheca{
@@ -101,4 +110,19 @@ button:hover{
 
 .rodape{
 	
+}
+
+.rodape-img{
+
+}
+
+.rodape-endereco{
+	
+}
+
+#endereco{
+	
+}
+
+.rodape-contatos{
 }
