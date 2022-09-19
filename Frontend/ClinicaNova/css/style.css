@@ -12,7 +12,7 @@ body{
 	background-color: white;
 }
 
-.cabecalho{
+.cabecalho-principal{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -21,22 +21,22 @@ body{
 	padding-top: 24px;
 }
 
-.cabecalho-img{
+.cabecalho-principal .img{
 	height: 60px;
 }
 
-.cabecalho-menu{
+.cabecalho-principal .menu{
 	display: flex;
 	align-items: baseline;
 	gap: 60px;
 }
 
-.cabecalho-menu-item{
+.cabecalho-principal .item{
 	font-family: 'Righteous', cursive;
 	font-size: 20px;
 }
 
-.cabecalho-menu-botao{
+.cabecalho-principal .botao{
 	font-family: 'Righteous', cursive;
 	font-size: 20px;
 	color: white;
@@ -54,58 +54,69 @@ button:hover{
 	cursor: pointer;
 }
 
-.conteudo{
+/* ESTILIZAÇÃO NO ICONE DE LOGIN */ 
+
+.conteudo-principal{
 	border-top: 4px solid black;
 	margin-bottom: 20px;
 }
 
-.conteudo-principal{
+.conteudo-principal .apresentação{
 	display: flex;	
 	align-items: center;
 	justify-content: space-around;
 }
 
-.conteudo-principal-img{
+.conteudo-principal .img{
 	padding: 30px;
 	width: 450px;
 }
 
-.conteudo-principal-escrito{
+.conteudo-principal .introdução{
 	padding: 20px;
 
 }
 
-.conteudo-principal-título{
+.conteudo-principal .título{
 	font-family: 'Righteous', cursive;
 	font-size: 50px;
 	text-align: center;
 }
 
-.conteudo-principal-subtítulo{
+.conteudo-principal .subtítulo{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 25px;
 	text-align: center;
 }
 
-.conteudo-principal-conheca{
+.conteudo-principal .serviços{
 	font-family: 'Righteous', cursive;
 	text-align: center;
 	padding-left: 30px;
 }
 
-.conteudo-principal-descricao{
+.conteudo-principal .corpoclinico{
+	font-family: 'Righteous', cursive;
+	text-align: center;
+	padding-left: 30px;
+}
+
+.conteudo-principal .descricao{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 20px;
+	margin-left: 30px;
 }
 
 #serviços{
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 }
 
 #corpoclinico{
 	display: flex;
-	justify-content: left;
+	align-items: flex-start;
+	/* ALGUMA COISA PARA DEIXAR O TEXTO PARA A ESQUERDA*/
+	flex-direction: column;
 }
 
 .rodape-principal{
