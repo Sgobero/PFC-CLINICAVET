@@ -108,21 +108,45 @@ button:hover{
 	justify-content: left;
 }
 
-.rodape{
-	
+.rodape-principal{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 30px;
 }
 
-.rodape-img{
-
+.rodape-principal .logo{
+	height: 80px ;
+	margin-bottom: 15px;
 }
 
-.rodape-endereco{
-	
+.rodape-principal .endereco{
+	font-family: 'Righteous', cursive;
+	font-size: 30px;
+	color: black;
 }
 
-#endereco{
-	
+.fa-whatsapp{
+	color: black;
 }
 
-.rodape-contatos{
+.fa-instagram{
+	color: black;
+}
+
+.fa-envelope-o{
+	color: black; 
+}
+
+.rodape-principal .informações{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+}
+
+.rodape-principal .direitos{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	padding-bottom: 5px;
 }
