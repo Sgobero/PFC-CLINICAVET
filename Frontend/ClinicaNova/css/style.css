@@ -161,3 +161,49 @@ button:hover{
 	font-size: 15px;
 	padding-bottom: 5px;
 }
+
+/*ESTILIZAÇÃO PÁGINA DE SERVIÇOS - USUÁRIO*/ 
+.linha{
+	border-top: 0.5px solid black;
+	margin-bottom: 30px;
+}
+.conteudo-serviços{
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	padding-top: 60px;
+	gap: 10px;
+}
+
+.conteudo-serviços .procedimento{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 20px;
+	padding-bottom: 10px;
+}
+
+.procedimento .título-serviço{
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+}
+
+.procedimento .info{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	text-align: center;
+}
+
+.procedimento .agendar{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	text-align: center;
+	color: black;
+	background-color: white;
+	border:solid 5px;
+	border-color: #FFB300;
+	height: 50px;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
