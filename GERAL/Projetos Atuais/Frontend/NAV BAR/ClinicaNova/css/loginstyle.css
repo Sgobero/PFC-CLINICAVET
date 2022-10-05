@@ -76,13 +76,14 @@
 .primeiracoluna .botao{
     font-family: 'Righteous', cursive;
 	font-size: 17px;
-	color: black;
-	background-color: white;
+	color: rgb(0, 0, 0);
+	background-color: #ffffff;
 	border: none;
     padding: 6px 9px;
     width: 125px;
 	border-radius: 5px;
     cursor: pointer;
+    animation: .5s;
 }
 
 .main-container .segundacoluna{
@@ -190,13 +191,13 @@
     border-bottom-right-radius: 15px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    animation: slidein 3s; 
+    animation: slidein 0.1s; 
 
     z-index: 12;
 }
 
 .sign-up-js .conteudo::before{
-    animation: slideout 3s;
+    animation: slideout 0.1s;
 
     z-index: 12;
 }
@@ -217,13 +218,13 @@
 .sign-in-js .conteudo01 .segundacoluna{
     z-index: -1;
     position: relative;
-    animation: deslocamentoEsq 3s;
+    animation: deslocamentoEsq 0.1s;
 }
 
 .sign-up-js .conteudo02 .segundacoluna{
     z-index: -1;
     position: relative;
-    animation: deslocamentoDir 3s;
+    animation: deslocamentoDir 0.1s;
 }
 
 /*ANIMAÇÃO CSS PARA O CONTEÚDO*/
@@ -236,17 +237,17 @@
 
     25%{
         left: -80px;
-        opacity: .5;
+        opacity: 0;
     }
     50%{
         left: -100px;
-        opacity: .2;
+        opacity: 0;
     }
 
     to{
         left: -110px;
         opacity: 0;
-        z-index: -1;
+        z-index: -1;        
     }
 }
 
@@ -259,11 +260,11 @@
 
     25%{
         left: 80px;
-        opacity: .5;
+        opacity: 0;
     }
     50%{
         left: 100px;
-        opacity: .2;
+        opacity: 0;
     }
 
     to{
