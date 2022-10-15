@@ -14,10 +14,10 @@ class StsCadastro{
 
         extract($data);
 
-        $stsSelect = new \Sts\Models\helpers\Stsselect();
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
 
         $stsSelect->fullRead("SELECT email FROM usuario 
-                            WHERE idusuario = :cpf or rg = :rg or email = :email",
+                            WHERE cpf = :cpf or rg = :rg or email = :email",
                             "cpf={$cpf}&rg={$rg}&email={$email}");
 
         $resultado =  $stsSelect->getResult();
@@ -39,18 +39,13 @@ class StsCadastro{
         $stsCreate->exeCreatre("endereco",$data[1]); //primeiro cria o endereco
         $idEndereco = $stsCreate->getResult();
 
-        if(!empty($idEndereco)){
-
+        if(!empty($idEndereco))
+        {
             $data[0]['endereco'] = $idEndereco; // add endereco e id para a FK
-            
-            echo "<pre>"; var_dump($data[0]); echo "</pre>";
             $stsCreate->exeCreatre("usuario",$data[0]);
             $idCliente = $stsCreate->getResult();
-            //echo "id cliente: " . $idCliente . "<br>;
-            //echo "id endereco: " . $idEndereco . "<br> id:";
-            //var_dump($idCliente);
-            return $idCliente;
 
+            return $idCliente;
         }else{
             return null;
         }
