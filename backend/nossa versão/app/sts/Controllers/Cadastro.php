@@ -4,40 +4,89 @@ namespace Sts\Controllers;
 
 class Cadastro{
 
-    private array|string|null $date = [];
+    private array|string|null $data = [];
     private array|string|null $dataForm;
+    private object $stsCadastro;
 
-    public function index()
-    {    
+
+
+    /**function index()
+     * Método chamado pela UrlController
+     * Primeiramente carrega a views cadastro por meio do OBJ de LoadView
+     * Recebe os daddos mandados pelo cliente pelo médodo post e depois
+     *      chama o mérodo da classe checkIfAccountExist
+     */
+    public function index(): void
+    {      
+        if(!isset($_SESSION)){
+            session_start();
+        }  
+
+        //pega os dados do método post
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        if(!empty($this->dataForm['AddContMsg'])){
-
+        if(!empty($this->dataForm['AddContMsg']))
+        {
             unset($this->dataForm['AddContMsg']);
-
-            $stsCadastro = new \Sts\Models\StsCadastro();
-
             $this->data = array_chunk($this->dataForm, 7, true);
 
-            $resultVerify = $stsCadastro->verifyAccount($this->data[0]);
-
-            if($resultVerify == true){
-                $idUsuario = $stsCadastro->createAccount($this->data);
-                if(!empty($idUsuario)){
-                    echo "Usuario cadastrado com sucesso <br>";
-                    echo "Id do Usuario: " . $idUsuario;
-                }
-            }else{
-                echo "Usuario já cadastrado, tente com outros dados";
-            }
-            
+            $this->checkIfAccountExist();
+        }else
+        {   
+            $this->data=[];
+            $loadView = new \Core\LoadView("sts/Views/cadastro", $this->data);
+            $loadView->loadView();
         }
+    }
 
-        $stsCadastro = new \Sts\Models\StsCadastro();
 
-        $loadView = new \Core\LoadView("sts/Views/cadastro", $this->date);
+
+    /**function checkIfAccountExist()
+     * Verifica se a conta com dados do CPF, RG ou Email fornecidos pelo
+     *      cliente já existem no banco de dados
+     * Faz isso por meio do OBJ de StsCadastro
+     */
+    private function checkIfAccountExist(): void
+    {
+        $this->stsCadastro = new \Sts\Models\StsCadastro();
+        $resultVerify = $this->stsCadastro->verifyAccount($this->data[0]);
         
-        $loadView->loadView();
+        // caso não tenha registro no BD com os dados da $this->data[0]
+        if($resultVerify == true) 
+        {
+            $this->createNewAccount();
+        }else
+        {
+            $_SESSION['msg'] = "<p style='color:red;'>Dados fornecidos já possuem cadastro no sistema. Tente com outros dados<p>";
+            unset($this->data);
+            $this->data = $this->dataForm;
+
+            $loadView = new \Core\LoadView("sts/Views/cadastro", $this->data);
+            $loadView->loadView();
+        }
+    }
+
+
+
+    /**function createNewAccount()
+     * Cria um novo usuário inserindo os dados passados pelo cliente no BD
+     * Faz isso por meio de um OBJ de stsCadastro
+     */
+    private function createNewAccount()
+    {
+        $idUsuario = $this->stsCadastro->createAccount($this->data);
+
+        if(!empty($idUsuario))
+        {
+            $_SESSION['msg'] = "<p style='color:green;'>Usuario cadastrado som sucesso<p>";
+            $_SESSION['idusuario'] = $idUsuario;
+
+            header("Location: http://localhost/Clinica/Servicos");
+        }else
+        {   
+            $_SESSION['msg'] = "<p style='color:red;'>Erro ao cadastrar conta, tente novamente mais tarde<p>";
+            header("Location: http://localhost/Clinica/Cadastro");
+        }
     }
 }
 
