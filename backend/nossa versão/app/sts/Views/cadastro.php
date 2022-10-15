@@ -9,48 +9,62 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <?php
+    
+    if(isset($this->data)){
+        extract($this->data);
+    }
+    
+    if(isset($_SESSION['msg'])){
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
+
+    ?>
+
     <form method="post" action="">
 
         <h2> DADOS PESSOAIS </h2>
 
         <label>NOME: </label>
-        <input name="nome_usuario" type="text" id="nome_usuario" placeholder="Nome Completo"> <br> <br>
+        <input name="nome_usuario" type="text" placeholder="Nome Completo" value="<?php if(isset($nome_usuario)) {echo "$nome_usuario";} ?>"> <br> <br> 
         
         <label>CPF: </label>
-        <input name="cpf" type="text" id="cpf" placeholder="CPF"> <br> <br>
+        <input name="cpf" type="text" placeholder="CPF" value="<?php if(isset($cpf)) {echo "$cpf";} ?>"> <br> <br>
         
         <label>RG: </label>
-        <input name="rg" type="text" id="rg" placeholder="RG"> <br> <br>
+        <input name="rg" type="text" placeholder="RG" value="<?php if(isset($rg)) {echo "$rg";} ?>"> <br> <br>
         
         <label>DATA DE NASCIMENTO: </label>
-        <input name="data_nascimento" type="date" id="data_nascimento" placeholder="data"> <br> <br>
+        <input name="data_nascimento" type="date" placeholder="data" value="<?php if(isset($data_nascimento)) {echo "$data_nascimento";} ?>"> <br> <br>
         
         <label>EMAIL: </label>
-        <input name="email" type="text" id="email" placeholder="email"> <br> <br>
+        <input name="email" type="text" placeholder="email" value="<?php if(isset($email)) {echo "$email";} ?>"> <br> <br>
 
-        <input type="hidden" name="tipo_usuario" id="tipo_usuario" value="cliente">
+        <input type="hidden" name="tipo_usuario" value="cliente">
         
         <label>SENHA: </label>
-        <input name="senha_usuario" type="text" id="senha_usuario" placeholder="senha"> <br> <br>
+        <input name="senha_usuario" type="text" placeholder="senha" value="<?php if(isset($senha_usuario)) {echo "$senha_usuario";} ?>"> <br> <br>
         
         <h2> ENDERECO </h2>
 
         <label>CEP: </label>
-        <input name="cep" type="text" id="cep" placeholder="cep"> <br> <br>
+        <input name="cep" type="text" placeholder="cep" value="<?php if(isset($cep)) {echo "$cep";} ?>"> <br> <br>
 
         <label>NOME RUA: </label>
-        <input name="rua" type="text" id="rua" placeholder="nome da rua"> <br> <br>
+        <input name="rua" type="text" placeholder="nome da rua" value="<?php if(isset($rua)) {echo "$rua";} ?>"> <br> <br>
 
         <label>NUMERO DA RESIDENCIA: </label>
-        <input name="numero_residencial" type="text" id="numero_residencial" placeholder="numero"> <br> <br>
+        <input name="numero_residencial" type="text" placeholder="numero" value="<?php if(isset($numero_residencial)) {echo "$numero_residencial";} ?>"> <br> <br>
 
         <label>CIDADE: </label>
-        <input name="cidade" type="text" id="cidade" placeholder="cidade"> <br> <br>
+        <input name="cidade" type="text" placeholder="cidade" value="<?php if(isset($cidade)) {echo "$cidade";} ?>"> <br> <br>
 
         <label>ESTADO: </label>
-        <input name="estado" type="text" id="estado" placeholder="estado"> <br> <br>
+        <input name="estado" type="text" placeholder="estado" value="<?php if(isset($estado)) {echo "$estado";} ?>"> <br> <br>
 
-        <input name="AddContMsg" type="submit" value="Enviar" >
+        <input name="AddContMsg" type="submit" value="Enviar">
 
     </form>
 </body>
