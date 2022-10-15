@@ -5,7 +5,7 @@ namespace Sts\Models\helpers;
 use PDO;
 use PDOException;
 
-class Stsselect extends StsConn{
+class StsSelect extends StsConn{
 
     private string $select;
     private array $values = [];
@@ -50,18 +50,10 @@ class Stsselect extends StsConn{
     {
         //se o array values existir entra no array
         if($this->values){
-
-            foreach($this->values as $link => $value){
-
-                //tranforma os valores para inteiro (mais segurança)
-                if($link == 'limit' || $link == 'offset' || $link == 'id')
-                {
-                    $value = (int) $value;
-                } 
-
-                $this->query->bindValue(":{$link}", $value, (is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR)); 
+            foreach($this->values as $link => $value)
+            {
+                $this->query->bindValue(":{$link}", $value); // (is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR)
             }
-
         }
     }
 
