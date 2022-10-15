@@ -20,7 +20,7 @@
             echo $_SESSION['idusuario'] . "<br>";
         }
 
-        echo "Tela servissos html";
+        echo "Tela serviços html";
         echo "<pre>"; var_dump($this->data); echo "</pre>";
     ?>
     
