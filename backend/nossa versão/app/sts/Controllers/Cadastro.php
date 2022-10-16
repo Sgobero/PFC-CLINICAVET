@@ -78,10 +78,8 @@ class Cadastro{
 
         if(!empty($idUsuario))
         {
-            $_SESSION['msg'] = "<p style='color:green;'>Usuario cadastrado som sucesso<p>";
-            $_SESSION['idusuario'] = $idUsuario;
-
-            header("Location: http://localhost/Clinica/Servicos");
+            $_SESSION['msg'] = "<p style='color:green;'>Usuario cadastrado com sucesso</p>";
+            header("Location: http://localhost/Clinica/login");
         }else
         {   
             $_SESSION['msg'] = "<p style='color:red;'>Erro ao cadastrar conta, tente novamente mais tarde<p>";
