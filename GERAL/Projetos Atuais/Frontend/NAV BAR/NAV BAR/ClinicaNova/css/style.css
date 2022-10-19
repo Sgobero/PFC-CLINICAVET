@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Righteous&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+body{
+	background-color: white;
+
+}
+
+.cabecalho-principal{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	align-items: baseline;
+	justify-content: space-around;
+	padding-top: 24px;
+	font-family: 'Righteous', cursive;
+	white-space: nowrap;
+
+}
+
+.cabecalho-principal .img{
+	height: 60px;
+}
+
+.cabecalho-principal .menu{
+	display: flex;
+	align-items: baseline;
+	gap: 60px;
+}
+
+.cabecalho-principal .item{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+}
+
+.cabecalho-principal .botao{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	color: rgb(255, 255, 255);
+	background-color: #FFB300;
+	border: none;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 8px;
+
+}
+
+button:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+/* ESTILIZAÇÃO NO ICONE DE LOGIN */ 
+
+.conteudo-principal{
+	border-top: 4px solid black;
+	margin-bottom: 20px;
+}
+
+.conteudo-principal .apresentação{
+	display: flex;	
+	align-items: center;
+	justify-content: space-around;
+}
+
+.conteudo-principal .img{
+	padding: 30px;
+	width: 450px;
+}
+
+.conteudo-principal .introdução{
+	margin-top: 120px;
+	padding: 20px;
+
+}
+
+.conteudo-principal .título{
+	font-family: 'Righteous', cursive;
+	font-size: 50px;
+	text-align: center;
+}
+
+.conteudo-principal .subtítulo{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align: center;
+}
+
+.conteudo-principal .serviços{
+	font-family: 'Righteous', cursive;
+	text-align: center;
+	padding-left: 30px;
+}
+
+.conteudo-principal .corpoclinico{
+	font-family: 'Righteous', cursive;
+	text-align: center;
+	padding-left: 30px;
+}
+
+.conteudo-principal .descricao{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	margin-left: 30px;
+}
+
+#serviços{
+	display: flex;
+	flex-direction: column;
+}
+
+#corpoclinico{
+	display: flex;
+	align-items: flex-start;
+	/* ALGUMA COISA PARA DEIXAR O TEXTO PARA A ESQUERDA*/
+	flex-direction: column;
+}
+
+.rodape-principal{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+.rodape-principal .logo{
+	height: 80px ;
+	margin-bottom: 15px;
+}
+
+.rodape-principal .endereco{
+	font-family: 'Righteous', cursive;
+	font-size: 30px;
+	color: black;
+}
+
+.fa-whatsapp{
+	color: black;
+}
+
+.fa-instagram{
+	color: black;
+}
+
+.fa-envelope-o{
+	color: black; 
+}
+
+.rodape-principal .informações{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+}
+
+.rodape-principal .direitos{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	padding-bottom: 5px;
+}
+
+
+/* -------------------*/
+.menu{
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	max-width: 50vw;
+	height: 10vh;
+	margin: 0 auto;
+	flex-wrap: wrap;
+}
+.menu__logo{
+	margin-left: 50px;
+}
+a{
+	color: black;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+a:hover{
+	opacity: 0.7;
+}
+
+nav{
+	display: flex;
+	justify-content: space-around;
+	height: 8vh;
+	align-items: center;
+
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+}
+
+.nav-list li{
+	letter-spacing: 1px;
+	margin-left: 32px;
+}
+
+.mobile-menu{
+	display: none;
+	cursor: pointer;
+
+}
+.mobile-menu div{
+	width: 32px;
+	height: 2px;
+	background: #000000;
+	margin: 8px;
+	transition: 0.3s;
+}
+
+
+
+@media (max-width: 999px){
+
+	body{
+		overflow-x: hidden;
+	}
+	.nav-list{
+		position: absolute;
+		right: 0;
+		top: 1px;
+		width: 18vw;
+		height: 18vh;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		transform: translateX(100%);
+		transition: transform 0.3s ease-in;
+		font-size: 13px;
+	}
+	.menu{
+		height: 15vh;
+	}
+	.cabecalho-principal .item{
+		font-family: 'Righteous', cursive;
+		font-size: 13px;
+	}
+	.cabecalho-principal .botao{
+		font-size: 13px;
+	}
+	.nav-list li{
+		letter-spacing: 1px;
+		margin-left: 0;
+		opacity: 0;
+	
+	}
+	.mobile-menu{
+		display: block;
+		cursor: pointer;
+	
+	}
+	.mobile-menu div{
+		width: 32px;
+		height: 2px;
+		background: #000000;
+		margin: 8px;
+		transition: 0.3s;
+	}
+}
+
+.nav-list.active {
+	transform: translateX(0);
+}
+
+@keyframes navLinkFade{
+	from{
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.mobile-menu.active .line1 {
+	transform: rotate(-45deg) translate(-8px,8px);
+}
+
+.mobile-menu.active .line2 {
+	opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+	transform: rotate(45deg) translate(-5px,-7px);
+
+}
+.nav__bar{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 8vh;
+	margin: 0;
+	
+}
