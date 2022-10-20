@@ -15,6 +15,7 @@ echo "<hr>";
     if(isset($_SESSION['idusuario']))
     {
         echo "Id: " . $_SESSION['idusuario'] . "<br>";
+        echo "Endereco: " . $_SESSION['enderecoUsuario'] . "<br>";
     }
 
 echo "<hr>";
@@ -36,6 +37,7 @@ echo "<hr>";
     echo "<a href='" . URL . "Cadastro'> Cadastro </a> <br>";
     echo "<a href='" . URL . "Login'> Login </a> <br>";
     echo "<a href='" . URL . "Servicos'> Serviços </a> <br>";
+    echo "<a href='" . URL . "SobreCliente'> Sobre Cliente </a> <br>";
     
 ?>
 
