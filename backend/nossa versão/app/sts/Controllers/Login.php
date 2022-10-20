@@ -9,7 +9,6 @@ class Login{
     private object $stsLogin;
 
 
-    
     /**     function index()
      * Método chamado pela UrlController;
      * Primeiro pode receber informações do formulario login, se receber
@@ -53,6 +52,7 @@ class Login{
             extract($result[0]);
 
             $_SESSION['idusuario'] = $idusuario;
+            $_SESSION['enderecoUsuario'] = $endereco;
             $_SESSION['msg'] = "<p style='color:gree;'> Login realizado com sucesso </p>";
 
             header("Location: http://localhost/Clinica/Home");
