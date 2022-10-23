@@ -6,27 +6,11 @@ include_once 'app/sts/Controllers/helpers/protect.php';
     
 class StsSobreCliente
 {
-    private array $data;
-    private string|null $result;
+    private array|null $data = null;
+    private string|null $resultAlter = null;
     private object $stsSelect;
 
     
-    //---------------------- FUNÇÃO PEGAR RESULT -----------------------
-    // métodos chamados pela controller SobreCliente 
-    //      para pegar os resultados das consultas
-    
-
-    public function getData(): array|null
-    {
-        return $this->data;
-    }
-
-    public function getResult(): string|null
-    {
-        return $this->result;
-    }
-
-
 
     //------------------------ FUNÇÕES DE SELECT -----------------------
     //Funções para pegar registros no BD
@@ -37,12 +21,17 @@ class StsSobreCliente
      * Método chamado pela controller SobreCliente
      * Serve apenas para inicializar outros métodos
      */
-    public function index():void
+    public function getData(): array|null
     {   
         $this->stsSelect = new \Sts\Models\helpers\StsSelect();
         $this->userData();
         $this->userAdress();
         $this->userPet();
+        if(!empty($this->data)){
+            return $this->data;
+        }else{
+            return null;
+        }
     }
 
 
@@ -53,7 +42,7 @@ class StsSobreCliente
     {
         $this->stsSelect->fullRead("SELECT nome_usuario, data_nascimento 
                                     FROM usuario
-                                    WHERE idusuario  = :idusuario ", 
+                                    WHERE idusuario  = :idusuario", 
                                     "idusuario={$_SESSION['idusuario']}");
         /**"SELECT nome_usuario, cpf, rg, data_nascimento, email 
             FROM usuario
@@ -72,7 +61,7 @@ class StsSobreCliente
                             FROM endereco as e
                             INNER JOIN usuario as u 
                             ON u.endereco = e.idendereco 
-                            WHERE u.endereco = :endereco", "endereco={$_SESSION['enderecoUsuario']}" );
+                            WHERE u.endereco = :endereco", "endereco={$_SESSION['idendereco']}" );
 
         $this->data['adress'] = $this->stsSelect->getResult();
     }
@@ -84,7 +73,15 @@ class StsSobreCliente
      */
     private function userPet():void
     {
-        $this->data['pet'] = null;
+        $this->stsSelect->fullRead("SELECT p.nome_pet, p.idade_pet, p.sexo, r.raca, r.tipo_pet 
+                                    FROM pet AS p 
+                                    INNER JOIN raca_pet AS r 
+                                    ON p.raca = r.idraca_pet 
+                                    INNER JOIN usuario AS u 
+                                    on u.idusuario = p.usuario 
+                                    WHERE u.idusuario = :idusuario", "idusuario={$_SESSION['idusuario']}");
+        
+        $this->data['pet'] = $this->stsSelect->getResult();
     }
 
 
@@ -100,11 +97,13 @@ class StsSobreCliente
      * Altera os dados por meio de um OBJ de StsUpdate
      *      chamando o método exeAlter()
      */
-    public function alterUser(array $data): void
+    public function alterUser(array $data): string|null
     {
-        $sts = new \Sts\Models\helpers\StsUpdate();
-        $sts->exeAlter('usuario', $data, 'idusuario = :idusuario');
-        $this->result = $sts->getResult();
+        $stsUpdate = new \Sts\Models\helpers\StsUpdate();
+        $stsUpdate->exeAlter('usuario', $data, 'idusuario = :idusuario', 'idusuario');
+        $this->resultAlter = $stsUpdate->getResult();
+
+        return $this->resultAlter;
     }
 
 
@@ -114,20 +113,24 @@ class StsSobreCliente
      * Altera os dados por meio de um OBJ de StsUpdate
      *      chamando o método exeAlter()
      */
-    public function alterAdress(array $data): void 
+    public function alterAdress(array $data): string|null 
     {
-        $sts = new \Sts\Models\helpers\StsUpdate();
-        $sts->exeAlter('endereco', $data, 'idendereco = :idendereco');
-        $this->result = $sts->getResult();
+        $stsUpdate = new \Sts\Models\helpers\StsUpdate();
+        $stsUpdate->exeAlter('endereco', $data, 'idendereco = :idendereco', 'idendereco');
+        $this->resultAlter = $stsUpdate->getResult();
+
+        return $this->resultAlter;
     }
 
 
     /**     function alterPet()
      * Ainda não implementado
      */
-    public function alterPet(): string|bool
+    public function alterPet(): void
     {
-        //null
+        $data['oi'] = "oi";
+        $stsUpdate = new \Sts\Models\helpers\StsUpdate();
+        $stsUpdate->exeAlter('endereco', $data, 'usuario', $_SESSION['idusuario']);
     }    
 }
 
