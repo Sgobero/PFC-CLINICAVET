@@ -1,3 +1,17 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    if(isset($_SESSION['msg'])){
+        echo "Mensagem: " . $_SESSION['msg'] . "<br>";
+        unset($_SESSION['msg']);    
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +23,7 @@
 <body>
 
     <?php
-        include 'app/sts/Controllers/helpers/protect.php';
-
-        if(isset($_SESSION['msg']))
-        {
-            echo "Mensagem: " . $_SESSION['msg'];     
-        }
-        if(isset($_SESSION['idusuario']))
-        {
-            echo $_SESSION['idusuario'] . "<br>";
-        }
-
-        echo "Tela serviços html";
+        echo "Tela servicos html";
         echo "<pre>"; var_dump($this->data); echo "</pre>";
     ?>
     
