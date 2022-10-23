@@ -9,17 +9,21 @@ use PDO;
 
 class StsUpdate extends StsConn
 {
-
+    //Variáveis para receber a tabela e os dados a serem alterados
     private string $table;
     private array $data;
-    private string $where;
+    //Variáveis para receber as condições do update
+    private string|null $where;
+    private string|null $parseString;
+    //recebe a quantidade de linhas afetadas
     private string|null $result = null;
+    //variáveis para fazer a query update
     private object $alter;
     private string $query;
     private object $conn;
 
 
-    /**
+    /**     function getResult()
      * Metodo chamado pela Models para pegar o resultado
      *      (último id inserido)
      */
@@ -29,23 +33,23 @@ class StsUpdate extends StsConn
     }
 
 
-    /**
+    /**     function exeAlter()
      * Método chamado pelas Models
      * Pega a tabela e os dados enviado pela model e insere dentro de 
      *      variaveis da classe
      * Depois chama o método exeReplaceValues
      */
-    public function exeAlter(string $table, array $data, string|null $where): void
+    public function exeAlter(string $table, array $data, string|null $where, string|null $parseString): void
     {
         $this->table = $table;
         $this->data = $data;
         $this->where = $where;
-        echo $this->where;
+        $this->parseString = $parseString;
         $this->exeReplaceValues();
     }
 
 
-    /**
+    /**     function exeReplaceValues()
      * Método chamado por exeAlter
      * Pega as chaves do array date e transforma em uma string
      *      com os termos que serão alterados
@@ -65,22 +69,24 @@ class StsUpdate extends StsConn
 
         $updateValues = rtrim($updateValues, ", ");
 
+        //-------------------------------------------------------------------------------
+
+        $this->w = $this->where . " = :" . $this->where;
+
         $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->where}"; 
         echo $this->query;
 
-        if(!empty($this->where))
-        {
-        echo "<pre>"; var_dump($this->data); echo "</pre>";
-
-            $this->addWhere();
+        if(!empty($this->parseString)){
+            $this->addParseString();
         }
+
         $this->exeInstruction();
     }
 
     
 
 
-    /**
+    /**     function exeInstruction()
      * Chama o metodo conectar e executa o query($this->alter)
      */
     private function exeInstruction(): void 
@@ -100,7 +106,7 @@ class StsUpdate extends StsConn
 
 
 
-    /**
+    /**     function connection()
      * Cria o OBJ PDO e prepara a query($this->alter)
      */
     private function connection(): void 
@@ -110,27 +116,13 @@ class StsUpdate extends StsConn
     }
 
 
-
-    private function addWhere(): void 
+    /**     function addParseString()
+     * Adiciona no final do array data o valor da condição where
+     *      da query UPDATE
+     */
+    private function addParseString(): void 
     {
-        //$this->data['idusuario'] = $_SESSION['idusuario'];
-        //$this->data['endereco'] = $_SESSION['enderecoUsuario'];
-
-        var_dump($this->where);
-
-        if($this->where == "idusuario = :idusuario")
-        {
-            $this->data['idusuario'] = $_SESSION['idusuario'];
-        }
-        elseif($this->where == "idendereco = :idendereco") 
-        {
-            $this->data['idendereco'] = $_SESSION['enderecoUsuario'];
-            
-        }
-        echo "<pre>"; var_dump($this->data); echo "</pre>";
+        $this->data[$this->where] = $this->parseString;
     }
-
 }
-
-
 ?>
