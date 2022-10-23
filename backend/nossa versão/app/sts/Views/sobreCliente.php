@@ -1,17 +1,18 @@
 <?php
 
-    include_once 'app/sts/Controllers/helpers/protect.php';
-
+    if(!isset($_SESSION)){
+        session_start();
+    }
     if(isset($_SESSION['msg']))
     {
-        echo '<br>' . $_SESSION['msg'] . "<br>"; 
+        echo "Mensagem: " . $_SESSION['msg'] . "<br>"; 
         unset($_SESSION['msg']);   
     }
 
     if(isset($this->data)){
-        //echo "<pre>"; var_dump($this->data); echo "</pre>";
-        extract($this->data['user']);
-        extract($this->data['adress']);
+        extract($this->data['user'][0]);
+        extract($this->data['adress'][0]);
+        //extract($this->data['pet'][0]);
     }
 
 ?>
@@ -43,16 +44,14 @@
         
         <!-- 
             <label>EMAIL: </label>
-            <input name="email" type="text" placeholder="email" value="<?php if(isset($email)) {echo "$email";} ?>"> <br> <br>
+            <input name="email" type="text" placeholder="email" value="<?php //if(isset($email)) {echo "$email";} ?>"> <br> <br>
 
             <label>CPF: </label>
-            <input name="cpf" type="text" placeholder="CPF" value="<?php if(isset($cpf)) {echo "$cpf";} ?>"> <br> <br>
+            <input name="cpf" type="text" placeholder="CPF" value="<?php //if(isset($cpf)) {echo "$cpf";} ?>"> <br> <br>
 
             <label>RG: </label>
-            <input name="rg" type="text" placeholder="RG" value="<?php if(isset($rg)) {echo "$rg";} ?>"> <br> <br>
+            <input name="rg" type="text" placeholder="RG" value="<?php //if(isset($rg)) {echo "$rg";} ?>"> <br> <br>
          -->
-        
-        
         
         <input name="AlterUser" type="submit" value="Alterar">
 
@@ -87,20 +86,44 @@
 
     <!-- FORMULÁRIO PARA ALTERAR INFORMAÇÕES DO PET -->
     <!-- falta implementar -->
+
+
     <form method="post" action="">
         
-        <h2> INFORMAÇÕES PET </h2>
+        <?php
+            for($x = 0; $x < count($this->data['pet']); $x++){
+                $pet = $this->data['pet'][$x];
+                extract($pet);
+                
+                echo "<h4> Pet " . $x+1 . ": " . $nome_pet . "</h4>";
+        ?> 
 
-        <label>EMAIL: </label>
-        <input name="email" type="text" placeholder="email"> <br> <br>
-        
-        <label>SENHA: </label>
-        <input name="senha_usuario" type="text" placeholder="senha"> <br> <br>
+            <label>Nome: </label>
+            <input name="nome_pet" type="text" value="<?php if(isset($nome_pet)) { echo $nome_pet; } ?>"> <br> <br>
 
-        <input name="AlterPet" type="submit" value="Alterar" >
+            <label>Idade Pet: </label>
+            <input name="idade_pet" type="text" value="<?php if(isset($idade_pet)) {echo $idade_pet; } ?>"> <br> <br>
+
+            <label>Sexo: </label>
+            <select name="sexo">
+                <option value="<?php echo $sexo ?>"> <?php echo $sexo ?> </option>
+                <option value="masculino"> Masculino </option>
+                <option value="feminino"> Feminino </option>
+            </select> <br> <br>
+
+            <label>Espécie: </label>
+            <input name="tipo_pet" type="text" value="<?php if(isset($raca)) { echo $raca; } ?>"> <br> <br>
+
+            <label>Raça: </label>
+            <input name="raca" type="text" value="<?php if(isset($tipo_pet)) { echo $tipo_pet; } ?>"> <br> <br>
+
+            <input name="AlterPet" type="submit" value="Alterar" >
+            
+            <hr>
+
+           <?php } ?>
 
     </form>
-
-
+    
 </body>
 </html>
