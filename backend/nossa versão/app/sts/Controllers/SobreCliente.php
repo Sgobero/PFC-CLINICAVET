@@ -8,12 +8,13 @@ class SobreCliente{
     
 private array|null $data;
 private array|null $dataForm;
-private object $sts;
-
 
     /**
      * Método chamado pela UrlController
-     * Pega as informações do formulario e chama o método view()
+     * Pega as informações dos formulários por meio de três if diferentes
+     *       if('AlterUser') elseif('AlterAdress') elseif('AlterPet')
+     *       cada if corresponde a um formulário diferente
+     * Logo após chama o método view()
      */
     public function index()
     {
@@ -21,7 +22,7 @@ private object $sts;
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         
         //OBJ model que vai ser usado em variados métodos
-        $this->sts = new \Sts\Models\StsSobreCliente();
+        $stsSobreCliente = new \Sts\Models\StsSobreCliente();
 
 
         // if para alterar os dados do usuario
@@ -29,8 +30,7 @@ private object $sts;
         {
             unset($this->dataForm['AlterUser']);
             
-            $this->sts->alterUser($this->dataForm);
-            $result = $this->sts->getResult();
+            $result = $stsSobreCliente->alterUser($this->dataForm);
 
             if(!empty($result))
             {
@@ -46,8 +46,8 @@ private object $sts;
         {   
             unset($this->dataForm['AlterAdress']);
 
-            $this->sts->alterAdress($this->dataForm);
-            $result = $this->sts->getResult();
+            $result = $stsSobreCliente->alterAdress($this->dataForm);
+            //$result = $stsSobreCliente->getResult();
 
             if(!empty($result))
             {
@@ -61,24 +61,36 @@ private object $sts;
         // if para alterar os dados do pet
         elseif(!empty($this->dataForm['AlterPet']))
         {
-            // alterar pet, ainda precisa implementar
             unset($this->dataForm['AlterPet']);
+
+            $stsSobreCliente->alterPet();
         }
 
+        $this->getData();
         $this->view();
     }
 
 
+
     /**
-     * Método chamado pelo metodo index da classe
-     * Recupera os dados no BD e carrega a view
+     * Método chamado pelo método index da classe
+     * Busca os dados no BD 
+     */
+    private function getData()
+    {
+        $stsSobreCliente = new \Sts\Models\StsSobreCliente();
+        $this->data = $stsSobreCliente->getData();
+    }
+
+
+
+    /**
+     * Método chamado pelo método index da classe
+     * Carrega a view
      */
     private function view(): void
     {
-        $this->sts->index();
-        $this->data = $this->sts->getdata();
-
-        $loadView = new \Core\LoadView("sts/Views/sobreCliente", $this->data);
+        $loadView = new \Core\LoadView("sts/Views/sobreCliente", $this->data, null);
         $loadView->loadView();
     }
     
