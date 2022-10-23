@@ -34,7 +34,6 @@ class StsSelect extends StsConn{
             $this->exeParametros();
             $this->query->execute();
             $this->result = $this->query->fetchAll();
-            $this->result = $this->result[0]; // fiz isso pq tava um array dentro de outro
         }catch(PDOException $e){
             $this->result=null;
         }
