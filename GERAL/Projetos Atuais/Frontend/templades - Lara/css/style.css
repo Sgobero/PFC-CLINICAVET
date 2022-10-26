@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Righteous&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+body{
+	font-size: 100%;
+	background-color: white;
+}
+
+.container{
+	position: relative;
+	padding: 15px;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* This is from w3schools */
+/* 
+https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.gallery-wrapper::-webkit-scrollbar {
+	display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+.gallery-wrapper {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+  }
+  
+.gallery-wrapper{
+	overflow-x: auto;
+}
+
+.gallery{
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 10px;
+}
+
+.arrow-left, 
+.arrow-right{
+	position:absolute;
+	top: 0;
+	left: 0;
+	right: auto;
+	bottom: 0;
+	font-size: 20px;
+	line-height: 250px;
+	width: 40px;
+	text-align: center;
+	color: #7DE04A;
+	cursor: pointer;
+	border: none;
+	background: linear-gradient(to left, transparent 0%, transparent 0%);
+	
+}
+
+.arrow-right{
+	left: auto;
+	right: 0;
+	background: linear-gradient(to right, transparent 0%, transparent 0%);
+
+}
+
+
+.cabecalho-principal{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	align-items: baseline;
+	justify-content: space-around;
+	padding-top: 24px;
+}
+
+.cabecalho-principal .img{
+	height: 60px;
+}
+
+.cabecalho-principal .menu{
+	display: flex;
+	align-items: baseline;
+	gap: 60px;
+}
+
+.cabecalho-principal .item{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+}
+
+.cabecalho-principal .botao{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	color: white;
+	background-color: #FFB300;
+	border: none;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 8px;
+}
+
+button:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+/* ESTILIZAÇÃO NO ICONE DE LOGIN */ 
+
+.conteudo-principal{
+	border-top: 4px solid black;
+	margin-bottom: 20px;
+}
+
+.conteudo-principal .apresentação{
+	display: flex;	
+	align-items: center;
+	justify-content: space-around;
+}
+
+.conteudo-principal .img{
+	padding: 30px;
+	width: 450px;
+}
+
+.conteudo-principal .introdução{
+	padding: 20px;
+
+}
+
+.conteudo-principal .título{
+	font-family: 'Righteous', cursive;
+	font-size: 50px;
+	text-align: center;
+}
+
+.conteudo-principal .subtítulo{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align: center;
+}
+
+.conteudo-principal .serviços{
+	font-family: 'Righteous', cursive;
+	text-align: center;
+	padding-left: 30px;
+}
+
+.conteudo-principal .corpoclinico{
+	font-family: 'Righteous', cursive;
+	text-align: center;
+	padding-left: 30px;
+}
+
+.conteudo-principal .descricao{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	margin-left: 30px;
+}
+
+#serviços{
+	display: flex;
+	flex-direction: column;
+}
+
+#corpoclinico{
+	display: flex;
+	align-items: flex-start;
+	/* ALGUMA COISA PARA DEIXAR O TEXTO PARA A ESQUERDA*/
+	flex-direction: column;
+}
+
+.rodape-principal{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+.rodape-principal .logo{
+	height: 80px ;
+	margin-bottom: 15px;
+}
+
+.rodape-principal .endereco{
+	font-family: 'Righteous', cursive;
+	font-size: 30px;
+	color: black;
+}
+
+.fa-whatsapp{
+	color: black;
+}
+
+.fa-instagram{
+	color: black;
+}
+
+.fa-envelope-o{
+	color: black; 
+}
+
+.rodape-principal .informações{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+}
+
+.rodape-principal .direitos{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	padding-bottom: 5px;
+}
+
+/*ESTILIZAÇÃO PÁGINA DE SERVIÇOS - USUÁRIO*/ 
+.linha{
+	border-top: 0.5px solid black;
+	margin-bottom: 30px;
+}
+.conteudo-serviços{
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	padding-top: 60px;
+	gap: 10px;
+}
+
+.conteudo-serviços .procedimento{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 20px;
+	padding-bottom: 10px;
+}
+
+.procedimento .título-serviço{
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+}
+
+.procedimento .info{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	text-align: center;
+}
+
+.procedimento .agendar{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	text-align: center;
+	color: black;
+	background-color: white;
+	border:solid 5px;
+	border-color: #FFB300;
+	height: 50px;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
