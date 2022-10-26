@@ -1,4 +1,16 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    if(isset($_SESSION['msg'])){
+        echo "Mensagem: " . $_SESSION['msg'] . "<br>";
+        unset($_SESSION['msg']);
+    }
 
+    if(isset($this->data)){
+        extract($this->data);
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +21,6 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <?php
-    
-    if(isset($this->data)){
-        extract($this->data);
-    }
-    
-    if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
-
-    ?>
 
     <form method="post" action="">
 

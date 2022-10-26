@@ -10,7 +10,7 @@ class Cadastro{
 
 
 
-    /**function index()
+    /**     function index()
      * Método chamado pela UrlController
      * Primeiramente carrega a views cadastro por meio do OBJ de LoadView
      * Recebe os daddos mandados pelo cliente pelo médodo post e depois
@@ -20,28 +20,37 @@ class Cadastro{
     {      
         if(!isset($_SESSION)){
             session_start();
-        }  
+        } 
 
-        //pega os dados do método post
-        $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
-        if(!empty($this->dataForm['AddContMsg']))
+        if(isset($_SESSION['idusuario']))
         {
-            unset($this->dataForm['AddContMsg']);
-            $this->data = array_chunk($this->dataForm, 7, true);
-
-            $this->checkIfAccountExist();
-        }else
-        {   
-            $this->data=[];
-            $loadView = new \Core\LoadView("sts/Views/cadastro", $this->data);
-            $loadView->loadView();
+            echo "Você ja está cadastrado e logado <br>";
+            echo "Se quiser cadastrar ou logar com outra conta, realize primeiro o logout";
         }
+        else
+        {
+            //pega os dados do método post
+            $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+            if(!empty($this->dataForm['AddContMsg']))
+            {
+                unset($this->dataForm['AddContMsg']);
+                $this->data = array_chunk($this->dataForm, 7, true);
+
+                $this->checkIfAccountExist();
+            }
+            else
+            {   
+                $this->data=[];
+                $loadView = new \Core\LoadView("sts/Views/cadastro", $this->data, null);
+                $loadView->loadView();
+            }
+        }        
     }
 
 
 
-    /**function checkIfAccountExist()
+    /**     function checkIfAccountExist()
      * Verifica se a conta com dados do CPF, RG ou Email fornecidos pelo
      *      cliente já existem no banco de dados
      * Faz isso por meio do OBJ de StsCadastro
@@ -57,34 +66,37 @@ class Cadastro{
             $this->createNewAccount();
         }else
         {
-            $_SESSION['msg'] = "<p style='color:red;'>Dados fornecidos já possuem cadastro no sistema. Tente com outros dados<p>";
+            $_SESSION['msg'] = "<p style='color:red;'>Dados fornecidos já possuem cadastro no sistema. Tente com outros dados</p>";
             unset($this->data);
             $this->data = $this->dataForm;
 
-            $loadView = new \Core\LoadView("sts/Views/cadastro", $this->data);
+            $loadView = new \Core\LoadView("sts/Views/cadastro", $this->data, null);
             $loadView->loadView();
         }
     }
 
 
 
-    /**function createNewAccount()
+    /**     function createNewAccount()
      * Cria um novo usuário inserindo os dados passados pelo cliente no BD
      * Faz isso por meio de um OBJ de stsCadastro
      */
     private function createNewAccount()
-    {
-        $idUsuario = $this->stsCadastro->createAccount($this->data);
+    {   
+        $this->data[0]['senha_usuario'] = password_hash($this->data[0]['senha_usuario'], PASSWORD_DEFAULT);
 
+        $idUsuario = $this->stsCadastro->createAccount($this->data);
+        
         if(!empty($idUsuario))
         {
             $_SESSION['msg'] = "<p style='color:green;'>Usuario cadastrado com sucesso</p>";
             header("Location: http://localhost/Clinica/login");
         }else
         {   
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao cadastrar conta, tente novamente mais tarde<p>";
+            $_SESSION['msg'] = "<p style='color:red;'>Erro ao cadastrar conta, tente novamente mais tarde</p>";
             header("Location: http://localhost/Clinica/Cadastro");
         }
+        
     }
 }
 
