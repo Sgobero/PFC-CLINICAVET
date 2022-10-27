@@ -90,13 +90,16 @@ class Cadastro{
         if(!empty($idUsuario))
         {
             $_SESSION['msg'] = "<p style='color:green;'>Usuario cadastrado com sucesso</p>";
-            header("Location: http://localhost/Clinica/login");
+
+            $header = URL . "Login";
+            header("Location: {$header}");
         }else
         {   
             $_SESSION['msg'] = "<p style='color:red;'>Erro ao cadastrar conta, tente novamente mais tarde</p>";
-            header("Location: http://localhost/Clinica/Cadastro");
+
+            $header = URL . "Cadastro";
+            header("Location: {$header}");
         }
-        
     }
 }
 
