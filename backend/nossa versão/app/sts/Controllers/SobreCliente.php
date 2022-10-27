@@ -62,8 +62,26 @@ private array|null $dataForm;
         elseif(!empty($this->dataForm['AlterPet']))
         {
             unset($this->dataForm['AlterPet']);
+            var_dump($this->dataForm);
 
-            $stsSobreCliente->alterPet();
+            $result = $stsSobreCliente->alterPet($this->dataForm);
+            if(!empty($result))
+            {
+                $_SESSION['msg'] = "Dados do pet alterados com sucesso";
+            }else{
+                $_SESSION['msg'] = "Falha ao alterar dados do pet, tente novamente mais tarde";
+            }
+        }
+
+
+        // if para deletar os dados do usuario
+        if(!empty($this->dataForm['DeleteU']))
+        {
+            unset($this->dataForm['DeleteU']);
+            var_dump($this->dataForm);
+            extract($this->dataForm);
+
+           $resultD =  $stsSobreCliente-> deleteAll("pet","idpet",$idpet);
         }
 
         $this->getData();
