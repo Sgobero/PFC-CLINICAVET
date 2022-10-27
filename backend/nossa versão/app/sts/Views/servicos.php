@@ -23,8 +23,20 @@
 <body>
 
     <?php
-        echo "Tela servicos html";
-        echo "<pre>"; var_dump($this->data); echo "</pre>";
+
+        echo "Tela servicos html <br> <br> <hr> <br>";
+        
+        for($x = 0; $x < count($this->data['tipo_consulta']); $x++)
+        {
+            $lista = $this->data['tipo_consulta'][$x];
+            extract($lista);
+
+            echo "Id do tipo da consulta:" . "$idtipo_consulta" . "<br/>";
+            echo "Nome da consulta:" . "$nome_consulta" . "<br/>"; 
+            echo "Valor da consulta:" . "$valor_consulta" ."<br/>"; 
+            echo "<br> <hr> <br>";
+        }       
+        
     ?>
     
 </body>
