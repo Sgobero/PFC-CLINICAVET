@@ -68,7 +68,8 @@ class Login{
                 $_SESSION['idendereco'] = $endereco; //enderecoUsuario
                 $_SESSION['msg'] = "Login realizado com sucesso";
 
-                header("Location: http://localhost/Clinica/Home");
+                $header = URL . "Home";
+                header("Location: {$header}");
             }
 
         }
