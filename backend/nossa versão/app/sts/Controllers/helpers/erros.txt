@@ -1,0 +1,14 @@
+                    DESCRIÇÃO DOS ERROS
+
+Erro 000: Página não encontrada;
+Erro 001: Falha ao cadastrar conta;
+Erro 002: Usuario tenta logar ou cadastrar outro usuario mas já esta logado;
+Erro 003: Falha ao cadastrar novo pet;
+Erro 004: Falha ao alterar dados do usuario;
+Erro 005: Falha ao alterar dados do endereço;
+Erro 006: Falha ao alterar dados do pet;
+Erro 007: Usuario tentou acessar uma pagina sem estar logado;
+
+
+
+
