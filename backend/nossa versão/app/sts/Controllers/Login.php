@@ -4,15 +4,18 @@ namespace Sts\Controllers;
 
 class Login{
     
-    private array|string|null $date = [];
+    // Recebe as informações do usuário
     private array|string|null $dataForm;
+    // Recebe as informações do cliente vindas do BD
+    private array|null $data = null;
+    // OBJ da classe StsLogin
     private object $stsLogin;
 
 
     /**     function index()
      * Método chamado pela UrlController;
      * Primeiro pode receber informações do formulario login, se receber
-     *      chama o método da classe createNewUser();
+     *      chama o método da classe createLogin();
      * Responsável por carregar a tela login por meio de um OBJ LoadView.
      */
     public function index(): void
@@ -21,22 +24,21 @@ class Login{
             session_start();
         }
 
-        if(isset($_SESSION['idusuario']))
+        if(isset($_SESSION['idusuario'])) // Erro 002
         {
-            echo "Você ja está logado <br>";
-            echo "Se quiser logar com outra conta realize primeiro o logout";
-        }else
-        {
+            $header = URL . "Erro?case=2"; 
+            header("Location: {$header}");
+        } else { // se não estiver logado
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-            if(!empty($this->dataForm['AddContMsg']))
-            {
+            if (isset($this->dataForm['AddContMsg'])) { // se respondeu o formulário
                 unset($this->dataForm['AddContMsg']);
                 $this->createLogin();
+            } else { // carrega a view
+                $loadView = new \Core\LoadView('sts/Views/login', null, null);
+                $loadView->loadView();
             }
 
-            $loadView = new \Core\LoadView('sts/Views/login', null, null);
-            $loadView->loadView();
         }        
     }
 
@@ -55,27 +57,54 @@ class Login{
         $this->stsLogin = new \Sts\Models\StsLogin();
         $result = $this->stsLogin->login($this->dataForm);
 
+        var_dump($result);
+
         if(!empty($result))
         {
             $senha = $result[0]['senha_usuario'];
 
-            if(password_verify($this->dataForm['senha_usuario'], $senha))
+            if(password_verify($this->dataForm['senha_usuario'], $senha)) // se a senha estiver correta
             {
-                $r = $result[0];
-                extract($r);
-                
-                $_SESSION['idusuario'] = $idusuario;
-                $_SESSION['idendereco'] = $endereco; //enderecoUsuario
-                $_SESSION['msg'] = "Login realizado com sucesso";
+                $this->data = $result[0];
 
-                $header = URL . "Home";
+                if($this->data['tipo_usuario'] == "cliente"){ // se a conta for de cliente
+                    $this->sessionVars(); 
+                    $header = URL . "Home";
+                    header("Location: {$header}");
+                } else { // se a conta for de mantenedor
+                    //redireciona para a tela de login do adm
+                    $header = URLADM . "Login";
+                    header("Location: {$header}");
+                }
+
+            } else { // se a senha estiver errada 
+                $_SESSION['msg'] = "Email ou senha incorreta";
+                $header = URL . "Login";
                 header("Location: {$header}");
             }
 
+        } else { // se não existir conta
+            $_SESSION['msg'] = "Email ou senha incorreta";
+            $header = URL . "Login";
+            header("Location: {$header}");
         }
-        else
-        {
-            $_SESSION['msg'] = "<p style='color:red;'> Usuario não existe </p>";
-        }
+        
+    }
+
+
+
+    /**     function sessionVars()
+     * Responsavel por definir as variáveis da session
+     */
+    private function sessionVars(): void
+    {
+        extract($this->data);
+        
+        $_SESSION['idusuario'] = $idusuario; 
+        $_SESSION['nome_usuario'] = $nome_usuario; 
+        $_SESSION['tipo_usuario'] = $tipo_usuario; // cliente ou mantenedor
+        $_SESSION['idendereco'] = $endereco; //enderecoUsuario
+
+        $_SESSION['msg'] = "Login realizado com sucesso";
     }
 }
