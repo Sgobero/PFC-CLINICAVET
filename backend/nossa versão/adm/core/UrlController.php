@@ -2,18 +2,8 @@
 
 namespace Core;
 
-/**
- * Recebe a URL e manipula
- * Carregar a CONTROLLER
- * @author Cesar <cesar@celke.com.br>
- * 
- * https://www.php-fig.org/psr/
- * https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc.md
- * https://github.com/php-fig/fig-standards/blob/master/proposed/phpdoc-tags.md
- */
 class UrlController extends Define
 {
-
     
     private string $url; //$url Recebe a URL do .htaccess
     private array $urlArray; // $urlArray Recebe a URL convertida para array 
@@ -136,7 +126,7 @@ class UrlController extends Define
         if(class_exists($this->classLoad)){
             $this->verifyMethod();
         }else{
-            $this->urlController = ERROCONTROLLER;
+            $this->urlController = CONTROLLERERRO;
             $this->verifyPage();
         }
     }
@@ -144,7 +134,7 @@ class UrlController extends Define
 
 
     /**     function verifyMethod()
-     * Undocumented function
+     * Verifica se o método existe dentro da classe e executa ele
      */
     private function verifyMethod()
     {
