@@ -34,6 +34,7 @@ class CadastroPet
             $this->getDataPet();
 
             $this->whichForm = "CreatePet";
+            $this->view();
         }
 
         elseif(isset($this->dataForm['CreatePet']))
@@ -46,12 +47,13 @@ class CadastroPet
                 $_SESSION['msg'] = "Pet Cadastrado com sucesso";
                 $header = URL . "Home";
                 header("Location: {$header}");
-            }else{
-                $_SESSION['msg'] = "Erro ao cadastrar usuario, entre em contato com o ADM: " . EMAILADM;
+            }else{ // erro 003
+                $header = URL . "Erro?case=3";
+                header("Location: {$header}");
             }
+        }else{
+            $this->view();
         }
-        
-        $this->view();
     }
 
 
