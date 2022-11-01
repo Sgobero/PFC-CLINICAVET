@@ -2,9 +2,6 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!isset($_SESSION)){
-        session_start();
-    }
     if(isset($_SESSION['msg'])){
         echo "Mensagem: " . $_SESSION['msg'] . "<br>";
         unset($_SESSION['msg']);    
