@@ -22,10 +22,9 @@ class Cadastro{
             session_start();
         } 
 
-        if(isset($_SESSION['idusuario']))
-        {
-            echo "Você ja está cadastrado e logado <br>";
-            echo "Se quiser cadastrar ou logar com outra conta, realize primeiro o logout";
+        if(isset($_SESSION['idusuario'])){
+            $header = URL . "Erro?case=2"; // Erro 002
+            header("Location: {$header}");
         }
         else
         {
@@ -95,11 +94,9 @@ class Cadastro{
             header("Location: {$header}");
         }else
         {   
-            $_SESSION['msg'] = "<p style='color:red;'>Erro ao cadastrar conta, tente novamente mais tarde</p>";
-
-            $header = URL . "Cadastro";
+            $header = URL . "Erro?case=2"; // Erro 002
             header("Location: {$header}");
-        }
+        }    
     }
 }
 
