@@ -8,6 +8,8 @@ namespace Core;
         protected function config(): void 
         {
             define('URL', 'http://localhost/Clinica/');
+            define('URLADM', 'http://localhost/Clinica/Adm/');
+
 
             define('CONTROLLER', 'Home');
             define('ERROCONTROLLER', 'Erro');

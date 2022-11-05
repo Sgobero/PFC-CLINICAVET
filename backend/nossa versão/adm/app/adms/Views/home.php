@@ -19,6 +19,8 @@ echo "<hr>";
     }
 
 echo "<hr>";
+echo "<a href='" . URLADM . "Mostrar-Clientes'> Sobre Cliente </a> <br>";
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +34,7 @@ echo "<hr>";
 <body>
     
 <?php
+
     /*
     echo "<h2>View Home</h2>";
     echo "<a href='" . URL . "Cadastro'> Cadastro </a> <br>";

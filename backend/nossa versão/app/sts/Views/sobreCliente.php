@@ -114,7 +114,7 @@
                 <label>Espécie: </label>
                 <input name="tipo_pet" type="text" value="<?php //if(isset($raca)) { echo $raca; } ?>"> <br> <br>
                 <label>Raça: </label>
-                <input name="raca" type="text" value="<?php//if(isset($tipo_pet)) { echo $tipo_pet; } ?>"> <br> <br>
+                <input name="raca" type="text" value=" <?php //if(isset($tipo_pet)) { echo $tipo_pet; } ?>"> <br> <br>
                 -->
                 <input name="AlterPet" type="submit" value="Alterar" >
                 <input name="DeleteU" type="submit" value="Delete" >
