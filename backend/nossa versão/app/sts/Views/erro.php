@@ -4,7 +4,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +15,11 @@
 <body>
 
     <?php
-        echo "<h1 style='text-align:center'> Erro " . $this->data['numero'] . "</h1>";
-        echo "<h2 style='text-align:center'> " . $this->data['descricao'] . "</h2>";   
+    echo "<div style='text-align:center' >";
+        echo "<h1> Erro " . $this->data['numeroErro'] . "</h1>";
+        echo "<h2>" . $this->data['descricaoErro'] . "</h2>"; 
+        echo "<a href='{$this->data['botao']}'> {$this->data['descricaoBotao']} </a>";
+    echo "</div>";
     ?>
     
 </body>
