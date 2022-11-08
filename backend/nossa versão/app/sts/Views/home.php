@@ -12,6 +12,8 @@ echo "<hr>";
     }
     if(isset($_SESSION['idusuario']))
     {
+        echo "Seja bem vindo, " . $_SESSION['nome_usuario'] . "<br>";
+        echo "Tipo usuário: " . $_SESSION['tipo_usuario'] . "<br>";
         echo "Id: " . $_SESSION['idusuario'] . "<br>";
         echo "Endereco: " . $_SESSION['idendereco'] . "<br>";
     }

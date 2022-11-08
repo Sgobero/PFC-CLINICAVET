@@ -36,7 +36,8 @@ private array|null $dataForm;
             {
                 $_SESSION['msg'] = "Dados do usuario alterados com sucesso";
             }else{
-                $_SESSION['msg'] = "Falha ao alterar dados, tente novamente mais tarde";
+                $header = URL . "Erro?case=4"; // Erro 004
+                header("Location: {$header}");
             }
         }
 
@@ -53,7 +54,8 @@ private array|null $dataForm;
             {
                 $_SESSION['msg'] = "Dados de endereço alterados com sucesso";
             }else{
-                $_SESSION['msg'] = "Falha ao alterar endereço, tente novamente mais tarde";
+                $header = URL . "Erro?case=5"; // Erro 005
+                header("Location: {$header}");
             }
         }
 
@@ -62,8 +64,27 @@ private array|null $dataForm;
         elseif(!empty($this->dataForm['AlterPet']))
         {
             unset($this->dataForm['AlterPet']);
+            var_dump($this->dataForm);
 
-            $stsSobreCliente->alterPet();
+            $result = $stsSobreCliente->alterPet($this->dataForm);
+            if(!empty($result))
+            {
+                $_SESSION['msg'] = "Dados do pet alterados com sucesso";
+            }else{
+                $header = URL . "Erro?case=6"; // Erro 006
+                header("Location: {$header}");
+            }
+        }
+
+
+        // if para deletar os dados do usuario
+        elseif(!empty($this->dataForm['DeleteU']))
+        {
+            unset($this->dataForm['DeleteU']);
+            var_dump($this->dataForm);
+            extract($this->dataForm);
+
+           $resultD =  $stsSobreCliente-> deleteAll("pet","idpet",$idpet);
         }
 
         $this->getData();

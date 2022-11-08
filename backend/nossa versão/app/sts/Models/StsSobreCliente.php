@@ -18,7 +18,7 @@ class StsSobreCliente
 
 
     /**     function index()
-     * Método chamado pela controller SobreCliente
+     * Function chamado pela controller SobreCliente
      * Serve apenas para inicializar outros métodos
      */
     public function getData(): array|null
@@ -33,6 +33,7 @@ class StsSobreCliente
             return null;
         }
     }
+
 
 
     /**     function userData()
@@ -52,6 +53,7 @@ class StsSobreCliente
     }
 
 
+
     /**     function userAdress()
      * Busca os dados do endereço no BD
      */
@@ -67,13 +69,14 @@ class StsSobreCliente
     }
 
 
+
     /**     function userPet()
      * Busca os dados do pet no BD
      * Ainda não implementado
      */
     private function userPet():void
     {
-        $this->stsSelect->fullRead("SELECT p.nome_pet, p.idade_pet, p.sexo, r.raca, r.tipo_pet 
+        $this->stsSelect->fullRead("SELECT p.idpet, p.nome_pet, p.idade_pet, p.sexo, r.raca, r.tipo_pet 
                                     FROM pet AS p 
                                     INNER JOIN raca_pet AS r 
                                     ON p.raca = r.idraca_pet 
@@ -92,7 +95,7 @@ class StsSobreCliente
 
 
     /**     function alterUser()
-     * Função para alterar as informações do usuario
+     * Function para alterar as informações do usuario
      * Ela é chamada pela controller SobreCliente
      * Altera os dados por meio de um OBJ de StsUpdate
      *      chamando o método exeAlter()
@@ -100,15 +103,16 @@ class StsSobreCliente
     public function alterUser(array $data): string|null
     {
         $stsUpdate = new \Sts\Models\helpers\StsUpdate();
-        $stsUpdate->exeAlter('usuario', $data, 'idusuario = :idusuario', 'idusuario');
+        $stsUpdate->exeAlter('usuario', $data, 'idusuario', $_SESSION['idusuario']);
         $this->resultAlter = $stsUpdate->getResult();
 
         return $this->resultAlter;
     }
 
 
+
     /**     function alterAdress()
-     * Função para alterar as informações do endereço
+     * Function para alterar as informações do endereço
      * Ela é chamada pela controller SobreCliente
      * Altera os dados por meio de um OBJ de StsUpdate
      *      chamando o método exeAlter()
@@ -116,22 +120,50 @@ class StsSobreCliente
     public function alterAdress(array $data): string|null 
     {
         $stsUpdate = new \Sts\Models\helpers\StsUpdate();
-        $stsUpdate->exeAlter('endereco', $data, 'idendereco = :idendereco', 'idendereco');
+        $stsUpdate->exeAlter('endereco', $data, 'idendereco', $_SESSION['idendereco']);
         $this->resultAlter = $stsUpdate->getResult();
 
         return $this->resultAlter;
     }
 
 
+
     /**     function alterPet()
-     * Ainda não implementado
+     * Function para alterar as informações do pet
+     * Ela é chamada pela controller SobreCliente
+     * Altera os dados por meio de um OBJ de StsUpdate
+     *      chamando o método exeAlter()
      */
-    public function alterPet(): void
+    public function alterPet(array $data): string|null
     {
-        $data['oi'] = "oi";
         $stsUpdate = new \Sts\Models\helpers\StsUpdate();
-        $stsUpdate->exeAlter('endereco', $data, 'usuario', $_SESSION['idusuario']);
-    }    
+
+        extract($data);
+        $idAnimal = $idpet;
+        unset($data['idpet']);
+
+        $stsUpdate->exeAlter('pet', $data, 'idpet', $idAnimal);
+        $resultAlter = $stsUpdate->getResult();
+
+        return $resultAlter;
+    }   
+
+
+    
+    /**     function deleteAll()
+     * Function para deletar as informações do BD
+     *      - $table: em qual tabela vai ser deletada as informações
+     *      - $where: qual o campo da tabela que servira de where na query
+     *      - $id: o valor do where
+     */
+    public function deleteAll(String $table, String $where, String $id): string|null
+    {
+        $stsDelete = new \Sts\Models\helpers\StsDelete();
+        $stsDelete->delete($table,$where, $id);
+        $resultDelete = $stsDelete-> getResult();
+
+        return $resultDelete;
+    }
 }
 
 ?>

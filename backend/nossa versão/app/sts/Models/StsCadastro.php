@@ -30,7 +30,7 @@ class StsCadastro{
     }
 
     /**
-     * Responsavel por criar a conta do Usuário
+     * Responsável por criar a conta do Usuário
      */
     public function createAccount(array $data): string|null
     {

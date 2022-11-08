@@ -70,15 +70,19 @@ class StsUpdate extends StsConn
         $updateValues = rtrim($updateValues, ", ");
 
         //-------------------------------------------------------------------------------
-
+        
         $this->w = $this->where . " = :" . $this->where;
 
-        $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->where}"; 
-        echo $this->query;
+        $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->w}"; 
+        echo $this->query . "<br> <br>";
+        
 
         if(!empty($this->parseString)){
             $this->addParseString();
         }
+        //var_dump($this->data);
+
+        //echo $this->query;
 
         $this->exeInstruction();
     }
