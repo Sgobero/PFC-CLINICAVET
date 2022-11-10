@@ -73,9 +73,7 @@ class StsUpdate extends StsConn
         
         $this->w = $this->where . " = :" . $this->where;
 
-        $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->w}"; 
-        echo $this->query . "<br> <br>";
-        
+        $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->w}";         
 
         if(!empty($this->parseString)){
             $this->addParseString();

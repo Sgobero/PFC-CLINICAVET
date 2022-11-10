@@ -60,7 +60,6 @@ class StsDelete extends StsConn
     {
         $w = $this->where . " = " . $this->id;
         $this->query =  "DELETE FROM {$this->table} WHERE {$w}";
-        echo "<br> query: " . $this->query . "<br>";
 
         $this->exeInstruction();
     }

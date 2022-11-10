@@ -10,6 +10,7 @@
     }
 
     if(isset($this->data)){
+        //echo "<pre>";var_dump($this->data);echo "</pre>";
         extract($this->data['user'][0]);
         extract($this->data['adress'][0]);
     }
@@ -87,6 +88,7 @@
     <?php
             for($x = 0; $x < count($this->data['pet']); $x++){
                 $pet = $this->data['pet'][$x];
+
                 extract($pet);
                 
                 echo "<h4> Pet " . $x+1 . ": " . $nome_pet . "</h4>";
@@ -114,7 +116,7 @@
                 <label>Espécie: </label>
                 <input name="tipo_pet" type="text" value="<?php //if(isset($raca)) { echo $raca; } ?>"> <br> <br>
                 <label>Raça: </label>
-                <input name="raca" type="text" value=" <?php //if(isset($tipo_pet)) { echo $tipo_pet; } ?>"> <br> <br>
+                <input name="raca" type="text" value="<?php//if(isset($tipo_pet)) { echo $tipo_pet; } ?>"> <br> <br>
                 -->
                 <input name="AlterPet" type="submit" value="Alterar" >
                 <input name="DeleteU" type="submit" value="Delete" >
