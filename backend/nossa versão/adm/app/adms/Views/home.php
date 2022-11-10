@@ -19,7 +19,9 @@ echo "<hr>";
     }
 
 echo "<hr>";
-echo "<a href='" . URLADM . "Mostrar-Clientes'> Sobre Cliente </a> <br>";
+echo "<a href='" . URLADM . "Sobre-Clientes'> Sobre Cliente </a> <br>";
+echo "<a href='" . URLADM . "Sobre-Clinica'> Sobre Clinica </a> <br>";
+
 
 ?>
 
