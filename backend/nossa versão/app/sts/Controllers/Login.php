@@ -103,6 +103,7 @@ class Login{
         $_SESSION['idusuario'] = $idusuario; 
         $_SESSION['nome_usuario'] = $nome_usuario; 
         $_SESSION['tipo_usuario'] = $tipo_usuario; // cliente ou mantenedor
+        $_SESSION['foto_usuario'] = $foto_usuario; // foto do usuário
         $_SESSION['idendereco'] = $endereco; //enderecoUsuario
 
         $_SESSION['msg'] = "Login realizado com sucesso";

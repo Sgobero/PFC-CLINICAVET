@@ -2,9 +2,15 @@
     if(!isset($_SESSION)){
         session_start();
     }
+
     if(isset($_SESSION['msg'])){
         echo "Mensagem: " . $_SESSION['msg'] . "<br>";
         unset($_SESSION['msg']);
+    }
+
+    if(isset($_SESSION['errFile'])){
+        echo "Mensagem: " . $_SESSION['errFile'] . "<br>";
+        unset($_SESSION['errFile']);
     }
 
     if(isset($this->data)){
@@ -22,12 +28,15 @@
 </head>
 <body>
 
-    <form method="post" action="">
+    <form method="post" enctype="multipart/form-data" action="">
 
         <h2> DADOS PESSOAIS </h2>
 
         <label>NOME: </label>
         <input name="nome_usuario" type="text" placeholder="Nome Completo" value="<?php if(isset($nome_usuario)) {echo "$nome_usuario";} ?>"> <br> <br> 
+
+        <label>Foto de Perfil: </label>
+        <input name="arquivo" type="file"> <br> <br> 
         
         <label>CPF: </label>
         <input name="cpf" type="text" placeholder="CPF" value="<?php if(isset($cpf)) {echo "$cpf";} ?>"> <br> <br>

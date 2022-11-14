@@ -15,7 +15,7 @@ class StsLogin
         extract($data);
         
         $stsSelect = new \Sts\Models\helpers\StsSelect();
-        $stsSelect->fullRead("SELECT  idusuario, nome_usuario, senha_usuario, tipo_usuario, endereco 
+        $stsSelect->fullRead("SELECT  idusuario, nome_usuario, foto_usuario, senha_usuario, tipo_usuario, endereco 
                                 FROM usuario 
                                 WHERE email=:email", 
                                 "email={$email}");

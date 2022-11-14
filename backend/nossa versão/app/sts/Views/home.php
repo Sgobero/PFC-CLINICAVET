@@ -12,6 +12,7 @@ echo "<hr>";
     }
     if(isset($_SESSION['idusuario']))
     {
+        echo "<img height='100' src= ' ". IMG . $_SESSION['foto_usuario'] ." '> <br> <br>";
         echo "Seja bem vindo, " . $_SESSION['nome_usuario'] . "<br>";
         echo "Tipo usuário: " . $_SESSION['tipo_usuario'] . "<br>";
         echo "Id: " . $_SESSION['idusuario'] . "<br>";

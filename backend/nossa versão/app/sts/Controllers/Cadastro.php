@@ -6,8 +6,11 @@ class Cadastro{
 
     private array|string|null $data = [];
     private array|string|null $dataForm;
-    private object $stsCadastro;
 
+    private array|null $dataFile = null;
+    private string|null $path = null;
+
+    private object $stsCadastro;
 
 
     /**     function index()
@@ -26,8 +29,8 @@ class Cadastro{
             $header = URL . "Erro?case=2"; // Erro 002
             header("Location: {$header}");
         }
-        else
-        {
+
+        else {
             //pega os dados do método post
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -62,7 +65,14 @@ class Cadastro{
         // caso não tenha registro no BD com os dados da $this->data[0]
         if($resultVerify == true) 
         {
-            $this->createNewAccount();
+            if ($this->verifyFile()) { // verifica imagem
+                $this->data[0]['foto_usuario'] = $this->path;
+                $this->createNewAccount();
+            } else {
+                $header = URL . "Cadastro"; 
+                header("Location: {$header}"); // ira mostrar a mensagem de $_SESSION['errFile'} na view cadastro 
+            }
+            
         }else
         {
             $_SESSION['msg'] = "<p style='color:red;'>Dados fornecidos já possuem cadastro no sistema. Tente com outros dados</p>";
@@ -89,7 +99,6 @@ class Cadastro{
         if(!empty($idUsuario))
         {
             $_SESSION['msg'] = "<p style='color:green;'>Usuario cadastrado com sucesso</p>";
-
             $header = URL . "Login";
             header("Location: {$header}");
         }else
@@ -97,6 +106,75 @@ class Cadastro{
             $header = URL . "Erro?case=2"; // Erro 002
             header("Location: {$header}");
         }    
+    }
+
+
+
+    /**
+     * Undocumented function
+     *
+     */
+    private function verifyFile(): bool
+    {
+        if (isset($_FILES['arquivo'])){
+            $this->dataFile = $_FILES['arquivo'];
+
+            if ($this->dataFile['error']) // falha ao carregar arquivo
+            {
+                $_SESSION['errFile'] = "Erro ao receber imagem";
+                return false;
+            }
+
+            elseif ($this->dataFile['size'] > 2097152) // arquivo maior que 2 mg
+            { 
+                $_SESSION['errFile'] = "Arquivo muito grande";
+                return false;
+            } 
+
+            else // arquivo recebido
+            {
+                // pega o tipo do arquivo (.pdf, .png ...)
+                $extensao = strtolower(pathinfo($this->dataFile['name'], PATHINFO_EXTENSION));
+
+                if ($extensao != "jpg" && $extensao != "png") // se não for um arquivo jpg ou png
+                {
+                    $_SESSION['errFile'] = "tipo de arquivo não aceito";
+                    return false;
+                } else 
+                {
+                    return $this->saveFile($extensao);
+                }
+            }
+        } 
+
+        else 
+        {
+            $_SESSION['errFile'] = "Não anexou imagem";
+            return false;
+        }
+    }
+
+
+
+    /**
+     * Undocumented function
+     *
+     */
+    private function saveFile($extensao): bool 
+    {
+        $pasta = "app\sts\Helpers\imagens/";
+        $nomeUnicoArquivo = uniqid();
+        $this->path = $pasta . $nomeUnicoArquivo . "." . $extensao;
+
+        $save = move_uploaded_file($this->dataFile['tmp_name'], $this->path); // salvar o arquivo na pasta
+        if($save){ // se salvar corretamente 
+            return true;
+        }
+        else { // se tiver algum erro no save
+            $_SESSION['errFile'] = "falha ao salvar arquivo";
+            return false;
+        }
+        
     }
 }
 

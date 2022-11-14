@@ -24,9 +24,13 @@ class StsSobreCliente
     public function getData(): array|null
     {   
         $this->stsSelect = new \Sts\Models\helpers\StsSelect();
+
+        
         $this->userData();
         $this->userAdress();
         $this->userPet();
+        $this->getRaca();
+        
         if(!empty($this->data)){
             return $this->data;
         }else{
@@ -85,6 +89,16 @@ class StsSobreCliente
                                     WHERE u.idusuario = :idusuario", "idusuario={$_SESSION['idusuario']}");
         
         $this->data['pet'] = $this->stsSelect->getResult();
+    }
+
+
+    private function getRaca(): void 
+    {
+        $this->stsSelect->fullRead("SELECT * FROM raca_pet", null);
+        /*$stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT * FROM raca_pet", null);*/
+        $this->data['raca'] = $this->stsSelect->getResult();
+
     }
 
 

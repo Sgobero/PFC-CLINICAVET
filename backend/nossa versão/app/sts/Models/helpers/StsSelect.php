@@ -8,12 +8,13 @@ use PDOException;
 class StsSelect extends StsConn{
 
     private string $select;
-    private array $values = [];
+    private array|null $values = [];
     private array|null $result = [];
     private object $query;
     private object $conn;
 
     public function getResult(){
+        $this->values = null;
         return $this->result;
     }
 
