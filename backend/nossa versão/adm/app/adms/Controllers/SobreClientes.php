@@ -8,6 +8,8 @@ class SobreClientes
 {
 
     private array $data;
+    private array|null $dataForm;
+
 
     /**     function index()
      * Método padrão das classes controllers
@@ -21,21 +23,60 @@ class SobreClientes
 
     private function SobreClientes(): void
     {
+        //informações vinda dos formulares da view sobreCliente.php
+        $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        $admsMostrarClientes = new \Adms\Models\AdmsMostrarClientes();
-        $result = $admsMostrarClientes->mostraClientes();
-        if (!empty($result)) // se os usuarios existirem
-        {
-            $this->data = $result;
-            /*extract($this->data);*/
-            // echo "<pre>"; var_dump($this->data); echo "</pre>";
-
-            $this->view();
+        //Cria OBJ AdmsMostrarClientes
+        $modelSobreCliente = new \Adms\Models\AdmsMostrarClientes();
 
 
-        } else{
-            echo "Clientes não encontrados!";
+        // se for clicado o botão changeToMantenedor
+        if (isset($this->dataForm['changeToMantenedor'])) {
+            unset($this->dataForm['changeToMantenedor']);
+
+            $result = $modelSobreCliente->ConverterCargo($this->dataForm);
+            
+            if ($result) {
+                $_SESSION['msg'] = "Alterado com sucesso";
+                $this->header();
+            } else {
+                $_SESSION['msg'] = "Falha ao alterar";
+                $this->header();
+            }
         }
+
+
+        // se for clicado o botão changeToCliente
+        elseif (isset($this->dataForm['changeToCliente'])) {
+            unset($this->dataForm['changeToCliente']);
+
+            $result = $modelSobreCliente->ConverterCargo($this->dataForm);
+            
+            if ($result) {
+                $_SESSION['msg'] = "Alterado com sucesso";
+                $this->header();
+            } else {
+                $_SESSION['msg'] = "Falha ao alterar";
+                $this->header();
+            }
+        } 
+        
+        
+        
+        
+        else {
+            $result = $modelSobreCliente->mostraClientes();
+
+            if ($result) {
+                $this->data = $result;
+                $this->view();
+            } else {
+                echo "Clientes não encontrados!";
+            }
+        }
+
+
+        
     }
 
     
@@ -50,6 +91,12 @@ class SobreClientes
     }
 
 
+
+    private function header() 
+    {
+        $header = URLADM . "Sobre-Clientes"; 
+        header("Location: {$header}");
+    }
 
     }
     ?>
