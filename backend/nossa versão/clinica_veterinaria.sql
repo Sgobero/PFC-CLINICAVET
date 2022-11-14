@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Out-2022 às 00:16
+-- Tempo de geração: 14-Nov-2022 às 20:22
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -55,10 +55,19 @@ CREATE TABLE `endereco` (
 --
 
 INSERT INTO `endereco` (`idendereco`, `cep`, `rua`, `numero_residencial`, `cidade`, `estado`) VALUES
-(17, '85864242', 'rua marmoteira', '543', 'Foz do Iguaçu', 'Parana'),
-(45, '', '', '', '', ''),
-(46, '236544', 'Marmota', '123', 'Foz do Iguaçu', 'Parana'),
-(47, '', '', '', '', '');
+(57, '85861070', 'rua marmotaa', '12334', 'Foz do Iguaçu', 'Parana'),
+(58, '', '', '', '', ''),
+(59, '', '', '', '', ''),
+(60, '', '', '', '', ''),
+(61, '123123', 'rua marmota', '543', 'Foz do Iguaçu', 'Parana'),
+(62, '123', '123', '123', 'Foz do Iguaçu', 'Parana'),
+(63, '123', 'rua marmota', '123', 'Foz do Iguaçu', 'Parana'),
+(64, '', '', '', '', ''),
+(65, '', '', '', '', ''),
+(66, '123', 'rua barbosa', '4321324', 'Foz do Iguaçu', 'Parana'),
+(67, '123123', 'rua marmota', '543', 'Foz do Iguaçu', 'Parana'),
+(68, '', '', '', '', ''),
+(69, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -70,10 +79,19 @@ CREATE TABLE `pet` (
   `idpet` int(11) NOT NULL,
   `nome_pet` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `idade_pet` int(11) NOT NULL,
+  `sexo` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `raca` int(11) NOT NULL,
   `usuario` int(11) NOT NULL,
   `consulta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `pet`
+--
+
+INSERT INTO `pet` (`idpet`, `nome_pet`, `idade_pet`, `sexo`, `raca`, `usuario`, `consulta`) VALUES
+(11, 'Luna', 5, 'feminino', 14, 52, NULL),
+(19, 'leona', 3, 'feminino', 18, 62, NULL);
 
 -- --------------------------------------------------------
 
@@ -101,7 +119,27 @@ INSERT INTO `raca_pet` (`idraca_pet`, `raca`, `tipo_pet`) VALUES
 (11, 'pastor alemão', 'cachorro'),
 (12, 'yorkshire terrier', 'cachorro'),
 (13, 'bolder collie', 'cachorro'),
-(14, 'SRD (sem raça definida)', 'cachorro');
+(14, 'srd (sem raça definida)', 'cachorro'),
+(15, 'persa', 'gato'),
+(16, 'siamês', 'gato'),
+(17, 'maine coon', 'gato'),
+(18, 'angorá', 'gato'),
+(19, 'sphynx', 'gato'),
+(20, 'ragdoll', 'gato'),
+(21, 'ashera', 'gato'),
+(22, 'american shorthair', 'gato'),
+(23, 'exótico', 'gato'),
+(24, 'srd (sem raça definida)', 'gato'),
+(25, 'canário', 'ave'),
+(26, 'calopsita', 'ave'),
+(27, 'diamante de gould', 'ave'),
+(28, 'diamante mandarim', 'ave'),
+(29, 'manon', 'ave'),
+(30, 'periquito', 'ave'),
+(31, 'galinha', 'ave'),
+(32, 'papagaio', 'ave'),
+(33, 'cacatua', 'ave'),
+(34, 'srd (sem raça definida)', 'ave');
 
 -- --------------------------------------------------------
 
@@ -112,16 +150,18 @@ INSERT INTO `raca_pet` (`idraca_pet`, `raca`, `tipo_pet`) VALUES
 CREATE TABLE `tipo_consulta` (
   `idtipo_consulta` int(11) NOT NULL,
   `nome_consulta` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `valor_consulta` float NOT NULL
+  `valor_consulta` float NOT NULL,
+  `descricao_consulta` varchar(220) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `tipo_consulta`
 --
 
-INSERT INTO `tipo_consulta` (`idtipo_consulta`, `nome_consulta`, `valor_consulta`) VALUES
-(1, 'consulta cardiológica', 999),
-(2, 'consulta geral', 500);
+INSERT INTO `tipo_consulta` (`idtipo_consulta`, `nome_consulta`, `valor_consulta`, `descricao_consulta`) VALUES
+(3, 'vacina', 200, ''),
+(4, 'consulta', 300, ''),
+(5, 'exame', 200, '');
 
 -- --------------------------------------------------------
 
@@ -136,6 +176,7 @@ CREATE TABLE `usuario` (
   `rg` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `data_nascimento` date NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_usuario` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tipo_usuario` enum('mantenedor','cliente') COLLATE utf8mb4_unicode_ci NOT NULL,
   `senha_usuario` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `endereco` int(11) DEFAULT NULL
@@ -145,11 +186,14 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`idusuario`, `nome_usuario`, `cpf`, `rg`, `data_nascimento`, `email`, `tipo_usuario`, `senha_usuario`, `endereco`) VALUES
-(12, 'Marcos', '323434343', '222333444', '2003-11-29', 'marcos@marcos.com', 'cliente', 'marcos123', 17),
-(40, 'matheus', '123', '321', '0000-00-00', 'matheus@matheus.com', 'cliente', '123', 45),
-(41, 'iluska', '92837465', '76859403', '2000-07-25', 'iluska@iluska.com', 'cliente', 'iluska123', 46),
-(42, '', '4321', '1432', '0000-00-00', '4132', 'cliente', '', 47);
+INSERT INTO `usuario` (`idusuario`, `nome_usuario`, `cpf`, `rg`, `data_nascimento`, `email`, `foto_usuario`, `tipo_usuario`, `senha_usuario`, `endereco`) VALUES
+(1, 'maria', '123', '123', '2022-09-28', 'maria@maria.com', '', 'mantenedor', '$2y$10$Q6pkE2iA9fepKpF6EJqJeufYRIpjSQYxW5pmycYhfGiAbC7FCOQtS', 62),
+(52, 'matheus', '07894971515', '777888555', '2003-11-29', 'matheus.laurentino.ifpr@gmail.com', '', 'cliente', '$2y$10$AnkmYM8eCdSk7gJTvbDREuyLJ/dhr7NZe95PBZljJUsn/ZVU/K532', 57),
+(60, 'iluska', '4321', '4321', '2022-11-08', 'iluska@iluska.com', '63703bcd9f904.jpg', 'cliente', '$2y$10$MjsH5jxemFZWxIA5YySri.S6ApN9lk8UrU5tj.6cB862zHA.XDRGG', 65),
+(61, 'gohan', '87294720523', '12348646295', '2022-11-23', 'goran@goran.com', '63704232b774a.jpg', 'cliente', '$2y$10$u8cAQIxi3Z6lTNT7NS7z/OCIjiqSRCnPwpoF5KkdLwQLOubrqtj4C', 66),
+(62, 'goku', '1541123985', '524392637', '2022-11-29', 'goku@goku.com', '6370426c734d4.jpg', 'cliente', '$2y$10$lqVZq2QxoIuH080/q6lXPetGlLlVi99roDHi2Su46CkJexr5AL/2m', 67),
+(63, 'videl', '123453749576', '2651583675', '2022-11-08', 'videl@videl.com', '637042a8931aa.jpg', 'cliente', '$2y$10$NnCmzXapmkgXJ3JdD1TKtuvbCopnlcgebOxfjUStQCteJNjJaZoFi', 68),
+(64, 'vegeta', '1254336784253', '123457345612543', '2022-11-14', 'vegeta@vegeta.com', '637042cfe7db5.jpg', 'cliente', '$2y$10$4xMXO7zipkQpe6qTCCe3f.wwVM35npvPCshuYKtX2QLxh5zFkka/.', 69);
 
 --
 -- Índices para tabelas despejadas
@@ -210,31 +254,31 @@ ALTER TABLE `consulta`
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `idendereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `idendereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de tabela `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `idpet` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `raca_pet`
 --
 ALTER TABLE `raca_pet`
-  MODIFY `idraca_pet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idraca_pet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_consulta`
 --
 ALTER TABLE `tipo_consulta`
-  MODIFY `idtipo_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idtipo_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Restrições para despejos de tabelas
