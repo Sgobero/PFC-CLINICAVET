@@ -11,6 +11,8 @@ abstract class Define
         define('URL', 'http://localhost/Clinica/');
         define('URLADM', 'http://localhost/Clinica/adm/');
 
+        define('IMGADM', '..\app\sts\Helpers\imagens/');
+
         define('CONTROLLER', 'Login');
         define('METODO', 'index');
         define('CONTROLLERERRO', 'Login');
