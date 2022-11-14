@@ -26,8 +26,8 @@ class SobreClientes
         //informações vinda dos formulares da view sobreCliente.php
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-        //Cria OBJ AdmsMostrarClientes
-        $modelSobreCliente = new \Adms\Models\AdmsMostrarClientes();
+        //Cria OBJ AdmsSobreClientes
+        $modelSobreCliente = new \Adms\Models\AdmsSobreClientes();
 
 
         // se for clicado o botão changeToMantenedor
@@ -65,7 +65,7 @@ class SobreClientes
         
         
         else {
-            $result = $modelSobreCliente->mostraClientes();
+            $result = $modelSobreCliente->mostrarClientes();
 
             if ($result) {
                 $this->data = $result;
@@ -86,7 +86,7 @@ class SobreClientes
      */
     private function view(): void
     {
-        $loadView = new \Core\LoadView("adms/Views/mostrarClientes", $this->data, null);
+        $loadView = new \Core\LoadView("adms/Views/sobreClientes", $this->data, null);
         $loadView->loadView();
     }
 
