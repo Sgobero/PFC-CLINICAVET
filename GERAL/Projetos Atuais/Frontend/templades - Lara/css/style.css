@@ -73,14 +73,16 @@ button:hover{
 	justify-content: space-around;
 }
 
-.conteudo-principal .img{
-	padding: 30px;
-	width: 450px;
+#circulo{
+	margin-top: 15px;
+	width: 470px;
+	height: 450px;
+	background: #FFB300;
+	border-radius: 66% 34% 38% 62% / 53% 53% 47% 47% ;
 }
 
 .conteudo-principal .introdução{
 	padding: 20px;
-
 }
 
 .conteudo-principal .título{
@@ -130,11 +132,12 @@ button:hover{
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 30px;
+	background-color: #ECEFF1;
 }
 
 .rodape-principal .logo{
-	height: 80px ;
-	margin-bottom: 15px;
+	height: 150px ;
+	margin-bottom: 5px;
 }
 
 .rodape-principal .endereco{
