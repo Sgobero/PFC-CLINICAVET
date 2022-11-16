@@ -8,24 +8,30 @@
 }
 
 body{
+	font-size: 100%;
 	background-color: white;
+}
 
+.container{
+	position: relative;
+	padding: 15px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 
 .cabecalho-principal{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	align-items: baseline;
 	justify-content: space-around;
-	padding-top: 24px;
-	font-family: 'Righteous', cursive;
-	white-space: nowrap;
+	padding-top: 20px;
 
+	white-space: nowrap;
 }
 
 .cabecalho-principal .img{
-	height: 60px;
+	height: 65px;
+	margin-left: 40px;
 }
 
 .cabecalho-principal .menu{
@@ -71,9 +77,16 @@ button:hover{
 	justify-content: space-around;
 }
 
+#circulo{
+	margin-top: 15px;
+	width: 470px;
+	height: 450px;
+	background: #FFB300;
+	border-radius: 66% 34% 38% 62% / 53% 53% 47% 47% ;
+}
+
 .conteudo-principal .img{
 	padding: 30px;
-	width: 450px;
 }
 
 .conteudo-principal .introdução{
@@ -129,10 +142,11 @@ button:hover{
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 30px;
+	background-color: #ECEFF1;
 }
 
 .rodape-principal .logo{
-	height: 80px ;
+	height: 150px ;
 	margin-bottom: 15px;
 }
 

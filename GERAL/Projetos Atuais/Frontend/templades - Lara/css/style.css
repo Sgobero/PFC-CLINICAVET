@@ -89,6 +89,8 @@ button:hover{
 	font-family: 'Righteous', cursive;
 	font-size: 50px;
 	text-align: center;
+	padding-top: 35px;
+
 }
 
 .conteudo-principal .subtítulo{
@@ -170,6 +172,16 @@ button:hover{
 	font-size: 15px;
 	padding-bottom: 5px;
 }
+
+/*ESTILIZAÇÃO PÁGINA ÁREA DO CLIENTE - USUÁRIO*/ 
+header{ 
+	background-color: white;
+}
+
+#area_cliente{
+	background-color: #ECEFF1;
+}
+
 
 /*ESTILIZAÇÃO PÁGINA DE SERVIÇOS - USUÁRIO*/ 
 .linha{

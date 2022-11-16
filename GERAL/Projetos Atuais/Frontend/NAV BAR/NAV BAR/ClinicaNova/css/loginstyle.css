@@ -108,14 +108,16 @@
 }
 
 .form-login input{
-    height: 45px;
     border: none;
     background: none;
     outline: none;
-    border-bottom: 2px solid black;
+
+    height: 20px;
+    width: 75%;
+    border-bottom: 2px solid black; 
     font-size: 15px;
     color: black;
-    margin: 8px;
+    margin: 7px;
 }
 
 .segundacoluna .botao{
