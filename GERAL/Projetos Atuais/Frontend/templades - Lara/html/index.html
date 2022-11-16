@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projeto de Conclusão de Curso - Site designado para uma clínica veterinária.">
-    <script src="https://kit.fontawesome.com/7f492723e7.js" crossorigin="anonymous"></script>    
-    <link rel="stylesheet" type="text/css" href="/GERAL/Projetos Atuais/Frontend/templades - Lara/css/style.css">
+    <script src="https://kit.fontawesome.com/7f492723e7.js" crossorigin="anonymous"></script>   
+    <link rel="stylesheet" type="text/css" href="../css/styleNavBar.css"> 
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <title>Clínica Veterinária</title>
 </head>
 
@@ -14,7 +15,7 @@
     
     <!--CABEÇALHO-->
     <header class="cabecalho-principal"> 
-        <img class="img" src="/GERAL/Projetos Atuais/Frontend/templades - Lara/img/logo.png" alt="logo da clínica">
+        <img class="img" src="../img/logo.png" alt="logo da clínica">
 
         <nav class="menu">
             <a class="item">HOME</a>
@@ -23,8 +24,20 @@
             <a href="serviços.html"> <button class="botao">AGENDE AQUI!</button> </a> 
 
             <!--PARTE DE ICONE E LOGIN-->
-            <a href="login.html" class="login-user"> <i class="fa fa-user-circle-o fa-2x"  aria-hidden="true"></i></a>   
+          
+        <nav class="nav__bar">
+            <div class="mobile-menu">
+              <div class="icone"> <i class="fa fa-user-circle-o fa-2x"  aria-hidden="true"></i> </div>
+            </div>
+            <ul class="nav-list">
+                
+                    <li><a href="#" class="item-nav">Login</a></li>
+                    <li><a href="#" class="item-nav">Cadastro</a></li>            
+            </ul>
+
+        </nav> <!-- fim navbar -->
         </nav>
+
     </header>
 
     <!--CONTEÚDO PRINCIPAL-->
@@ -32,7 +45,7 @@
         <section id="" class="apresentação">
             
 
-            <img src="/GERAL/Projetos Atuais/Frontend/templades - Lara/img/img01.png" alt="img cães" class="img" id="circulo"> 
+            <img src="../img/img01.png" alt="img cães" class="img" id="circulo"> 
              
             <div class="introdução">
                 <h1 class="título"> Invista na saúde e bem estar <br> do seu pet! </h1> <br> <br> 
@@ -113,18 +126,19 @@
     <!--RODAPÉ-->
 
     <footer class="rodape-principal"> 
-        <img class="logo" src="/GERAL/Projetos Atuais/Frontend/templades - Lara/img/logo.png" alt="logo da clínica"> 
+        <img class="logo" src="../img/logo.png" alt="logo da clínica"> 
 
         <a href="#endereço" class="endereco"> <i class="fa fa-map-marker fa-1x" aria-hidden="true" ></i> Rua Girassol, 000 - Foz do Iguaçu, PR</a>
 
         <nav class="informações">
-            <a href="https://api.whatsapp.com/send/?phone=554598540787" target="_blank"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></a>
-            <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-            <a href="mailto:laraalanis21@gmail.com?" target="_blank"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a>
         </nav>
 
         <p class="direitos">direitos autorais</p>
     </footer>
+    <script src="../js/navbar.js"> </script>
 
 </body>
 </html>

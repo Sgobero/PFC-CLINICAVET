@@ -25,6 +25,7 @@ body{
 	align-items: center;
 	justify-content: space-around;
 	padding-top: 24px;
+	white-space: nowrap;
 }
 
 .cabecalho-principal .img{
@@ -40,7 +41,14 @@ body{
 .cabecalho-principal .item{
 	font-family: 'Righteous', cursive;
 	font-size: 20px;
+	color: #000;
+
 }
+
+.cabecalho-principal .item-nav{
+	font-family: 'Righteous', cursive;
+	font-size: 13px;
+	color: #000;}
 
 .cabecalho-principal .botao{
 	font-family: 'Righteous', cursive;
@@ -89,8 +97,6 @@ button:hover{
 	font-family: 'Righteous', cursive;
 	font-size: 50px;
 	text-align: center;
-	padding-top: 35px;
-
 }
 
 .conteudo-principal .subtítulo{
@@ -173,16 +179,6 @@ button:hover{
 	padding-bottom: 5px;
 }
 
-/*ESTILIZAÇÃO PÁGINA ÁREA DO CLIENTE - USUÁRIO*/ 
-header{ 
-	background-color: white;
-}
-
-#area_cliente{
-	background-color: #ECEFF1;
-}
-
-
 /*ESTILIZAÇÃO PÁGINA DE SERVIÇOS - USUÁRIO*/ 
 .linha{
 	border-top: 0.5px solid black;
@@ -228,3 +224,4 @@ header{
 	padding-left: 20px;
 	padding-right: 20px;
 }
+
