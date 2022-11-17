@@ -16,5 +16,16 @@ class Servicos{
         $loadView = new \Core\LoadView("sts/Views/servicos", $this->data, null);
         $loadView->loadView();
     }
+
+
+
+    /**     function pages()
+     * Function que todas as controller tem
+     * Retorna as functions que são publicas nessa controller
+     */
+    public function pages(): array
+    {  
+        return $array = ['index'];
+    }
     
 }

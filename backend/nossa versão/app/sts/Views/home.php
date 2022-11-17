@@ -12,11 +12,12 @@ echo "<hr>";
     }
     if(isset($_SESSION['idusuario']))
     {
-        echo "<img height='100' src= ' ". IMG . $_SESSION['foto_usuario'] ." '> <br> <br>";
+        if (!empty($_SESSION['foto_usuario'])) {  echo "<img height='100' src= ' ". IMG . $_SESSION['foto_usuario'] ." '> <br> <br>"; } else { echo "<img height='100' src= ' ". IMGERRO ." '> <br> <br>"; }
         echo "Seja bem vindo, " . $_SESSION['nome_usuario'] . "<br>";
         echo "Tipo usuário: " . $_SESSION['tipo_usuario'] . "<br>";
         echo "Id: " . $_SESSION['idusuario'] . "<br>";
-        echo "Endereco: " . $_SESSION['idendereco'] . "<br>";
+        if (!empty($_SESSION['idendereco'])) {  echo "Endereco: " . $_SESSION['idendereco'] . "<br>"; }
+        
     }
 
 echo "<hr>";
@@ -35,11 +36,19 @@ echo "<hr>";
 <?php
     
     echo "<h2>View Home</h2>";
-    echo "<a href='" . URL . "Cadastro'> Cadastro </a> <br>";
-    echo "<a href='" . URL . "Login'> Login </a> <br>";
-    echo "<a href='" . URL . "Sobre-Cliente'> Sobre Cliente </a> <br>";
-    echo "<a href='" . URL . "Cadastro-Pet'> Cadastro Pet </a> <br>";
-    echo "<a href='" . URL . "Servicos'> Serviços da Clinica</a> <br>";
+    echo "<a href='" . URL . "Cadastro/Usuario'> Cadastro Usuario</a> <br>";
+    echo "<a href='" . URL . "Cadastro/Endereco'> Cadastro Endereço</a> <br>";
+
+    echo "<a href='" . URL . "Login'> Login </a> <br> <br>";
+
+    echo "<a href='" . URL . "Sobre-Cliente/Dados'> Dados Cliente </a> <br><br>";
+
+    echo "<a href='" . URL . "Cadastro-Pet'> Cadastro Pet </a> <br><br>";
+
+    echo "<a href='" . URL . "Servicos'> Serviços da Clinica</a> <br><br>";
+
+    echo "<a href='" . URL . "FotoPerfil/usuario'> Foto de Perfil </a> <br>";
+
 
 ?>
 

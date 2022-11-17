@@ -21,4 +21,14 @@ class Home{
         $loadView = new \Core\LoadView('sts/Views/home', null, null);
         $loadView->loadView();
     }
+
+
+    /**     function pages()
+     * Function que todas as controller tem
+     * Retorna as functions que são publicas nessa controller
+     */
+    public function pages(): array
+    {  
+        return $array = ['index'];
+    }
 }
