@@ -20,7 +20,6 @@ class SobreClientes
     }
 
 
-
     private function SobreClientes(): void
     {
         //informações vinda dos formulares da view sobreCliente.php
@@ -62,8 +61,7 @@ class SobreClientes
         } 
         
         
-        
-        
+        // carrega a página
         else {
             $result = $modelSobreCliente->mostrarClientes();
 
@@ -74,9 +72,6 @@ class SobreClientes
                 echo "Clientes não encontrados!";
             }
         }
-
-
-        
     }
 
     
@@ -91,7 +86,7 @@ class SobreClientes
     }
 
 
-
+    // Redireciona o usuario para a mesma página
     private function header() 
     {
         $header = URLADM . "Sobre-Clientes"; 

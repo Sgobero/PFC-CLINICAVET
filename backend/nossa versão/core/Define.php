@@ -4,16 +4,19 @@ namespace Core;
 
     abstract class Define
     {
-        // matheus
+
         protected function config(): void 
         {
             define('URL', 'http://localhost/Clinica/');
             define('URLADM', 'http://localhost/Clinica/Adm/');
 
             define('IMG', 'app\sts\Helpers\imagens/');
+            define('IMGERRO', 'app\sts\Helpers\imagens\Sem_Foto.png');
 
             define('CONTROLLER', 'Home');
-            define('ERROCONTROLLER', 'Erro');
+            define('CONTROLLERERRO', 'Erro');
+            define('METODO', 'index');
+            //define('CONTROLLER', 'Home');
 
             define('EMAILADM', 'matheus.laurentino.ifpr@gmail.com');
 

@@ -79,10 +79,7 @@ class SobreClinica
             $this->getData();
             $this->view();
         }
-            
-    
-            
-        
+
     }
 
     private function getData()

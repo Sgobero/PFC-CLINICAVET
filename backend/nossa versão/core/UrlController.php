@@ -2,48 +2,61 @@
 
 namespace Core;
 
-
-class UrlController extends Define{
-
-    private string $url; // pega as informações da URL
-    private array $urlArray; // URL tranformada em array
-
-    private string $urlController; // Recebe a posição 0 (zero) do $urlArray 
-
-    private string $classLoad; // Armazena o endereço da Controller requerida pela URL
-
-
+class UrlController extends Define
+{
     
-    /**     function __construct()
-     * Pega as informações da URL e manipula ela com os métodos da classe
-     *      clearUrl() e slugController()
+    private string $url; //$url Recebe a URL do .htaccess
+    private array $urlArray; // $urlArray Recebe a URL convertida para array 
+    
+    private string $urlController; // $urlController Recebe da URL o nome da controller 
+    private string $urlMetodo; // $urlMetodo Recebe da URL o nome do método
+    
+    private string $classLoad;
+
+    private string $urlSlugController;
+    private string $urlSlugMetodo;
+
+
+
+    /**
+     * Recebe a URL do .htaccess
+     * Validar a URL
      */
     public function __construct()
-    {   
+    {
         $this->config();
 
-        // Se tiver passado a controller na URL
+        // se existir algo depois de //localhost/Clinica/ 
         if(!empty(filter_input(INPUT_GET, 'url', FILTER_DEFAULT))){
-
+            // $this->url recebe o que esta depois de Clinica/
             $this->url = filter_input(INPUT_GET, 'url', FILTER_DEFAULT);
 
             $this->clearUrl();
-            
+            // divide a $this>url pelos / presentes nela
             $this->urlArray = explode("/", $this->url);
 
-            if(isset($this->urlArray[0])){
+            // Se tiver passado a controller na URL
+            if(isset($this->urlArray[0])) {
                 $this->urlController = $this->slugController($this->urlArray[0]);
             }else{
-                $this->urlController = ERROCONTROLLER;
+                $this->urlController = CONTROLLER; //Home
+            }
+
+            // Se tiver passado o método da controller na URL
+            if (isset($this->urlArray[1])){
+                $this->urlMetodo = $this->slugMetodo($this->urlArray[1]);
+            }else{
+                $this->urlMetodo = METODO; //index
             }
 
         }else{
-            $this->urlController = CONTROLLER;
+            $this->urlController = CONTROLLER; //Home
+            $this->urlMetodo = METODO; //index
         }
     }
 
 
-
+    
     /**     function clearUrl()
      * Método chamado pelo construction
      * É responsável por limpar a URL 
@@ -52,16 +65,16 @@ class UrlController extends Define{
      *      - tira a barra do final da url
      *      - retira os caracteres especiais
      */
-    private function clearUrl() :void 
+    private function clearUrl(): void
     {
-        $this->url = strip_tags($this->url); // tira as tags html e php
+        $this->url = strip_tags($this->url); //tira as tags html e php
         $this->url = trim($this->url); //tira o espaço do final e enicio da url
-        $this ->url = rtrim($this->url, "/"); //tira a barra do final da url
+        $this->url = rtrim($this->url, "/"); //tira a barra do final da url
 
         //Retira os caracteres especiais e substitui pelos do format['b']
         $format['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:.,\\\'<>°ºª ';
         $format['b'] = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr-------------------------------------------------------------------------------------------------';
-        $this->url = strtr(utf8_decode($this->url), utf8_decode($format['a']), $format['b']); //Elimina os cartacteris do format['a']
+        $this->url = strtr(utf8_decode($this->url), utf8_decode($format['a']), $format['b']);
     }
 
 
@@ -74,47 +87,70 @@ class UrlController extends Define{
      *      - converter a primeira letra de cada palavra para maiusculo
      *      - retira o espaco em branco
      */
-    private function slugController($urlArray): string
+    private function slugController(string $slugController): string
     {
-        $convertController = strtolower($urlArray); //Converter para minusculo
-        $convertController = str_replace("-", " ", $convertController); //Converter o traço para espaco em braco
-        $convertController = ucwords($convertController); //Converter a primeira letra de cada palavra para maiusculo
-        $convertController = str_replace(" ", "", $convertController);//Retirar espaco em branco
-        
-        return $convertController;
+        $this->urlSlugController = strtolower($slugController); //Converter para minusculo
+        $this->urlSlugController = str_replace("-", " ", $this->urlSlugController); //Converter o traço para espaco em braco
+        $this->urlSlugController = ucwords($this->urlSlugController); //Converter a primeira letra de cada palavra para maiusculo
+        $this->urlSlugController = str_replace(" ", "", $this->urlSlugController); //Retirar espaco em branco
+
+        return $this->urlSlugController;
     }
 
 
 
-    /**     function loadPage()
-     * Cria uma variável com o endereço da Controller requerida pela URL
-     * Função recursiva 
+    /**     function slugMetodo()
+     * Método chamado pelo contruction
+     * É responsavel por limpar o nome do método da controller
+     *      - converte a primeira letra do $urlSlugMetodo para minusculo
      */
-    public function loadPage(): void
+    private function slugMetodo(string $urlSlugMetodo): string
+    {
+        $this->urlSlugMetodo = $this->slugController($urlSlugMetodo);
+        $this->urlSlugMetodo = lcfirst($this->urlSlugMetodo); // primeira letra para minusculo
+        
+        return $this->urlSlugMetodo;
+    }
+
+
+
+    /**     function verifyPage() 
+     * Carregar as Controllers
+     * Instanciar as classes da controller e carregar o método 
+     */
+    public function verifyPage(): void
     {
         $this->classLoad = "\\Sts\\Controllers\\" . $this->urlController; 
         if(class_exists($this->classLoad)){
-            $this->LoadClasse();
+            $this->verifyMethod();
         }else{
-            $this->urlController = ERROCONTROLLER;
-            $this->loadPage();
+            $this->urlController = CONTROLLERERRO;
+            $this->verifyPage();
         }
     }
-   
 
 
-    /**     function LoadClasse()
-     * Chamada pela função LoadPage
-     * Responsavel por chamar o método index da controller passada pela URL
+
+    /**     function verifyMethod()
+     * Verifica se o método existe dentro da classe e executa ele
      */
-    private function LoadClasse(): void 
+    private function verifyMethod()
     {
-        $classPage = new $this->classLoad;
-        if(method_exists($classPage, "index")){
-            $classPage->index();
+        //classLoad é uma variavel mas com () no final para declara uma classe
+        $page = new $this->classLoad(); 
+        if(method_exists($page, $this->urlMetodo)){
+            $result = $page->pages(); //retorna o nome das paginas públicas dessa controller
+            $key = 1 + array_search($this->urlMetodo, $result); // verifica se o nome da página passada pelo cliente é pública
+
+            if (!empty($key)) { // se for  carrega o método, se não vai para a página de erro
+                $method = $this->urlMetodo;
+                $page->$method();
+            } else {
+                die("Erro: pagina não encontrada");
+            }
+            
         }else{
-            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
+            die("Erro: pagina não encontrada");
         }
-        
     }
 }
