@@ -193,7 +193,13 @@ header{
 	justify-content: center;
 	align-items: baseline;
 	padding-top: 60px;
-	gap: 10px;
+	gap: 58px;
+}
+ 
+.conteudo-serviços .img-serviços{
+	display: flex;
+	align-self: flex-start;
+	height: 50px; 
 }
 
 .conteudo-serviços .procedimento{
@@ -227,4 +233,20 @@ header{
 	line-height: 40px;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+/*ESTILIZAÇÃO PÁGINA ÁREA DOS CLIENTES - USUÁRIO*/ 
+
+.btn {
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+}
+
+.card-body{
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+.card{
+	background-color: none;
 }
