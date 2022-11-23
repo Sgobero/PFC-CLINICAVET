@@ -97,6 +97,7 @@ button:hover{
 	font-family: 'Righteous', cursive;
 	font-size: 50px;
 	text-align: center;
+	padding-top: 20px;
 }
 
 .conteudo-principal .subtítulo{
@@ -233,4 +234,16 @@ button:hover{
 
 /*ESTILIZAÇÃO PÁGINA ÁREA DOS CLIENTES - USUÁRIO*/ 
 
+.conteudo-principal .areacliente{
+	display: flex;
+	gap: 50px;
 
+	flex-direction: row;
+	justify-content: center;
+}
+
+.areacliente .btn-link{
+	color: black;
+	font-family: 'Open Sans', sans-serif;
+
+}
