@@ -115,9 +115,9 @@
     height: 20px;
     width: 75%;
     border-bottom: 2px solid black; 
-    font-size: 15px;
+    font-size: 17px;
     color: black;
-    margin: 7px;
+    margin: 8px;
 }
 
 .segundacoluna .botao{
@@ -131,22 +131,13 @@
     cursor: pointer;
     width: 120px;
     align-self: center;
-    margin: 5px;
+    margin: 7px;
 }
 
 .segundacoluna .opções{
     font-family: 'Righteous', cursive;
     font-size: 19px;
     color: black;
-}
-
-.main-container .listaredes{
-    display: flex;
-    list-style: none;
-}
-
-.listaredes .icone{
-   padding: 10px;
 }
 
 /*SEGUNDO CONTEÚDO*/ 
@@ -171,7 +162,7 @@
     text-decoration: underline;
     font-size: 15px;
     color: black;
-    padding: 20px;
+    padding: 15px;
 }
 
 /*POSICIONANDO DAS TELAS*/
