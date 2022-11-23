@@ -27,6 +27,20 @@ class LoadView
             die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
         }
     }
+
+
+    public function loadview2()
+    {
+        if (file_exists('app/' . $this->nameView . '.php')){
+            
+            include 'app/sts/views/helpers/header.php'; 
+            include 'app/' . $this->nameView . '.php';
+            include 'app/sts/views/helpers/footer.php';
+
+        } else {
+            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
+        }
+    }
 }
 
 ?>

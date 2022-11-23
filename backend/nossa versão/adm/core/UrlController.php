@@ -13,10 +13,7 @@ class UrlController extends Define
     
     private string $classLoad;
 
-    private array $format;
-
     private string $urlSlugController;
-
     private string $urlSlugMetodo;
 
 
@@ -74,9 +71,9 @@ class UrlController extends Define
         $this->url = rtrim($this->url, "/"); //tira a barra do final da url
 
         //Retira os caracteres especiais e substitui pelos do format['b']
-        $this->format['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:.,\\\'<>°ºª ';
-        $this->format['b'] = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr-------------------------------------------------------------------------------------------------';
-        $this->url = strtr(utf8_decode($this->url), utf8_decode($this->format['a']), $this->format['b']);
+        $format['a'] = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]?;:.,\\\'<>°ºª ';
+        $format['b'] = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr-------------------------------------------------------------------------------------------------';
+        $this->url = strtr(utf8_decode($this->url), utf8_decode($format['a']), $format['b']);
     }
 
 

@@ -2,58 +2,32 @@
 
 namespace Sts\Models;
 
-include_once 'app/sts/Controllers/helpers/protect.php';
+if(!isset($_SESSION)){
+    session_start();
+} 
     
 class StsSobreCliente
 {
     private array|null $data = null;
     private string|null $resultAlter = null;
-    private object $stsSelect;
 
-    
 
     //------------------------ FUNÇÕES DE SELECT -----------------------
     //Funções para pegar registros no BD
 
 
-
-    /**     function index()
-     * Function chamado pela controller SobreCliente
-     * Serve apenas para inicializar outros métodos
-     */
-    public function getData(): array|null
-    {   
-        $this->stsSelect = new \Sts\Models\helpers\StsSelect();
-
-        
-        $this->userData();
-        $this->userAdress();
-        $this->userPet();
-        $this->getRaca();
-        
-        if(!empty($this->data)){
-            return $this->data;
-        }else{
-            return null;
-        }
-    }
-
-
-
     /**     function userData()
      * Busca os dados da tabela usuario no BD
      */
-    private function userData():void
+    public function userData(): array|null
     {
-        $this->stsSelect->fullRead("SELECT nome_usuario, data_nascimento 
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT nome_usuario, cpf, rg, email, data_nascimento 
                                     FROM usuario
                                     WHERE idusuario  = :idusuario", 
                                     "idusuario={$_SESSION['idusuario']}");
-        /**"SELECT nome_usuario, cpf, rg, data_nascimento, email 
-            FROM usuario
-                WHERE idusuario  = :idusuario " */
         
-        $this->data['user'] = $this->stsSelect->getResult();                            
+        return $stsSelect->getResult();                            
     }
 
 
@@ -61,15 +35,16 @@ class StsSobreCliente
     /**     function userAdress()
      * Busca os dados do endereço no BD
      */
-    private function userAdress():void
+    public function userAdress(): array|null
     { 
-        $this->stsSelect->fullRead("SELECT e.cep, e.rua, e.numero_residencial, e.cidade, e.estado
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT e.cep, e.rua, e.numero_residencial, e.cidade, e.estado
                             FROM endereco as e
                             INNER JOIN usuario as u 
                             ON u.endereco = e.idendereco 
                             WHERE u.endereco = :endereco", "endereco={$_SESSION['idendereco']}" );
 
-        $this->data['adress'] = $this->stsSelect->getResult();
+        return $stsSelect->getResult();
     }
 
 
@@ -78,27 +53,80 @@ class StsSobreCliente
      * Busca os dados do pet no BD
      * Ainda não implementado
      */
-    private function userPet():void
+    public function userPet(): array|null
     {
-        $this->stsSelect->fullRead("SELECT p.idpet, p.nome_pet, p.idade_pet, p.sexo, r.raca, r.tipo_pet 
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT p.idpet, p.nome_pet, p.idade_pet, p.sexo, r.raca, r.tipo_pet 
                                     FROM pet AS p 
                                     INNER JOIN raca_pet AS r 
-                                    ON p.raca = r.idraca_pet 
+                                    ON p.idraca = r.idraca_pet 
                                     INNER JOIN usuario AS u 
                                     on u.idusuario = p.usuario 
                                     WHERE u.idusuario = :idusuario", "idusuario={$_SESSION['idusuario']}");
         
-        $this->data['pet'] = $this->stsSelect->getResult();
+        return $stsSelect->getResult();
+    }
+
+    public function userPetById($idpet): array|null 
+    {
+        if ($this->verifyIdPetIsFromUser($idpet)) {
+            $stsSelect = new \Sts\Models\helpers\StsSelect();
+            $stsSelect->fullRead("SELECT p.idpet, p.nome_pet, p.idade_pet, p.sexo, p.idraca, r.raca, r.tipo_pet 
+                                        FROM pet AS p 
+                                        INNER JOIN raca_pet AS r 
+                                        ON p.idraca = r.idraca_pet 
+                                        INNER JOIN usuario AS u 
+                                        ON u.idusuario = p.usuario 
+                                        WHERE u.idusuario = :idusuario AND idpet = :idpet", "idusuario={$_SESSION['idusuario']}&idpet=$idpet");
+            return $stsSelect->getResult();
+        } else {
+            return null;
+        }
+        
+    }
+
+    public function verifyIdPetIsFromUser($idpet): bool
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT idpet
+                                    FROM pet AS p
+                                    INNER JOIN usuario AS u 
+                                    ON u.idusuario = p.usuario 
+                                    WHERE u.idusuario = :idusuario AND idpet = :idpet", 
+                                    "idusuario={$_SESSION['idusuario']}&idpet=$idpet");
+        $result = $stsSelect->getResult();
+
+        if (!empty($result)) 
+            return true;
+        else 
+            return false;
+        
+    }
+
+    public function verifyIfPetExist(): bool
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT idpet
+                                    FROM pet AS p
+                                    INNER JOIN usuario AS u 
+                                    ON u.idusuario = p.usuario 
+                                    WHERE u.idusuario = :idusuario", 
+                                    "idusuario={$_SESSION['idusuario']}");
+        $result = $stsSelect->getResult();
+        if (!empty($result)) 
+            return true;
+        else 
+            return false;
     }
 
 
-    private function getRaca(): void 
+    public function getRaca($tipo_pet): array|null
     {
-        $this->stsSelect->fullRead("SELECT * FROM raca_pet", null);
-        /*$stsSelect = new \Sts\Models\helpers\StsSelect();
-        $stsSelect->fullRead("SELECT * FROM raca_pet", null);*/
-        $this->data['raca'] = $this->stsSelect->getResult();
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT * FROM raca_pet
+                                    WHERE tipo_pet = :tipo_pet", "tipo_pet={$tipo_pet}");
 
+        return $stsSelect->getResult();
     }
 
 
@@ -116,11 +144,31 @@ class StsSobreCliente
      */
     public function alterUser(array $data): string|null
     {
-        $stsUpdate = new \Sts\Models\helpers\StsUpdate();
-        $stsUpdate->exeAlter('usuario', $data, 'idusuario', $_SESSION['idusuario']);
-        $this->resultAlter = $stsUpdate->getResult();
+        ;
 
-        return $this->resultAlter;
+        if (!empty($resul)) {
+            return null;
+        }  else {
+            $stsUpdate = new \Sts\Models\helpers\StsUpdate();
+            $stsUpdate->exeAlter('usuario', $data, 'idusuario', $_SESSION['idusuario']);
+            $this->resultAlter = $stsUpdate->getResult();
+
+            return $this->resultAlter;
+        }
+
+        
+    }
+
+
+    public function checkEmail()
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT idusuario 
+                            FROM usuario
+                            WHERE cpf = :cpf", "cpf={$data['cpf']}");
+        $result = $stsSelect->getResult();
+        
+        return $result;
     }
 
 
@@ -161,6 +209,7 @@ class StsSobreCliente
 
         return $resultAlter;
     }   
+
 
 
     

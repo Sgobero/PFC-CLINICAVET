@@ -13,39 +13,51 @@ class Login{
 
 
     /**     function index()
+     * Chama a function padão da classe
+     */
+    public function index(): void
+    {
+        $this->usuario();
+    }
+
+
+
+    /**     function pages()
+     * Retorna as functions que são publicas nessa controller
+     */
+    public function pages(): array
+    {  
+        return $array = ['index','usuario'];
+    }
+
+
+
+    /**     function index()
      * Método chamado pela UrlController;
      * Primeiro pode receber informações do formulario login, se receber
      *      chama o método da classe createLogin();
      * Responsável por carregar a tela login por meio de um OBJ LoadView.
      */
-    public function index(): void
+    public function usuario(): void
     {
-        if(!isset($_SESSION)){
-            session_start();
+        $this->checkSession();
+
+        $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (isset($this->dataForm['Login'])) { // se respondeu o formulário
+            unset($this->dataForm['Login']);
+            $this->createLogin();
+        } else { // carrega a view
+            $loadView = new \Core\LoadView('sts/Views/login', null, null);
+            $loadView->loadView();
         }
 
-        if(isset($_SESSION['idusuario'])) // Erro 002
-        {
-            $header = URL . "Erro?case=2"; 
-            header("Location: {$header}");
-        } else { // se não estiver logado
-            $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
-            if (isset($this->dataForm['AddContMsg'])) { // se respondeu o formulário
-                unset($this->dataForm['AddContMsg']);
-                $this->createLogin();
-            } else { // carrega a view
-                $loadView = new \Core\LoadView('sts/Views/login', null, null);
-                $loadView->loadView();
-            }
-
-        }        
     }
 
     
 
     /**     function createLogin()
-     * Chamado pelo método da classe index();
+     * Chamado pelo método da classe usuario();
      * Responsavel por verificar se o email e senha do cliente existe no
      *      banco de dados. Faz isso por meio de um OBJ StsLogin;
      * A senha está criptografada, por isso a função password_verify()
@@ -56,8 +68,6 @@ class Login{
     {
         $this->stsLogin = new \Sts\Models\StsLogin();
         $result = $this->stsLogin->login($this->dataForm);
-
-        var_dump($result);
 
         if(!empty($result))
         {
@@ -104,8 +114,30 @@ class Login{
         $_SESSION['nome_usuario'] = $nome_usuario; 
         $_SESSION['tipo_usuario'] = $tipo_usuario; // cliente ou mantenedor
         $_SESSION['foto_usuario'] = $foto_usuario; // foto do usuário
-        $_SESSION['idendereco'] = $endereco; //enderecoUsuario
+        
+        if (!empty($endereco)) 
+            $_SESSION['idendereco'] = $endereco; //enderecoUsuario
+        if (!empty ($foto_usuario)) 
+            $_SESSION['foto_usuario'] = $foto_usuario; //fotoUsuario
 
         $_SESSION['msg'] = "Login realizado com sucesso";
+    }
+
+
+
+    /**     function checkSession()
+     * Undocumented function
+     */
+    public function checkSession(): void
+    {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if(isset($_SESSION['idusuario'])) // Erro 002
+        {
+            $header = URL . "Erro?case=2"; 
+            header("Location: {$header}");
+        } 
     }
 }

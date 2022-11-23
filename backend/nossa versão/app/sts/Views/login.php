@@ -30,7 +30,7 @@
         <label>SENHA: </label>
         <input name="senha_usuario" type="text" placeholder="senha"> <br> <br>
 
-        <input name="AddContMsg" type="submit" value="Enviar" >
+        <input name="Login" type="submit" value="Enviar" >
 
     </form>
 

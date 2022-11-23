@@ -54,7 +54,7 @@
             <input type="hidden" name="usuario" value="<?php echo $_SESSION['idusuario']; ?>">
 
             <label>Raça:</label> <br>
-            <select name="raca" size="10">
+            <select name="idraca" size="10">
                 <?php 
                 
                     for($y = 0; $y < count($this->data); $y++){

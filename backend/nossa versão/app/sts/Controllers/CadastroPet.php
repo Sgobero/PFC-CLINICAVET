@@ -90,6 +90,17 @@ class CadastroPet
         $loadView = new \Core\LoadView('sts/Views/cadastroPet', $this->data, $this->whichForm);
         $loadView->loadView();
     }
+
+
+
+    /**     function pages()
+     * Function que todas as controller tem
+     * Retorna as functions que são publicas nessa controller
+     */
+    public function pages(): array
+    {  
+        return $array = ['index'];
+    }
 }
 
 ?>
