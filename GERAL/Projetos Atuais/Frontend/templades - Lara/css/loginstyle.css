@@ -7,6 +7,7 @@
 	text-decoration: none;
 }
 
+
 .main-container{
     display: flex;
     justify-content: center;
@@ -22,7 +23,7 @@
     background-color: white;
     border-radius: 20px;
     width: 860px;
-    height: 55%;
+    height: 78%;
     position: relative;
 }
 
@@ -61,13 +62,13 @@
     font-family: 'Righteous', cursive;
     font-size: 33px;
     color: white;
-    padding-top: 10px;
+    padding-top: 125px;
 }
 
 .primeiracoluna .subtítulo{
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
-    color: white;
+    color: white;   
     padding: 20px;
     padding-bottom: 30px;
 }
@@ -75,13 +76,14 @@
 .primeiracoluna .botao{
     font-family: 'Righteous', cursive;
 	font-size: 17px;
-	color: black;
-	background-color: white;
+	color: rgb(0, 0, 0);
+	background-color: #ffffff;
 	border: none;
     padding: 6px 9px;
     width: 125px;
 	border-radius: 5px;
     cursor: pointer;
+    transition: 3s;
 }
 
 .main-container .segundacoluna{
@@ -93,9 +95,9 @@
 
 .segundacoluna .título{
     font-family: 'Righteous', cursive;
-    font-size: 33px;
+    font-size: 25px;
     color: black;
-    padding-top: 10px;
+    padding-top: 25px;
 }
 
 .main-container .form-login{
@@ -114,6 +116,7 @@
     font-size: 15px;
     color: black;
     margin: 8px;
+    width: 20vw;
 }
 
 .segundacoluna .botao{
@@ -128,6 +131,7 @@
     width: 120px;
     align-self: center;
     margin: 5px;
+    
 }
 
 .segundacoluna .opções{
@@ -170,43 +174,8 @@
     padding: 20px;
 }
 
-/*LOGIN ADMINISTRAÇÃO*/ 
-.main-container .conteudo-principal{
-   display: flex;
-   flex-direction: column;
-}
 
-.main-container .conteudo-principal{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: white;
-    border-radius: 20px;
-    width: 860px;
-    height: 55%;
-    position: relative;
-}
-
-.conteudo-principal .título{
-    font-family: 'Righteous', cursive;
-    font-size: 33px;
-    color: black;
-    padding-top: 10px;
-}
-
-.form-login .botao-adm{
-    font-family: 'Righteous', cursive;
-	font-size: 17px;
-	color: white;
-	background-color: #FFB300;
-	border: none;
-	padding: 8px 10px;
-	border-radius: 5px;
-    cursor: pointer;
-    width: 120px;
-    align-self: center;
-    margin: 5px;
-}
+/***************************/
 
 
 /*POSICIONANDO DAS TELAS*/
@@ -228,13 +197,13 @@
     border-bottom-right-radius: 15px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    animation: slidein 3s; 
+    animation: slidein .1s; 
 
     z-index: 12;
 }
 
 .sign-up-js .conteudo::before{
-    animation: slideout 3s;
+    animation: slideout .1s;
 
     z-index: 12;
 }
@@ -255,13 +224,13 @@
 .sign-in-js .conteudo01 .segundacoluna{
     z-index: -1;
     position: relative;
-    animation: deslocamentoEsq 3s;
+    animation: deslocamentoEsq .1s;
 }
 
 .sign-up-js .conteudo02 .segundacoluna{
     z-index: -1;
     position: relative;
-    animation: deslocamentoDir 3s;
+    animation: deslocamentoDir 0.1s;
 }
 
 /*ANIMAÇÃO CSS PARA O CONTEÚDO*/
