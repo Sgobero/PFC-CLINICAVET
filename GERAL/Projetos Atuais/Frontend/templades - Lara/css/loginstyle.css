@@ -22,8 +22,8 @@
     align-items: center;
     background-color: white;
     border-radius: 20px;
-    width: 860px;
-    height: 78%;
+    width: 65vw;
+    height: 80vh;
     position: relative;
 }
 
@@ -108,7 +108,7 @@
 }
 
 .form-login input{
-    height: 45px;
+    height: 7vh;
     border: none;
     background: none;
     outline: none;
