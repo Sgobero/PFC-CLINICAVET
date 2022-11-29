@@ -68,6 +68,11 @@ button:hover{
 	cursor: pointer;
 }
 
+.carousel-item .d-block{
+	height: 20px;
+	width: 20px;
+}
+
 /* ESTILIZAÇÃO NO ICONE DE LOGIN */ 
 
 .conteudo-principal{
