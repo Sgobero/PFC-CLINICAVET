@@ -99,6 +99,7 @@ button:hover{
 	font-family: 'Righteous', cursive;
 	font-size: 50px;
 	text-align: center;
+	margin-top: 15px;
 }
 
 .conteudo-principal .subtítulo{
@@ -252,5 +253,6 @@ button:hover{
 }
 
 .calendario .img-dog{
-	
+	position: absolute;
+	left: 68%;
 }
