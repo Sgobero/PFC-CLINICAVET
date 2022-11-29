@@ -68,10 +68,7 @@ button:hover{
 	cursor: pointer;
 }
 
-.carousel-item .d-block{
-	height: 20px;
-	width: 20px;
-}
+
 
 /* ESTILIZAÇÃO NO ICONE DE LOGIN */ 
 
@@ -239,3 +236,21 @@ button:hover{
 /*ESTILIZAÇÃO PÁGINA ÁREA DOS CLIENTES - USUÁRIO*/ 
 
 
+/*ESTILIZAÇÃO PÁGINA AGENDAMENTO - USUÁRIO*/ 
+.conteudo-principal .sub-título{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	text-align: center;
+}
+
+.calendario .info{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 17px;
+	text-decoration: underline;
+	margin-top: 50px;
+	margin-left: 30px;
+}
+
+.calendario .img-dog{
+	
+}

@@ -325,3 +325,32 @@
         width: 40%;
     }
 }
+
+/*Login Adm*/ 
+.main-container .conteudo-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.conteudo-principal .título{
+       font-family: 'Righteous', cursive;
+    font-size: 33px;
+    color: black;
+    padding-top: 125px;
+}
+
+.conteudo-principal .botao-adm{
+    font-family: 'Righteous', cursive;
+	font-size: 17px;
+	color: white;
+	background-color: #FFB300;
+	border: none;
+	padding: 8px 10px;
+	border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+    align-self: center;
+    margin: 5px;
+}
+
