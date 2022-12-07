@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projeto de Conclusão de Curso - Site designado para uma clínica veterinária" >
     <script src="https://kit.fontawesome.com/7f492723e7.js" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" type="text/css" href="../css/styleNavBar.css"> 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <title>Clínica Veterinária</title>
 </head>
@@ -23,7 +24,18 @@
             <a href="#"> <button class="botao">AGENDE AQUI!</button> </a> 
 
             <!--PARTE DE ICONE E LOGIN-->
-            <a href="#conta-user" class="login-user"> <i class="fa fa-user-circle-o fa-2x"  aria-hidden="true"></i></a>   
+            <nav class="nav__bar">
+                <div class="mobile-menu">
+                  <div class="icone"> <i class="fa fa-user-circle-o fa-2x"  aria-hidden="true"></i> </div>
+                </div>
+                <ul class="nav-list">
+                    
+                        <li><a href="#" class="item-nav">Ver perfil</a></li>
+                        <li><a href="#" class="item-nav">Sair da conta</a></li>            
+                </ul>
+    
+            </nav> <!-- fim navbar -->
+          
         </nav>
     </header>
 
@@ -35,11 +47,11 @@
             <img src="../img/icone_vacina.png" alt="icone vacina" class="img-serviços">
 
             <div class="procedimento">
-                <h3 class="título-serviço"> VACINAÇÃO </h3>
+                <h3 class="título-serviço">VACINAÇÃO </h3>
 
                 <p class="info">R$ 65 <br> 20 min.</p>
 
-                <!--BOTÕES DE EDITAR E EXCLUIR-->
+                <a href="agendamento.html"> <button class="agendar">AGENDAR</button></a>
             </div>
 
         </section>
@@ -54,7 +66,7 @@
 
                 <p class="info">R$ 250 <br> 2h.</p>
 
-                <!--BOTÕES DE EDITAR E EXCLUIR-->
+                <a href="agendamento.html"> <button class="agendar">AGENDAR</button></a>
             </div>
 
         </section>
@@ -69,7 +81,7 @@
 
                 <p class="info">R$ 100 <br> 1h30min. </p>
 
-                <!--BOTÕES DE EDITAR E EXCLUIR-->
+                <a href="agendamento.html"> <button class="agendar">AGENDAR</button></a>
             </div>
 
         </section>
@@ -84,7 +96,7 @@
 
                 <p class="info">R$ 80 <br> 30min. </p>
 
-                <!--BOTÕES DE EDITAR E EXCLUIR-->
+                <a href="agendamento.html"> <button class="agendar">AGENDAR</button></a>
             </div>
 
         </section>
@@ -99,13 +111,19 @@
 
                 <p class="info">R$ 500 <br> 3h. </p>
 
-                <!--BOTÕES DE EDITAR E EXCLUIR-->
+                <a href="agendamento.html"> <button class="agendar">AGENDAR</button></a>
             </div>
 
         </section>
 
-                <!--BOTÃO DE ADICIONAR-->
+        <hr class="linha"> <!-- LINHA PARA DIVIDIR CONTEÚDO -->
+        <div class="addServicos">
+            <a href="#addservicos"> <button class="addServicosBotao">ADICIONAR SERVIÇOS</button></a>
+    
+        </div>
     </main>
     
+
+    <script src="../js/navbar.js"> </script>
 </body>
 </html>
