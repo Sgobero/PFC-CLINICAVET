@@ -186,6 +186,7 @@ button:hover{
 .linha{
 	border-top: 0.5px solid black;
 	margin-bottom: 30px;
+
 }
 .conteudo-serviços{
 	display: flex;
@@ -402,4 +403,117 @@ button:hover{
 
 #radio4:checked ~ .navigation-auto .auto-btn4{
 	background-color: rgb(255, 255, 255);
+}
+
+/*ESTILIZACAO GERENCIAMENTO ADM*/
+
+.conteudo-serviçosadm{
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	gap: 58px;
+	height: 9vh;
+
+}
+ 
+@media (max-width: 999px){
+	.conteudo-serviçosadm{
+		overflow: scroll;
+	}
+}
+
+.btn-meio{
+	align-items: center;
+}
+
+.conteudo-serviçosadm .img-serviços{
+	display: flex;
+	align-self: flex-start;
+	height: 50px; 
+
+}
+
+.conteudo-serviçosadm .procedimentoadm{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 20px;
+	padding-bottom: 10px;
+	flex-basis: 65vw;
+
+}
+
+.procedimentoadm .título-serviço{
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+	flex-basis: 30vw;
+
+
+}
+
+.procedimentoadm .info{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	text-align: center;
+	flex-basis: 10vw;
+
+}
+.procedimentoadm .data{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	text-align: center;
+	flex-basis: 20vw;
+
+
+
+}
+
+.procedimentoadm .agendar{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	text-align: center;
+	color: black;
+	background-color: white;
+	border:solid 5px;
+	border-color: #FFB300;
+	height: 50px;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+}
+
+.tipoServico{
+	flex-basis: 10vw;
+
+}
+.icone-check{
+	color: rgb(27, 223, 21);
+	font-size: 2rem;
+	text-decoration: none;
+}
+
+a,
+a:hover,
+a:active,
+a:link,
+a:visited{
+	text-decoration: none;
+}
+
+.icone-cancel{
+	color: rgb(223, 21, 21);
+	font-size: 2rem;
+
+}
+
+.btn-maisinfo{
+	background-color: rgb(184, 118, 245);
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 20px;
+	padding: 5px 5px;
+	align-items: center;
+	
 }
