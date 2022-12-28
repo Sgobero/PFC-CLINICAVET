@@ -517,3 +517,50 @@ a:visited{
 	align-items: center;
 	
 }
+
+/*Telas de Edição de Dados: Cliente, Endereço e Pet */ 
+#edição_dados{
+	background-color: #ECEFF1;
+	font-size: 100%;
+
+}
+
+.conteudo-principal .form-edição{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+	margin-top: 30px;
+}
+
+.form-edição input{
+    height: 7vh;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    font-size: 15px;
+    color: black;
+    margin: 8px;
+    width: 20vw;
+}
+
+.conteudo-principal .botao{
+    font-family: 'Righteous', cursive;
+	font-size: 17px;
+	color: white;
+	background-color: #A487D5;
+	border: none;
+	padding: 8px 10px;
+	border-radius: 5px;
+    cursor: pointer;
+    width: 165px;
+    align-self: center;
+    margin: 6px;  
+}
+
+.conteudo-principal .img-donopet{
+	position: absolute;
+	left: 68%;
+	top: 5%;
+}
