@@ -35,9 +35,11 @@ class StsUpdate extends StsConn
 
     /**     function exeAlter()
      * Método chamado pelas Models
-     * Pega a tabela e os dados enviado pela model e insere dentro de 
-     *      variaveis da classe
-     * Depois chama o método exeReplaceValues
+     * Pega a tabela e os dados enviado pela model e insere dentro de variaveis da classe
+     *      - $table: tabela em que se vai fazer alter
+     *      - $data: chaves da tabela junto com dados a serem mudados
+     *      - $where: chave da tabela em que se vai fazer a condição where
+     *      - $parseString: valor do where
      */
     public function exeAlter(string $table, array $data, string|null $where, string|null $parseString): void
     {
@@ -70,15 +72,17 @@ class StsUpdate extends StsConn
         $updateValues = rtrim($updateValues, ", ");
 
         //-------------------------------------------------------------------------------
-
+        
         $this->w = $this->where . " = :" . $this->where;
 
-        $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->w}"; 
-        echo $this->query;
+        $this->query = "UPDATE {$this->table} SET {$updateValues} WHERE {$this->w}";         
 
         if(!empty($this->parseString)){
             $this->addParseString();
         }
+        //var_dump($this->data);
+
+        //echo $this->query;
 
         $this->exeInstruction();
     }

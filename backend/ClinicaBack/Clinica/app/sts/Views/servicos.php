@@ -2,9 +2,6 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!isset($_SESSION)){
-        session_start();
-    }
     if(isset($_SESSION['msg'])){
         echo "Mensagem: " . $_SESSION['msg'] . "<br>";
         unset($_SESSION['msg']);    
@@ -24,7 +21,7 @@
 
     <?php
 
-        echo "Tela servicos html" . "<br/>" .  "<br/>";
+        echo "Tela servicos html <br> <br> <hr> <br>";
         
         for($x = 0; $x < count($this->data['tipo_consulta']); $x++)
         {
@@ -34,7 +31,7 @@
             echo "Id do tipo da consulta:" . "$idtipo_consulta" . "<br/>";
             echo "Nome da consulta:" . "$nome_consulta" . "<br/>"; 
             echo "Valor da consulta:" . "$valor_consulta" ."<br/>"; 
-            echo "<br/>";
+            echo "<br> <hr> <br>";
         }       
         
     ?>
