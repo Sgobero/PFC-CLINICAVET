@@ -132,11 +132,17 @@ button:hover {
 	flex-direction: column;
 }
 
-#corpoclinico {
+.corpoclinico {
 	display: flex;
 	align-items: flex-start;
 	/* ALGUMA COISA PARA DEIXAR O TEXTO PARA A ESQUERDA*/
 	flex-direction: column;
+}
+
+.corpoclinico .descricao{
+	text-align: left;
+	
+
 }
 
 .rodape-principal {
