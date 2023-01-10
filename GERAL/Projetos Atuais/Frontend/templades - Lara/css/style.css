@@ -26,6 +26,7 @@ body {
 	justify-content: space-around;
 	padding-top: 24px;
 	white-space: nowrap;
+	background-color: #FFF;
 }
 
 .cabecalho-principal .img {
@@ -187,6 +188,13 @@ button:hover {
 .linha {
 	border-top: 0.5px solid black;
 	margin-bottom: 30px;
+
+}
+
+/*ESTILIZAÇÃO PÁGINA DE SERVIÇOS - USUÁRIO*/
+.linha2 {
+	border-top: 0.5px solid black;
+	margin-bottom: 10px;
 
 }
 
@@ -554,15 +562,15 @@ button:hover {
 }
 
 .areaCliente {
-	gap: 10vw;
+	gap: 3vw;
 	display: flex;
 
 }
 
 .imgSCliente {
 	margin-top: 10px;
-	width: 7vw;
-	height: 10vh;
+	width: 8vw;
+	height: 12vh;
 }
 
 .iconeEdita {
@@ -615,13 +623,30 @@ a:visited{
 }
 .btn-addPet {
 	font-family: 'Righteous', cursive;
+	background-color: rgb(35, 219, 90);
+	border: none;
+	border-radius: 17px;
+	color: #fff;
+	font-size: 20px;
+	padding: 5px 8px;
+	align-items: center;
+}
+
+.btn-alterarDados {
+	font-family: 'Righteous', cursive;
 	background-color: rgb(184, 118, 245);
 	border: none;
 	border-radius: 5px;
 	color: #fff;
 	font-size: 20px;
 	padding: 5px 5px;
-	align-items: center;
+	align-items: left;
+	margin-top: 3vh;
+}
+
+.alinhaPadding{
+	padding-left: 20vw;
+
 }
 
 .conteudo-principal .btn-areaCliente {
@@ -637,6 +662,15 @@ a:visited{
 	text-decoration: none;
 	margin: 6px;
 
+}
+
+.fundoBody{
+	background-color: rgb(247, 247, 247);
+}
+
+.centraliza{
+	width: 90vw;
+	padding-left: 10vw;
 }
 
 .center{
