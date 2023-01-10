@@ -206,7 +206,7 @@ button:hover {
 
 .conteudo-serviços .img-serviços {
 	display: flex;
-	align-self: flex-start;
+	align-self: center;
 	height: 50px;
 
 }
@@ -330,7 +330,7 @@ button:hover {
 
 }
 
-.slide img {
+#img-corpo {
 	width: 250px;
 	height: 250px;
 	border-radius: 10px;
