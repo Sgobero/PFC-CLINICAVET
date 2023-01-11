@@ -640,7 +640,7 @@ a:visited{
 
 .btn-alterarDados {
 	font-family: 'Righteous', cursive;
-	background-color: rgb(184, 118, 245);
+	background-color:#A487D5;
 	border: none;
 	border-radius: 5px;
 	color: #fff;
@@ -657,7 +657,7 @@ a:visited{
 
 .conteudo-principal .btn-areaCliente {
 	font-family: 'Righteous', cursive;
-	background-color: rgb(184, 118, 245);
+	background-color: #A487D5;
 	border: none;
 	font-style: none;
 	border-radius: 5px;
@@ -667,8 +667,8 @@ a:visited{
 	align-items: center;
 	text-decoration: none;
 	margin: 6px;
-
 }
+
 
 .fundoBody{
 	background-color: rgb(247, 247, 247);
@@ -685,6 +685,8 @@ a:visited{
 .center2{
 text-align: center;
 }
+
+
 
 .conteudo-principal .botao {
 	font-family: 'Righteous', cursive;
