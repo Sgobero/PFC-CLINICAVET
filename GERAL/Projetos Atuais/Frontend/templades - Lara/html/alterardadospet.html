@@ -18,14 +18,22 @@
         <p class="subtítulo">atualize os dados do seu pet abaixo</p>
 
         <!--formulário para alterar dados-->
-        <form class="form-edição">
+        <form class="form-edição" method="post" action="">
+
             <input type="text" placeholder="Nome">
 
-            <input type="number" placeholder="Idade">
+            <label class="dadospet">Data de Nascimento:</label>
+            <input type="date" >
 
-            <input type="text" placeholder="Sexo">
+            <label class="dadospet">Sexo:</label> <br>
+            <input type="radio" name="sexo" value="feminino" class="inputsexo"> <label> Fêmea </label>
+            <input type="radio" name="sexo" value="masculino" class="inputsexo"> <label> Macho </label>
 
-            <input type="text" placeholder="Raça">
+            <label class="dadospet"> Raça: </label>
+            <select name="idraca" size="10">
+
+                <!--php-->
+            </select>
 
 
             <button class="botao"> salvar alterações</button>

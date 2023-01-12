@@ -567,6 +567,21 @@ button:hover {
 
 }
 
+.conteudo-principal .dadospet{
+	display: flex;
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bolder;
+
+}
+
+.cabecalho-principal .inputsexo{
+	width: 20px;;
+	height: 25px; 
+}
+
+
+
 .areaCliente {
 	gap: 3vw;
 	display: flex;
