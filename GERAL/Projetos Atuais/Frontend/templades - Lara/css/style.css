@@ -729,3 +729,73 @@ text-align: center;
 	left: 70%;
 	top: 5%;
 }
+
+/* ESTILIZAÇÃO TELA DE RESUMO DE AGENDAMENTO*/ 
+
+.conteudo-principal .linha-agendamento{
+	display: flex;
+	align-items: baseline;
+	column-gap: 600px;
+}
+
+.info-principal {
+	display: flex;
+	justify-content: flex-start;	
+	flex-direction: column;
+	padding-top: 40px;
+	padding-inline-start: 70px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+}
+
+select{
+	background-color: white;
+	border: none;
+}
+ 
+
+
+.info-agendamento .título-agen{
+	display: flex;
+	justify-content: flex-end;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-decoration: underline;
+}
+
+.info-descrição{
+	text-align: center;
+}
+
+.info-descrição .título-desc{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.botão-confi{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	color: white;
+	background-color: #7DE04A;
+	border: none;
+	padding: 8px 10px;
+    cursor: pointer;
+    width: 130px;
+    align-self: center;
+	margin: 10px;
+}
+
+.botão-canc{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	color: white;
+	background-color: #FF0000;
+	border: none;
+	padding: 8px 10px;
+    cursor: pointer;
+    width: 130px;
+    align-self: center;
+	margin: 10px;
+}
