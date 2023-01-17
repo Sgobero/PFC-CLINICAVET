@@ -736,7 +736,7 @@ text-align: center;
 .conteudo-principal .linha-agendamento{
 	display: flex;
 	align-items: baseline;
-	column-gap: 600px;
+	column-gap: 750px;
 }
 
 .info-principal {
@@ -744,9 +744,17 @@ text-align: center;
 	justify-content: flex-start;	
 	flex-direction: column;
 	padding-top: 40px;
-	padding-inline-start: 70px;
+	padding-inline-start: 80px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 25px;
+}
+
+.info-descrição .petescolhido{
+	display: flex;
+	align-items: flex-start;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	margin-left: 80px;
 }
 
 select{
@@ -754,7 +762,6 @@ select{
 	border: none;
 }
  
-
 
 .info-agendamento .título-agen{
 	display: flex;
