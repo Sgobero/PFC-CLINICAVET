@@ -10,8 +10,15 @@ namespace Core;
             define('URL', 'http://localhost/Clinica/');
             define('URLADM', 'http://localhost/Clinica/Adm/');
 
-            define('IMG', 'app\sts\Helpers\imagens/');
-            define('IMGERRO', 'app\sts\Helpers\imagens\Sem_Foto.png');
+            define('IMG', 'app/sts/assets/imagens/');
+            define('IMGCLINICA', 'app/sts/assets/imagens_clinica/'); 
+            define('IMGERRO', 'app\sts\assets\imagens/Sem_Foto.png');
+
+            define('IMGADMSERVICOS', 'app/adms/assets/imagens_servicos/'); 
+
+            define('CSS', 'http://localhost/Clinica/app/sts/assets/css/');
+            define('JS', 'app/sts/assets/js/');
+
 
             define('CONTROLLER', 'Home');
             define('CONTROLLERERRO', 'Erro');
