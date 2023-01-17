@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto de Conclusao de Curso - Site designado para uma clínica veterinária.">
+    <link rel="stylesheet" type="text/css" href="../css/style.css"> 
+
+    <title>Atualize seus dados</title>
+</head>
+
+<body id="edição_dados">
+
+    <!--CONTEÚDO PRINCIPAL-->
+    <main class="conteudo-principal4">
+        <h1 class="título">Atualizar Cadastro</h1>
+        <p class="subtítulo">atualize os dados do seu pet abaixo</p>
+
+
+        <form method="post" class="form-edição4">
+
+            <div class="center"><label>Nome: </label></div>
+            <input type="text" name="nome_pet" placeholder="Nome" class="tamanhoForm"> 
+            <br><br>
+            <div class="center"><label>Data de Nascimento: </label></div>
+            <input type="date" name="idade_pet" class="tamanhoForm"> 
+                <br><br>
+             
+                <label> Sexo: </label> 
+                <br>
+                <input type="checkbox"> Fêmea <br>
+                <input type="checkbox"> Macho
+
+                <br><br>
+        
+                <label>Raça:</label> <br>
+                <select class="tamanhoForm" name="idraca" size="1" placeholder="Raça:"> Raça
+                </select> 
+    
+            <br> <br>
+            <p class="center"><input class="botao" name="CreatePet" type="submit" value="salvar alterações" > </p>
+
+
+        </form>
+
+
+
+        <img src="../img/img03.png" class="img-pet" alt="imagem de cão"> 
+
+    </main>    
+</body>
+</html>
