@@ -2,6 +2,11 @@
 
 namespace App\Adms\Controllers;
 
+if (!defined('D7E4T2K6F4')) {
+    $header = "http://localhost/Clinica/Erro?case=404"; // Erro 404
+    header("Location: {$header}");
+}
+
 class Login
 {
 
@@ -50,8 +55,8 @@ class Login
                 var_dump($this->dataForm);
                 $this->createLogin();
             } else { // carrega a view
-                $loadView = new \Core\LoadView('adms/Views/login', null, null);
-                $loadView->loadView();
+                $loadView = new \Core\LoadView('adms/Views/bodys/login/login', null, null);
+                $loadView->loadViewAdm();
             }
         }
         

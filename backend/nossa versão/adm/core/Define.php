@@ -11,9 +11,19 @@ abstract class Define
         define('URL', 'http://localhost/Clinica/');
         define('URLADM', 'http://localhost/Clinica/adm/');
 
-        define('IMGADM', '..\app\sts\Helpers\imagens/');
-        define('IMGADMERRO', '..\app\sts\Helpers\imagens\Sem_Foto.png');
+        define('CSSADM', 'http://localhost/Clinica/adm/app/adms/assets/css/');
+        define('JSADM', 'http://localhost/Clinica/adm/app/adms/assets/js/');
 
+
+        // foto de perfil /foto dos pets / carteiras dos pets -> dos usuários
+        define('IMGCLIENTEADM', 'app/sts/assets/imagens/'); //../app/sts/assets/imagens/
+        define('IMGCLIENTEERRO', 'app\sts\assets\imagens\Sem_Foto.png');
+        // ------------------------------------------------------------------
+
+        define('IMGADMSER', 'app/adms/assets/imagens_servicos/');
+        define('IMGADMCLINICA', 'app/adms/assets/imagens_clinica/');
+
+        
         define('CONTROLLER', 'Login');
         define('METODO', 'index');
         define('CONTROLLERERRO', 'Login');

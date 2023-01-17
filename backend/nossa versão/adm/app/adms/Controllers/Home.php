@@ -2,6 +2,11 @@
 
 namespace App\Adms\Controllers;
 
+if (!defined('D7E4T2K6F4')) {
+    $header = "http://localhost/Clinica/Erro?case=404"; // Erro 404
+    header("Location: {$header}");
+}
+
 include_once 'app/adms/Controllers/helpers/protect.php';
 
 class Home{
@@ -21,8 +26,8 @@ class Home{
             session_destroy();
         }
         
-        $loadView = new \Core\LoadView('adms/Views/home', null, null);
-        $loadView->loadView();
+        $loadView = new \Core\LoadView('adms/Views/bodys/home/home', null, null);
+        $loadView->loadViewAdm();
     }
 
 }
