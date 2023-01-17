@@ -24,23 +24,51 @@ class LoadView
             include 'app/' . $this->nameView . '.php';
 
         } else {
-            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
+            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador 1" . EMAILADM);
         }
     }
 
 
-    public function loadview2()
+    public function loadView_header($header)
     {
         if (file_exists('app/' . $this->nameView . '.php')){
             
-            include 'app/sts/views/helpers/header.php'; 
+            include 'app\sts\Views\headers/' . $header . '.php'; 
+            include 'app\sts\Views\helpers\aviso.php';
+            include 'app\sts\Views\helpers\cabecalho.php';
             include 'app/' . $this->nameView . '.php';
-            include 'app/sts/views/helpers/footer.php';
+            include 'app/sts/views/footer.php';
+            include 'app\sts\Views\helpers\fastTravel.php';
 
         } else {
-            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador " . EMAILADM);
+            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador 2" . EMAILADM);
         }
     }
+
+    public function loadView_header2()
+    {
+        if (file_exists('app/' . $this->nameView . '.php')){
+            
+            include 'app\sts\Views\headers/padrao.php'; 
+            include 'app\sts\Views\helpers\aviso.php';
+            include 'app/' . $this->nameView . '.php';
+            include 'app/sts/views/footer.php';
+            include 'app\sts\Views\helpers\fastTravel.php';
+
+        } else {
+            die("Erro: Por favor tente novamente. Caso o problema persista, entre em contato o administrador 3" . EMAILADM);
+        }
+    }
+
+
+    public function loadView_header3($header)
+    {
+        include 'app\sts\Views\headers/' . $header . '.php'; 
+        include 'app\sts\Views\helpers\aviso.php';
+        include 'app/' . $this->nameView . '.php';
+        include 'app/sts/views/footer.php';
+    } 
+
 }
 
 ?>

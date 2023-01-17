@@ -2,6 +2,11 @@
 
 namespace Sts\Controllers;
 
+if (!defined('D7E4T2K6F4')) {
+    $header = "http://localhost/Clinica/Erro?case=404"; // Erro 404
+    header("Location: {$header}");
+}
+
 class Home{
 
     public function index()
@@ -18,8 +23,8 @@ class Home{
             session_destroy();
         }
         
-        $loadView = new \Core\LoadView('sts/Views/home', null, null);
-        $loadView->loadView();
+        $loadView = new \Core\LoadView('sts/Views/bodys/home/home', null, null);
+        $loadView->loadView_header('index');
     }
 
 

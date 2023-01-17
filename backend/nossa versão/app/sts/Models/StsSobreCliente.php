@@ -22,7 +22,7 @@ class StsSobreCliente
     public function userData(): array|null
     {
         $stsSelect = new \Sts\Models\helpers\StsSelect();
-        $stsSelect->fullRead("SELECT nome_usuario, cpf, rg, email, data_nascimento 
+        $stsSelect->fullRead("SELECT nome_usuario, cpf, rg, email, data_nascimento, foto_usuario 
                                     FROM usuario
                                     WHERE idusuario  = :idusuario", 
                                     "idusuario={$_SESSION['idusuario']}");
@@ -38,7 +38,7 @@ class StsSobreCliente
     public function userAdress(): array|null
     { 
         $stsSelect = new \Sts\Models\helpers\StsSelect();
-        $stsSelect->fullRead("SELECT e.cep, e.rua, e.numero_residencial, e.cidade, e.estado
+        $stsSelect->fullRead("SELECT e.cep, e.rua, e.numero_residencial, e.cidade, e.estado, e.bairro
                             FROM endereco as e
                             INNER JOIN usuario as u 
                             ON u.endereco = e.idendereco 
@@ -56,7 +56,7 @@ class StsSobreCliente
     public function userPet(): array|null
     {
         $stsSelect = new \Sts\Models\helpers\StsSelect();
-        $stsSelect->fullRead("SELECT p.idpet, p.nome_pet, p.idade_pet, p.sexo, r.raca, r.tipo_pet 
+        $stsSelect->fullRead("SELECT p.idpet, p.nome_pet, p.idade_pet, p.sexo, p.imagem_pet, p.imagem_carteira_pet, r.raca, r.tipo_pet 
                                     FROM pet AS p 
                                     INNER JOIN raca_pet AS r 
                                     ON p.idraca = r.idraca_pet 
@@ -67,6 +67,121 @@ class StsSobreCliente
         return $stsSelect->getResult();
     }
 
+
+
+    // ------------------- CONSULTAS -------------------
+
+
+
+    /**     function getBasicDataConsultas()
+     * Retorna o historico de agendamonto do  cliente logado
+     */
+    public function getBasicDataConsultas(): array|null
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead( "SELECT c.idconsulta, c.data_consulta, c.horario_consulta, c.sit_consulta,
+                                t.nome_consulta, t.tempo_medio, t.valor_consulta, t.foto_servico,
+                                p.nome_pet
+                                FROM consulta as c
+                                INNER JOIN tipo_consulta as t
+                                ON c.tipo_consulta = t.idtipo_consulta
+                                INNER JOIN pet as p
+                                ON c.pet = p.idpet
+                                INNER JOIN usuario AS u 
+                                ON p.usuario = u.idusuario
+                                WHERE u.idusuario = :idusuario
+                                ORDER BY c.data_consulta", "idusuario={$_SESSION['idusuario']}");
+        
+        return $stsSelect->getResult();
+    }
+
+
+
+    public function getDataConsultaEmAndamento(): array|null
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead( "SELECT c.sit_consulta, c.idconsulta, c.data_consulta, c.horario_consulta,
+                                t.nome_consulta, t.tempo_medio, t.valor_consulta, t.foto_servico,
+                                p.nome_pet
+                                FROM consulta as c
+                                INNER JOIN tipo_consulta as t
+                                ON c.tipo_consulta = t.idtipo_consulta
+                                INNER JOIN pet as p
+                                ON c.pet = p.idpet
+                                INNER JOIN usuario AS u 
+                                ON p.usuario = u.idusuario
+                                WHERE u.idusuario = :idusuario
+                                AND c.sit_consulta = 'A Confirmar'
+                                OR  c.sit_consulta = 'Confirmado'
+                                OR  c.sit_consulta = 'A Cancelar'
+                                ORDER BY c.data_consulta", "idusuario={$_SESSION['idusuario']}");
+        
+        return $stsSelect->getResult();
+    }
+
+
+
+    public function getDataConsultasFinalizadas(): array|null
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead( "SELECT c.sit_consulta, c.idconsulta, c.data_consulta, c.horario_consulta,
+                                t.nome_consulta, t.tempo_medio, t.valor_consulta, t.foto_servico,
+                                p.nome_pet
+                                FROM consulta as c
+                                INNER JOIN tipo_consulta as t
+                                ON c.tipo_consulta = t.idtipo_consulta
+                                INNER JOIN pet as p
+                                ON c.pet = p.idpet
+                                INNER JOIN usuario AS u 
+                                ON p.usuario = u.idusuario
+                                WHERE u.idusuario = :idusuario
+                                AND c.sit_consulta != 'A Confirmar'
+                                AND  c.sit_consulta != 'Confirmado'
+                                AND  c.sit_consulta != 'A Cancelar'
+                                ORDER BY c.data_consulta", "idusuario={$_SESSION['idusuario']}");
+        
+        return $stsSelect->getResult();
+    }
+
+
+
+    /**     function getFullDataConsulta($idConsulta)
+     * Retorna os dados de determinada consulta, juntamente com informações
+     *      da tabela pet, raca_pet, tipo_consulta e usuario
+     */
+    public function getFullDataConsulta($idConsulta): array
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT c.data_consulta, c.horario_consulta, c.descricao, c.sit_consulta, c.tipo_consulta,
+                                p.nome_pet, p.idade_pet, p.sexo,
+                                r.tipo_pet, r.raca,
+                                t.nome_consulta, t.descricao_consulta, t.tempo_medio,
+                                u.nome_usuario, u.email, foto_usuario
+                                FROM consulta as c
+                                INNER JOIN pet as p 
+                                ON c.pet = p.idpet
+                                INNER JOIN raca_pet AS r
+                                ON p.idraca = r.idraca_pet
+                                INNER JOIN tipo_consulta as t
+                                ON c.tipo_consulta = t.idtipo_consulta
+                                INNER JOIN usuario AS u 
+                                ON p.usuario = u.idusuario
+                                WHERE c.idconsulta = :idconsulta", "idconsulta={$idConsulta}");
+        $result = $stsSelect->getResult();
+
+        return $result;
+    }
+
+
+
+
+    // -------------------------------------------------
+
+
+
+    /**     function userPetById($idpet)
+     * Retorna dados de um pet específico do cliente pelo ID
+     */
     public function userPetById($idpet): array|null 
     {
         if ($this->verifyIdPetIsFromUser($idpet)) {
@@ -85,6 +200,10 @@ class StsSobreCliente
         
     }
 
+
+    /**     function verifyIdPetIsFromUser($idpet)
+     * Verifica se o id do pet pessado realmente pertence ao usuario logado
+     */
     public function verifyIdPetIsFromUser($idpet): bool
     {
         $stsSelect = new \Sts\Models\helpers\StsSelect();
@@ -103,6 +222,34 @@ class StsSobreCliente
         
     }
 
+
+    /**     function verifyIdConsultaIsFromUser($idConsulta)
+     * Verifica se a consulta passada pertence ao cliente que está logado
+     */
+    public function verifyIdConsultaIsFromUser($idConsulta): bool
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT u.idusuario
+                                    FROM usuario AS u
+                                    INNER JOIN pet AS p 
+                                    ON u.idusuario = p.usuario 
+                                    INNER JOIN consulta AS c
+                                    ON c.pet = p.idpet
+                                    WHERE c.idconsulta = :idconsulta", 
+                                    "idconsulta={$idConsulta}");
+        $result = $stsSelect->getResult();
+
+        if ($result[0]['idusuario'] == $_SESSION['idusuario']) 
+            return true;
+        else 
+            return false;
+    }
+
+
+    
+    /**     function verifyIfPetExist()
+     * Verifica se o cliente logado tem algum pet cadastrado
+     */
     public function verifyIfPetExist(): bool
     {
         $stsSelect = new \Sts\Models\helpers\StsSelect();
@@ -120,6 +267,10 @@ class StsSobreCliente
     }
 
 
+
+    /**     function getRaca($tipo_pet)
+     * Retorna todas as informações sobre a espécie e raça do pet do cliente
+     */
     public function getRaca($tipo_pet): array|null
     {
         $stsSelect = new \Sts\Models\helpers\StsSelect();
@@ -131,11 +282,6 @@ class StsSobreCliente
 
 
 
-    //----------------------- FUNÇÕES DE ALTERAR -----------------------
-    //Funções para alterar os registros no BD
-
-
-
     /**     function alterUser()
      * Function para alterar as informações do usuario
      * Ela é chamada pela controller SobreCliente
@@ -144,7 +290,6 @@ class StsSobreCliente
      */
     public function alterUser(array $data): string|null
     {
-        ;
 
         if (!empty($resul)) {
             return null;
@@ -157,18 +302,6 @@ class StsSobreCliente
         }
 
         
-    }
-
-
-    public function checkEmail()
-    {
-        $stsSelect = new \Sts\Models\helpers\StsSelect();
-        $stsSelect->fullRead("SELECT idusuario 
-                            FROM usuario
-                            WHERE cpf = :cpf", "cpf={$data['cpf']}");
-        $result = $stsSelect->getResult();
-        
-        return $result;
     }
 
 
@@ -226,6 +359,47 @@ class StsSobreCliente
         $resultDelete = $stsDelete-> getResult();
 
         return $resultDelete;
+    }
+
+
+
+    /**     function verifyRepeatedCpf($cpf)
+     * Verifica se o novo cpf passado pelo cliente já possui cadastro no BD
+     */
+    public function verifyRepeatedCpf($cpf): bool
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT idusuario 
+                            FROM usuario
+                            WHERE cpf = :cpf", "cpf={$cpf}");
+        $result = $stsSelect->getResult();
+        
+        if (empty($result))
+            return true;
+        else 
+            return false;
+    }
+
+
+
+    /**     function verifySameCpf()
+     * Verifica se o cpf passado é o mesmo que esta cadastrado na conta do cliente
+     * (Acontece quando o usuario faz alteração nos dados da conta mas não muda a parte 
+     *      do formulário referente ao CPF)
+     */
+    public function verifySameCpf($idusuario, $formCpf)
+    {
+        $stsSelect = new \Sts\Models\helpers\StsSelect();
+        $stsSelect->fullRead("SELECT cpf 
+                            FROM usuario
+                            WHERE idusuario = :idusuario", "idusuario={$idusuario}");
+        $result = $stsSelect->getResult();
+        $userCpf = $result[0]['cpf'];
+
+        if ($userCpf == $formCpf)
+            return true;
+        else 
+            return false;
     }
 }
 

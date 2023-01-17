@@ -18,7 +18,7 @@ class Erro{
         }
         
         switch ($this->case) {
-            case 0 :
+            case 0:
                 $this->data['numeroErro'] = "000";
                 $this->data['descricaoErro'] = "Página não encontrada";
                 $this->data['botao'] = "Home";
@@ -35,12 +35,6 @@ class Erro{
                 $this->data['descricaoErro'] =  "Você já está logado, para cadastrar ou logar com outra conta é necessario fazer logout";
                 $this->data['botao'] = "Home";
                 $this->data['descricaoBotao'] = "Ir para a HOME";
-                break;
-            case 3:
-                $this->data['numeroErro'] = "003";
-                $this->data['descricaoErro'] =  "Erro ao cadastrar novo pet, entre em contato com o ADM: " . EMAILADM;
-                $this->data['botao'] = "Cadastro-Pet";
-                $this->data['descricaoBotao'] = "Voltar para tela de Cadastro Pet";
                 break;
             case 4:
                 $this->data['numeroErro'] = "004";
@@ -66,12 +60,6 @@ class Erro{
                 $this->data['botao'] = "Login/Usuario";
                 $this->data['descricaoBotao'] = "Realizar Login";
                 break;
-            case 8:
-                $this->data['numeroErro'] = "008";
-                $this->data['descricaoErro']  = "Erro ao cadastrar endereço, entre em contato conosco no nosso email: " . EMAILADM;
-                $this->data['botao'] = "Cadastro/Endereco";
-                $this->data['descricaoBotao'] = "Voltar a tela de Cadastro";
-                break;
             case 9:
                 $this->data['numeroErro'] = "009";
                 $this->data['descricaoErro']  = "Pagina não encontrada";
@@ -81,7 +69,7 @@ class Erro{
             case 10:
                 $this->data['numeroErro'] = "010";
                 $this->data['descricaoErro']  = "Você não pode alterar os dados do endereço antes de cadastralo";
-                $this->data['botao'] = "Cadastro/Endereco";
+                $this->data['botao'] = "CadastroEndereco/Endereco";
                 $this->data['descricaoBotao'] = "Ir para a tela de Cadastro de Endereço";
                 break;
             case 11:
@@ -92,13 +80,13 @@ class Erro{
                 break;
             case 12:
                 $this->data['numeroErro'] = "012";
-                $this->data['descricaoErro']  = "Você não pode alterar um endereço sem antes realizar o login";
+                $this->data['descricaoErro']  = "Você não pode cadastrar um endereço sem antes realizar o login";
                 $this->data['botao'] = "Login/Usuario";
                 $this->data['descricaoBotao'] = "Ir para a tela de Login";
                 break;
             case 13:
                 $this->data['numeroErro'] = "013";
-                $this->data['descricaoErro']  = "Falha ao salvar foto de perfil, entre em contato conosco no nosso email: " . EMAILADM;
+                $this->data['descricaoErro']  = "Falha ao salvar nova foto, entre em contato conosco no nosso email: " . EMAILADM;
                 $this->data['botao'] = "Home";
                 $this->data['descricaoBotao'] = "Ir para a Home";
                 break;
@@ -108,10 +96,59 @@ class Erro{
                 $this->data['botao'] = "Home";
                 $this->data['descricaoBotao'] = "Ir para a Home";
                 break;
+            case 15:
+                $this->data['numeroErro'] = "015";
+                $this->data['descricaoErro']  = "Você não pode acessar a página de alterar foto pois você não tem uma foto de perfil";
+                $this->data['botao'] = "Home";
+                $this->data['descricaoBotao'] = "Ir para a Home";
+                break;
+            case 16:
+                $this->data['numeroErro'] = "016";
+                $this->data['descricaoErro']  = "Você não pode apagar a foto pois você não tem uma foto de perfil";
+                $this->data['botao'] = "SobreCliente/Dados";
+                $this->data['descricaoBotao'] = "Ir para a Sobre Cliente";
+                break;
+            case 17:
+                $this->data['numeroErro'] = "017";
+                $this->data['descricaoErro']  = "Você não pode acessar a pagina de adicionar foto pois ja tem uma foto adicionada";
+                $this->data['botao'] = "SobreCliente/Dados";
+                $this->data['descricaoBotao'] = "Ir para a Sobre Cliente";
+                break;
+            case 18:
+                $this->data['numeroErro'] = "018";
+                $this->data['descricaoErro']  = "Você não pode acessar a pagina de alterar foto pois ainda não tem uma foto cadastrada";
+                $this->data['botao'] = "SobreCliente/Dados";
+                $this->data['descricaoBotao'] = "Ir para a Sobre Cliente";
+                break;
+            case 19:
+                $this->data['numeroErro'] = "019";
+                $this->data['descricaoErro']  = "Você não pode apagar a foto pois ainda não tem uma foto cadastrada";
+                $this->data['botao'] = "SobreCliente/Dados";
+                $this->data['descricaoBotao'] = "Ir para a Sobre Cliente";
+                break;
+            case 20:
+                $this->data['numeroErro'] = "020";
+                $this->data['descricaoErro']  = "Id do pet fornecido não pertence a sua conta";
+                $this->data['botao'] = "SobreCliente/Dados";
+                $this->data['descricaoBotao'] = "Ir para a Sobre Cliente";
+                break;
+            case 21:
+                $this->data['numeroErro'] = "021";
+                $this->data['descricaoErro']  = "Você já está logado e por isso não pode acessar essa página";
+                $this->data['botao'] = "Home";
+                $this->data['descricaoBotao'] = "Ir para a Home";
+                break;
+            case 404:
+                $this->data['numeroErro'] = "404";
+                $this->data['descricaoErro']  = "Página não encontrada";
+                $this->data['botao'] = "Home";
+                $this->data['descricaoBotao'] = "Ir para Home";
+                break;
+
         }
 
-        $loadView = new \Core\LoadView("sts/Views/erro", $this->data, null);
-        $loadView->loadView();
+        $loadView = new \Core\LoadView("sts/Views/bodys/erro/erro", $this->data, null);
+        $loadView->loadView_header2();
 
     }
 

@@ -42,12 +42,15 @@ class UrlController extends Define
                 $this->urlController = CONTROLLER; //Home
             }
 
-            // Se tiver passado o método da controller na URL
-            if (isset($this->urlArray[1])){
-                $this->urlMetodo = $this->slugMetodo($this->urlArray[1]);
-            }else{
-                $this->urlMetodo = METODO; //index
+            if ($this->urlArray[0] != 'adm') {
+                // Se tiver passado o método da controller na URL
+                if (isset($this->urlArray[1])){
+                    $this->urlMetodo = $this->slugMetodo($this->urlArray[1]);
+                }else{
+                    $this->urlMetodo = METODO; //index
+                }
             }
+            
 
         }else{
             $this->urlController = CONTROLLER; //Home
@@ -138,19 +141,30 @@ class UrlController extends Define
     {
         //classLoad é uma variavel mas com () no final para declara uma classe
         $page = new $this->classLoad(); 
-        if(method_exists($page, $this->urlMetodo)){
-            $result = $page->pages(); //retorna o nome das paginas públicas dessa controller
-            $key = 1 + array_search($this->urlMetodo, $result); // verifica se o nome da página passada pelo cliente é pública
 
-            if (!empty($key)) { // se for  carrega o método, se não vai para a página de erro
+        if(method_exists($page, $this->urlMetodo)){
+            
+            $result = $page->pages(); //retorna o nome das paginas públicas dessa controller
+
+            /** verifica se o nome da página passada pelo cliente é pública
+              * retorna o número da posição no array, por isso pode retornar 0 */ 
+            $key = null;
+            $key = array_search($this->urlMetodo, $result);
+
+            // se for publica carrega o método, caso contrario vai para a página de erro
+            if ($key != null || $key === 0) { 
                 $method = $this->urlMetodo;
                 $page->$method();
             } else {
-                die("Erro: pagina não encontrada");
+                //die("Página não encontrada");
+                $header = URL ."Erro?case=404"; // Erro 404
+                header("Location: {$header}");
             }
             
-        }else{
-            die("Erro: pagina não encontrada");
+        } else {
+            die("Página não encontrada");
+            // $header = URL ."Erro?case=404"; // Erro 404
+            // header("Location: {$header}");
         }
     }
 }

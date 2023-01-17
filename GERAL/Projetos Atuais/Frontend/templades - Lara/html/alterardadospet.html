@@ -21,22 +21,25 @@
         <form class="form-edição" method="post" action="">
 
             <input type="text" placeholder="Nome">
+            <br> 
 
-            <label class="dadospet">Data de Nascimento:</label>
+            <div class="center"><label class="dadospet">Data de Nascimento:</label></div>
             <input type="date" >
+                <br> 
 
-            <label class="dadospet">Sexo:</label> <br>
-            <input type="radio" name="sexo" value="feminino" class="inputsexo"> <label> Fêmea </label>
-            <input type="radio" name="sexo" value="masculino" class="inputsexo"> <label> Macho </label>
+            <label> Sexo: </label> 
+            <br>
+            <input type="checkbox"> Fêmea <br>
+            <input type="checkbox"> Macho
+
+            <br><br> 
 
             <label class="dadospet"> Raça: </label>
-            <select name="idraca" size="10">
-
-                <!--php-->
+            <select name="idraca" size="1">
             </select>
 
-
-            <button class="botao"> salvar alterações</button>
+            <br><br>
+                    <p class="center"><input class="botao" name="CreatePet" type="submit" value="salvar alteração" > </p>
         </form>
 
         <img src="../img/img03.png" class="img-pet" alt="imagem de cão"> 
