@@ -2,6 +2,11 @@
 
 namespace Sts\Controllers;
 
+if (!defined('D7E4T2K6F4')) {
+    $header = "http://localhost/Clinica/Erro?case=404"; // Erro 404
+    header("Location: {$header}");
+}
+
 include_once 'app/sts/Controllers/helpers/protect.php';
 
 class SobreCliente{
@@ -29,17 +34,28 @@ private array|null $dataForm; // dados que vem do formulario
     public function dados(): void
     {
         $stsSobreCliente = new \Sts\Models\StsSobreCliente();
+        $stsVerifyDate = new \Sts\Models\helpers\StsVerifyDateConsulta(); 
 
         $this->data['user'] = $stsSobreCliente->userData();
         
-        if (isset($_SESSION['idendereco'])) 
+        if (isset($_SESSION['idendereco'])) {
             $this->data['adress'] = $stsSobreCliente->userAdress(); 
+        }
 
-        
-        if ($this->verifyIfUserHasAPet()) 
+        if ($this->verifyIfUserHasAPet()) {
             $this->data['pet'] = $stsSobreCliente->userPet();
+        }
+        
+        $this->data['agendamentos'] = $stsSobreCliente->getBasicDataConsultas();
+        $stsVerifyDate->verifyDayTimeConsulta($this->data['agendamentos']);
+        $this->data['agendamentos'] = $stsSobreCliente->getBasicDataConsultas();
+        //unset($this->data['agendamentos']);
 
-        $this->view('sobreCliente');
+        $this->data['conusultaEmAndamento'] = $stsSobreCliente->getDataConsultaEmAndamento();
+        $this->data['consultasFinalizadas'] = $stsSobreCliente->getDataConsultasFinalizadas();
+            
+        $loadView = new \Core\LoadView("sts/Views/bodys/areaCliente/areaCliente2", $this->data, null); // sobreCliente // areaCliente2
+        $loadView->loadView_header('areaCliente/areaCliente'); //sobre_cliente // areaCliente2H
     }
 
 
@@ -54,7 +70,7 @@ private array|null $dataForm; // dados que vem do formulario
     /**
      * Undocumented function
      */
-    public function alterarDados()
+    public function alterarDados(): void
     {
         //informações vinda dos formulares da view sobreCliente.php
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -63,20 +79,21 @@ private array|null $dataForm; // dados que vem do formulario
 
             unset($this->dataForm['AlterUser']);
 
+            $stsverify = new \Sts\Models\helpers\StsVerifyRegistrationData();
+            //echo "<pre>" ;var_dump($this->dataForm['cpf']);
             
-            $metodo = new \Sts\Controllers\helpers\Metodos();
-            
-            if ($metodo->verifyCpf($this->dataForm['cpf'])) { // Se o CPF for valido
-
+            if ($stsverify->verifyCpf($this->dataForm['cpf']) && $stsverify->verifyAge($this->dataForm['data_nascimento'])) {
+                
                 $stsSobreCliente = new \Sts\Models\StsSobreCliente();
-                $check = $stsSobreCliente->checkEmail();
 
-                if (empty($check)) { // Se não existir um CPF igual no banco de dados
+                // Se não existir um CPF igual no banco de dados
+                if ($stsSobreCliente->verifyRepeatedCpf($this->dataForm['cpf']) || $stsSobreCliente->verifySameCpf($_SESSION['idusuario'], $this->dataForm['cpf'])) { 
+
                     $result = $stsSobreCliente->alterUser($this->dataForm);
 
                     if(!empty($result)) // Se os dados foram alterados com sucesso
                     {
-                        $_SESSION['msg'] = "Dados do usuario alterados com sucesso";
+                        $_SESSION['msgGreen'] = "Dados do usuario alterados com sucesso";
                         $header = URL . "Sobre-Cliente/Dados"; 
                         header("Location: {$header}");
                     } else {
@@ -85,20 +102,19 @@ private array|null $dataForm; // dados que vem do formulario
                     }
 
                 } else {
-                    $_SESSION['msg'] = "CPF informado já possui cadastro no banco de dados";
+                    $_SESSION['msgRed'] = "CPF informado já possui cadastro no sistema";
                     $this->data = $this->dataForm;
-                    $this->view('alterarDados');
-                }
+                    $this->view2('alterarDados');
+                } 
 
             } else {
-                $_SESSION['msg'] = "CPF infromado é invalido";
                 $this->data = $this->dataForm;
-                $this->view('alterarDados');
-            } 
-
+                $this->view2('alterarDados');
+            }
+            
         } else {
             $this->getData('usuario');
-            $this->view('alterarDados');
+            $this->view2('alterarDados');
         }
     }
 
@@ -109,7 +125,7 @@ private array|null $dataForm; // dados que vem do formulario
      *
      * @return void
      */
-    public function alterarDadosEndereco()
+    public function alterarDadosEndereco(): void
     {
         if (isset($_SESSION['idendereco'])) {
 
@@ -123,7 +139,7 @@ private array|null $dataForm; // dados que vem do formulario
                 $result = $stsSobreCliente->alterAdress($this->dataForm);
 
                 if (!empty($result)) {
-                    $_SESSION['msg'] = "Dados de endereço alterados com sucesso";
+                    $_SESSION['msgGreen'] = "Dados de endereço alterados com sucesso";
                     $header = URL . "Sobre-Cliente/Dados"; 
                     header("Location: {$header}");
                 } else {
@@ -133,7 +149,7 @@ private array|null $dataForm; // dados que vem do formulario
 
             } else {
                 $this->getData('endereco');
-                $this->view('alterarEndereco');
+                $this->view2('alterarEndereco');
             }
 
         } else { 
@@ -144,88 +160,130 @@ private array|null $dataForm; // dados que vem do formulario
 
 
 
-    /**
-     * Undocumented function
-     *
-     * @return void
+    /**     function alterarDadosPet()
+     * Responsavel por carregar a tela de alterar dados pet e receber 
+     *      os dados do formulário para fazer a alteração no BD
      */
-    public function alterarDadosPet() 
+    public function alterarDadosPet(): void 
     {
         $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-            
-        
-        if (!empty($this->dataForm['AlterPet'])) {
 
-            unset($this->dataForm['AlterPet']);
-            //var_dump($this->dataForm);
-            
-            $stsSobreCliente = new \Sts\Models\StsSobreCliente();
-            $resultPet = $stsSobreCliente->alterPet($this->dataForm);
+        /** Os dados dos formulário de alterar dados pet NÃO foi enviado, carrega a tela 'alterarPet'
+         *  Verifica se o id pet passado realmente existe e se pertence ao cliente logado */
+        if (empty($this->dataForm['AlterPet'])) {
 
-            if(!empty($resultPet))
-            {
-                $_SESSION['msg'] = "Dados do pet alterados com sucesso";
-                $header = URL . "Sobre-Cliente/Dados"; 
-                header("Location: {$header}");
-            }else{
-                $header = URL . "Erro?case=6"; // Erro 006
-                header("Location: {$header}");
-            }
-            
-
-        } 
-        
-        elseif (!empty($this->dataForm['DeleteU'])) {
-            $this->apagarDadosPet();
-        }
-            
-        else {
             if (isset($_GET['id'])) {
 
                 $idpet = $_GET['id'];
                 $stsSobreCliente = new \Sts\Models\StsSobreCliente();
                 $this->data['pet'] = $stsSobreCliente->userPetById($idpet);
 
-                if (!empty($this->data['pet'])){
+                if (!empty($this->data['pet'])) {
                     $this->data['tipo_pet'] = $stsSobreCliente->getRaca($this->data['pet'][0]['tipo_pet']);
-                    $this->view('alterarPet');
+                    $this->view2('alterarPet2');
                 } else {
-                    $header = URL . "Erro?case=0"; // Erro 000
+                    $_SESSION['msgRed'] = "Erro, dados incorretos";
+                    $header = URL . "Sobre-Cliente/Dados"; 
                     header("Location: {$header}");
                 }
 
             } else {
-                $header = URL . "Erro?case=0"; // Erro 000
+                $_SESSION['msgRed'] = "Erro, falta de dados";
+                $header = URL . "Sobre-Cliente/Dados"; 
                 header("Location: {$header}");
             }
+
+        } 
+
+        /** Se os dados dos formulário de alterar dados pet FOI enviado
+         *  Faz a alterção no banco de dados */
+        else {
+            unset($this->dataForm['AlterPet']);
+            
+            $stsSobreCliente = new \Sts\Models\StsSobreCliente();
+            $resultPet = $stsSobreCliente->alterPet($this->dataForm);
+
+            if (!empty($resultPet)) {
+                $_SESSION['msgGreen'] = "Dados do pet alterados com sucesso";
+            } else {
+                $_SESSION['msgRed'] = "Falha ao alterar dados do pet, tente novamente mais tarde";
+            }
+
+            $header = URL . "Sobre-Cliente/Dados"; 
+            header("Location: {$header}");
+        }
+
+    }
+
+
+
+    /**     function apagarDadosPet()
+     * Apaga o pet selecionado pelo cliente
+     * Verifica se o pet pertence ao cliente antes de apagar
+     */
+    public function apagarDadosPet(): void
+    {
+        if (isset($_GET['idpet'])) {
+
+            $idpet = $_GET['idpet'];
+
+            $stsSobreCliente = new \Sts\Models\StsSobreCliente();
+
+            if ($stsSobreCliente->verifyIdPetIsFromUser($idpet)){
+
+                $resultD =  $stsSobreCliente-> deleteAll("pet","idpet",$idpet);
+
+                if (!empty($resultD)){
+                    $_SESSION['msgGreen'] = "Dados do pet apagados com sucesso";
+                    $header = URL . "Sobre-Cliente/Dados"; 
+                    header("Location: {$header}");
+                } else {
+                    $_SESSION['msgRed'] = "Falha ao apagar dados";
+                    $header = URL . "Sobre-Cliente/Dados"; 
+                    header("Location: {$header}");
+                }
+
+            } else {
+                $header = URL . "Erro?case=20"; // Erro 020
+                header("Location: {$header}");
+            }
+            
+        } else {
+            $_SESSION['msgRed'] = "Erro, falta de dados";
+            $header = URL . "SobreCliente/Dados";
+            header("Location: {$header}");
         }
     }
 
 
-    public function apagarDadosPet(): void
+    /**     function maisInfoConsulta()
+     * Carrega a tela sobre mais informações de determinada consulta pelo ID
+     * 
+     */
+    public function maisInfoConsulta(): void
     {
-        $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        if (isset($_GET['idConsulta'])) {
 
-        if (!empty($this->dataForm['DeleteU'])) {
+            $idConsulta = $_GET['idConsulta'];
 
-            unset($this->dataForm['DeleteU']);
-            extract($this->dataForm);
+            $stsCliente = new \Sts\Models\StsSobreCliente();
+            if ($stsCliente->verifyIdConsultaIsFromUser($idConsulta)) {
 
-            $stsSobreCliente = new \Sts\Models\StsSobreCliente();
-            $resultD =  $stsSobreCliente-> deleteAll("pet","idpet",$idpet);
-           
-            if (!empty($resultD)){
-                $_SESSION['msg'] = "Dados do pet apagados com sucesso";
-                $header = URL . "Sobre-Cliente/Dados"; 
-                header("Location: {$header}");
+                $this->data = $stsCliente->getFullDataConsulta($idConsulta);
+                $this->view2('maisInfo');
+
             } else {
-                $_SESSION['msg'] = "Falha ao apagar dados";
-                $header = URL . "Sobre-Cliente/Dados"; 
+                $_SESSION['msgRed'] = "Erro, dados incongruentes";
+                $header = URL . "SobreCliente/Dados";
                 header("Location: {$header}");
             }
-
+        }  
+    
+        else {
+            $_SESSION['msgRed'] = "Erro, falta de dados";
+            $header = URL . "SobreCliente/Dados";
+            header("Location: {$header}"); 
         }
-            
     }
 
 
@@ -251,16 +309,16 @@ private array|null $dataForm; // dados que vem do formulario
 
     
 
-
-
-    /**
-     * Undocumented function
-     *
-     */
     private function view(string $view): void
     {
-        $loadView = new \Core\LoadView("sts/Views/sobreCliente/" . $view, $this->data, null);
-        $loadView->loadview2();
+        $loadView = new \Core\LoadView("sts/Views/bodys/areaCliente/" . $view, $this->data, null);
+        $loadView->loadView_header2();
+    }
+
+    private function view2(string $view): void
+    {
+        $loadView = new \Core\LoadView("sts/Views/bodys/areaCliente/" . $view, $this->data, null);
+        $loadView->loadView_header3("alterarDados");
     }
 
 
@@ -270,7 +328,7 @@ private array|null $dataForm; // dados que vem do formulario
      */
     public function pages(): array
     {  
-        return $array = ['index', 'dados', 'alterarDados'];
+        return $array = ['index', 'dados', 'alterarDados', 'alterarDadosPet', 'alterarDadosEndereco', 'apagarDadosPet', 'maisInfoConsulta'];
     }
 
 }
