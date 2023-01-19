@@ -966,9 +966,9 @@ select {
 	padding: 5px 5px;
 	border-radius: 5px;
 	cursor: pointer;
-	width: 7vw;
 	align-self: center;
 	margin: 7vh;
+	
 }
 
 .botaoEnviar:hover {
@@ -984,9 +984,8 @@ select {
 
 .conteudo-principal .img-pet07 {
 	position: absolute;
-	left: 1vw;
-	top: -6.6vh;
-	width: 45vw;
+	left: 10vw;
+	top: 34.9vh;
 }
 
 .conteudo-principal4 .form-email {
@@ -1007,7 +1006,7 @@ select {
 
 .conteudo-principal .telaErro{
 	padding-left: 55vw;
-	margin-top: 15vw;
+	margin-top: 10vw;
 
 
 }
