@@ -724,25 +724,6 @@ a:visited {
 
 }
 
-.conteudo-principal .botaoEnviar {
-	font-family: 'Righteous', cursive;
-	font-size: 25px;
-	color: white;
-	background-color: #A487D5;
-	border: none;
-	padding: 5px 5px;
-	border-radius: 5px;
-	cursor: pointer;
-	width: 7vw;
-	align-self: center;
-	margin: 7vh;
-}
-
-.botaoEnviar:hover {
-	transform: scale(1.1);
-	cursor: pointer;
-}
-
 
 .conteudo-principal .img-donopet {
 	position: absolute;
@@ -756,11 +737,6 @@ a:visited {
 	top: 5%;
 }
 
-.conteudo-principal .img-pet08 {
-	position: absolute;
-	left: 70.1vw;
-	top: 5.7vh;
-}
 
 /* ESTILIZAÇÃO TELA DE RESUMO DE AGENDAMENTO*/
 
@@ -944,23 +920,6 @@ select {
 	/*margin: 0px;*/
 }
 
-.conteudo-principal4 .form-email {
-	font-family: 'Open Sans', sans-serif;
-
-}
-
-.form-email input {
-	margin-top: 30vh;
-	border: none;
-	width: 30vw;
-	background: none;
-	outline: none;
-	border-bottom: 2px solid black;
-	font-size: 15px;
-	color: black;
-}
-
-
 .conteudo-principal4 {
 	border-top: 4px solid black;
 }
@@ -996,4 +955,86 @@ select {
 	align-self: center;
 	margin: 6px;
 
+}
+
+.conteudo-principal .botaoEnviar {
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+	color: white;
+	background-color: #A487D5;
+	border: none;
+	padding: 5px 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 7vw;
+	align-self: center;
+	margin: 7vh;
+}
+
+.botaoEnviar:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.conteudo-principal .img-pet08 {
+	position: absolute;
+	left: 70.1vw;
+	top: 5.7vh;
+}
+
+.conteudo-principal .img-pet07 {
+	position: absolute;
+	left: 1vw;
+	top: -6.6vh;
+	width: 45vw;
+}
+
+.conteudo-principal4 .form-email {
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+.form-email input {
+	margin-top: 30vh;
+	border: none;
+	width: 30vw;
+	background: none;
+	outline: none;
+	border-bottom: 2px solid black;
+	font-size: 15px;
+	color: black;
+}
+
+.conteudo-principal .telaErro{
+	padding-left: 55vw;
+	margin-top: 15vw;
+
+
+}
+.telaErro .tituloErro {
+	font-family: 'Righteous', cursive;
+	font-size: 50px;
+	text-align: center;
+
+}
+
+.telaErro .subtituloErro {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align: center;
+
+
+}
+
+.conteudo-principal .botaoTelaErro {
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+	color: white;
+	background-color: #A487D5;
+	border: none;
+	padding: 5px 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	align-self: center;
+	margin: 7vh;
 }
