@@ -1004,11 +1004,9 @@ select {
 	color: black;
 }
 
-.conteudo-principal .telaErro{
-	padding-left: 55vw;
-	margin-top: 10vw;
-
-
+.telaErro{
+	padding-left: 20vw;
+	margin-top: 2vh;
 }
 .telaErro .tituloErro {
 	font-family: 'Righteous', cursive;
@@ -1025,7 +1023,7 @@ select {
 
 }
 
-.conteudo-principal .botaoTelaErro {
+.botaoTelaErro {
 	font-family: 'Righteous', cursive;
 	font-size: 25px;
 	color: white;
@@ -1035,5 +1033,65 @@ select {
 	border-radius: 5px;
 	cursor: pointer;
 	align-self: center;
-	margin: 7vh;
 }
+
+
+
+/************ css das telas com imagens ***********/
+
+
+*{
+	margin: 0;
+	box-sizing: border-box;
+}
+.containerImg{
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+	overflow: visible;
+
+
+}
+
+@media  screen and(max-width: 768px){
+    .containerImg{
+		width:100%;
+	}
+}
+
+
+
+.img-pet07 {
+	width: 40vw;
+}
+
+
+.linhaCab{
+	border: 1px solid rgb(0, 0, 0);
+
+}
+
+.child{
+
+}
+
+.containerImg2{
+	display: flex;
+	flex-direction: row;
+	
+}
+
+.child2{
+	background-color: #ff0000;
+	border: 1px solid rgb(0, 0, 0);
+	height: 10vh;
+	width: 10vw;
+	background-color: #ECEFF1;
+
+}
+
+.corBg{
+	background-color: #ECEFF1;
+}
+
