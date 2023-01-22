@@ -976,11 +976,7 @@ select {
 	cursor: pointer;
 }
 
-.conteudo-principal .img-pet08 {
-	position: absolute;
-	left: 70.1vw;
-	top: 5.7vh;
-}
+
 
 .conteudo-principal .img-pet07 {
 	position: absolute;
@@ -1042,6 +1038,7 @@ select {
 
 *{
 	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 .containerImg{
@@ -1049,21 +1046,26 @@ select {
 	flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-	overflow: visible;
-
-
+}
+.containerImg3{
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+	align-items: center;
 }
 
-@media  screen and(max-width: 768px){
-    .containerImg{
-		width:100%;
-	}
-}
 
 
 
 .img-pet07 {
 	width: 40vw;
+}
+.img-pet08 {
+	width: 25vw;
+}
+
+.vazio{
+	width: 25vw;
 }
 
 
@@ -1095,3 +1097,50 @@ select {
 	background-color: #ECEFF1;
 }
 
+/******* tela email ******/
+
+.tituloE {
+	font-family: 'Righteous', cursive;
+	font-size: 50px;
+	text-align: center;
+
+}
+
+.subtituloE{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align: center;
+}
+
+.form-enviaEmail {
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+.form-enviaEmail input {
+	border: none;
+	background: none;
+	outline: none;
+	border-bottom: 2px solid black;
+	font-size: 15px;
+	color: black;
+}
+
+.botaoEnviaEmail {
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+	color: white;
+	background-color: #A487D5;
+	border: none;
+	padding: 5px 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	align-self: center;
+	margin: 7vh;
+	
+}
+
+.botaoEnviaEmail:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
