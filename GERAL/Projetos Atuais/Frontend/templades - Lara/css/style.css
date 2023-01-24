@@ -1168,3 +1168,13 @@ select {
 .containerImg .img-pet {
 	margin: 0;
 }
+
+.main-container .conteudo{
+    display: flex;
+    justify-content: space-around;
+    align-items: top;
+    background-color: white;
+    border-radius: 20px;
+    width: 65vw;
+    position: relative;
+}
