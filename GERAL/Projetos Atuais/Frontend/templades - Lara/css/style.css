@@ -84,6 +84,8 @@ button:hover {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	flex-wrap: wrap;
+    white-space: nowrap;
 }
 
 #circulo {
@@ -96,6 +98,7 @@ button:hover {
 
 .conteudo-principal .introdução {
 	padding: 20px;
+	
 }
 
 .conteudo-principal .título {
@@ -123,22 +126,13 @@ button:hover {
 	padding-left: 30px;
 }
 
-.conteudo-principal .descricao {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
-	margin-left: 30px;
-}
+
 
 #serviços {
 	display: flex;
 	flex-direction: column;
-}
-
-.corpoclinico {
-	display: flex;
-	align-items: flex-start;
-	/* ALGUMA COISA PARA DEIXAR O TEXTO PARA A ESQUERDA*/
-	flex-direction: column;
+	flex-wrap: wrap;
+    white-space: nowrap;
 }
 
 .corpoclinico .descricao {
@@ -347,30 +341,34 @@ button:hover {
 }
 
 .manual-navigation {
-	padding-left: 140px;
+	padding-left: 300px;
 	position: absolute;
 	width: 400px;
-	margin-top: -244.5px;
+	margin-top: -245px;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	width: 1vw;
 }
+
 
 .manual-btn {
 	border: 0.5px solid rgb(0, 0, 0);
-	padding: 8px;
-	border-radius: 10px;
+	padding: 12px;
+	border-radius: 11px;
 	cursor: pointer;
-	transition: 1s;
 }
 
 .manual-btn:not(:last-child) {
 	/*nao aplica no ultimo*/
-	margin-right: 20px;
+	margin-bottom: 15px;
+
 }
 
 
 .manual-btn:hover {
-	background-color: rgb(184, 118, 245);
+	background-color: rgb(198, 153, 240);
+	transition: 0.3s;
+
 }
 
 
@@ -390,40 +388,62 @@ button:hover {
 
 .navigation-auto div {
 	border: 0.5px solid #000000;
-	padding: 8px;
-	border-radius: 10px;
+	padding: 12px;
+	border-radius: 11px;
 	cursor: pointer;
-	transition: 1s;
 }
 
 .navigation-auto {
-	padding-left: 140px;
-
+	padding-left: 300px;
 	position: absolute;
 	width: 400px;
 	margin-top: 5px;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	width: 1vw;
+
 }
 
 .navigation-auto div:not(:last-child) {
-	margin-right: 20px;
+	margin-bottom: 14.4px;
 }
 
+.afasta2{
+	margin-left: 1vw;
+}
+.afasta3{
+	margin-left: 1.2vw;
+}
+.afasta4{
+	margin-left: 1.4vw;
+}
+
+.afastab2{
+	margin-left: 1vw;
+}
+.afastab3{
+	margin-left: 1.2vw;
+}
+
+.afastab4{
+	margin-left: 1.4vw;
+}
+
+
 #radio1:checked~.navigation-auto .auto-btn1 {
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(154, 61, 241);
 }
 
 #radio2:checked~.navigation-auto .auto-btn2 {
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(154, 61, 241);
 }
 
 #radio3:checked~.navigation-auto .auto-btn3 {
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(154, 61, 241);
 }
 
 #radio4:checked~.navigation-auto .auto-btn4 {
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(154, 61, 241);
 }
 
 /*ESTILIZACAO GERENCIAMENTO ADM*/
@@ -1177,4 +1197,33 @@ select {
     border-radius: 20px;
     width: 65vw;
     position: relative;
+}
+
+/*********8 --- *************/
+
+.alinhamentoCorpo{
+	margin-left: 2vw;
+
+}
+
+
+.corpoclinico {
+	display: flex;
+	align-items: flex-start;
+	/* ALGUMA COISA PARA DEIXAR O TEXTO PARA A ESQUERDA*/
+	flex-direction: row;
+	flex-wrap: wrap;
+    white-space: nowrap;
+}
+
+.conteudo-principal .descricao {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	text-align: left;
+	margin-left: 2vw;
+
+}
+
+.gapCorpo{
+	width: 5vw;
 }
